@@ -9,10 +9,8 @@ import javax.swing.*;
  */
 public class Main {
   public static void main(String a[]) {
+    new DisplayMenu();
 
-    DisplayMenu fr = new DisplayMenu();
-    fr.setSize(1440,900);
-    fr.setVisible(true);
-    fr.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
   }
 }
