@@ -7,7 +7,8 @@ package plant;
  * @version 22/04/2017
  */
 public class Rose extends Flower {
+  /** Konstruktor. */
   public Rose() {
-    super("rose", 50, 100);
+    super("rose", 40, 70);
   }
 }

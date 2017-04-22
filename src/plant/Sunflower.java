@@ -7,6 +7,7 @@ package plant;
  * @version 22/04/2017
  */
 public class Sunflower extends Flower {
+  /** Konstruktor. */
   public Sunflower() {
     super("sunflower", 50, 100);
   }
