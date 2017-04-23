@@ -84,6 +84,20 @@ public class PlantController extends Thread {
     return flowerInControl.getSellingPrice();
   }
 
+  /**
+   * Fungsi untuk mendapatkan nilai beli pot.
+   *
+   * @return harga beli pot
+   */
+  public int getPotPrice() {
+    return potInControl.getPrice();
+  }
+
+  /**
+   * Prosedur untuk mengurus kehidupan bunga yang telah ditanam.
+   * I.S.: Bunga disiram.
+   * F.S.: Bunga tumbuh ke stage selanjutnya.
+   */
   public void growTheFlower() {
     switch (flowerInControl.getFlowerState()) {
       case 1:
