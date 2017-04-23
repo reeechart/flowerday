@@ -49,6 +49,15 @@ public abstract class Flower extends StoreItem {
   }
 
   /**
+   * Getter dari nama jenis bunga.
+   *
+   * @return <code>flowerName</code>
+   */
+  public final String getFlowerName() {
+    return flowerName;
+  }
+
+  /**
    * Getter dari harga jual bunga.
    *
    * @return harga jual bunga. Untuk bunga yang siap panen
@@ -74,7 +83,7 @@ public abstract class Flower extends StoreItem {
   }
 
   /** Menumbuhkan bunga dengan cara menaikkan state dari bunga. */
-  public void Grow() {
+  public void grow() {
     flowerState++;
   }
 }
