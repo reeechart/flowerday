@@ -3,8 +3,7 @@ package stage;
 import java.util.Timer;
 import java.util.TimerTask;
 import plant.Flower;
-
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import plant.Pot;
 
 /**
  * Class Stage.
@@ -84,11 +83,12 @@ public class Stage {
    */
   public void sellFlower() {
     if (income != 0) {
-     final int incomeToBeAdded = income;
+      final int incomeToBeAdded = income;
       income = 0;
       long deliveryTime = DEFAULT_DELIVERY_TIME - ((levelOfTruck - 1) * 2000);
       Timer timer = new Timer();
       TimerTask deliveryTask = new TimerTask() {
+        @Override
         public void run() {
           long startTime = System.currentTimeMillis();
           // DISABLE SELL BUTTON, ANIMASI TRUCK JIKA PERLU
@@ -97,7 +97,6 @@ public class Stage {
           }
           inGameMoney += incomeToBeAdded;
           timer.cancel();
-          return;
         }
       };
       timer.schedule(deliveryTask, 30);
@@ -122,23 +121,29 @@ public class Stage {
    * @param row baris tempat bunga akan ditambahkan
    * @param col kolom tempat bunga akan ditambahkan
    */
-  public void addFlower(Flower flowerToBeAdded, int row, int col) {
-    flowers[row][col] = flowerToBeAdded;
-    // TAMPILKAN BUNGA DI LAYAR DI pot[row][col]
+  public void buyFlower(Flower flowerToBeAdded, int row, int col) {
+    if (inGameMoney >= flowerToBeAdded.getPrice()) {
+      inGameMoney -= flowerToBeAdded.getPrice();
+      flowers[row][col] = flowerToBeAdded;
+      // TAMPILKAN BUNGA DI LAYAR DI pot[row][col]
+    }
   }
 
   /**
    * Method untuk menambahkan pot yang baru dibeli ke dalam stage.
    */
-  public void addPot() {
-    try {
-      pots++;
-      int row = (pots-1) / 3;
-      int col = (pots-1) % 3;
-      isPotAvailable[row][col] = true;
-      // KELUARKAN GAMBAR POT DI MATRIX pot[row][col]
-    } catch (ArrayIndexOutOfBoundsException e) {
-      // DO NOTHING
+  public void buyPot() {
+    Pot pot = new Pot();
+    if (inGameMoney > pot.getPrice()) {
+      try {
+        pots++;
+        int row = (pots - 1) / 3;
+        int col = (pots - 1) / 3;
+        isPotAvailable[row][col] = true;
+        // KELUARKAN GAMBAR POT DI MATRIX pot[row][col]
+      } catch (ArrayIndexOutOfBoundsException e) {
+        // DO NOTHING
+      }
     }
   }
 

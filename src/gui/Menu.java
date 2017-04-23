@@ -35,9 +35,12 @@ public class Menu extends JPanel {
 
   public Menu() {
 
+    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    int width = gd.getDisplayMode().getWidth();
+    int height = gd.getDisplayMode().getHeight();
     ImageIcon imagel = new ImageIcon("asset/logo.png");
     JLabel logoimage = new JLabel(imagel);
-    logoimage.setBounds(0,0,1440,900);
+    logoimage.setBounds(0,0,width,height);
 
     dp.add(logoimage, new Integer(700));
 
