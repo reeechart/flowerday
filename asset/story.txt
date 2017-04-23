@@ -1,3 +1,40 @@
-FlowerDay,
-I want play FlowerDay,
-HAHAHAHHAHA
+|0
+Phone: "Ring!! Ringg!!"
+<name>: "Hello?"
+Aunt Reina: "Hello, <name>. Uncle Ben had just bought a new land and our old garden has no one to take care of. Are you interested to look after it?"
+<name>: "Yes! Definitely yes!"
+Aunt Reina: "Glad to hear your excitement! Come hear as soon as possible, Dear."
+<name>: "Okay! Thank you and see you then!"
+Phone: *hunged up*
+
+<name> is currently live in Wonder Town. <name> has just finish college and unemployed.
+Upon the phone call, <name> rushed from Wonder Town to Wonder Village, <name>'s hometown and where Uncle Ben and Aunt Reina live.
+<name> loves gardening, especially growing flowers, so this is such a big opportunity.
+|1
+Uncle Ben: "Here comes our young gardener!"
+Aunt Reina: "Welcome, <name>!"
+<name>: "Hi all! Thank you for trusting your garden to me."
+Uncle Ben: "Actually I'm planning to give it to you as free."
+<name>: "What? No, I won't accept that."
+Aunt Reina: "It's okay, <name>. We don't need it anymore, anyway."
+<name>: "Please let me pay.."
+Uncle Ben: "Well, if you insist, you can give me 150 Wonders for that garden."
+<name>: "Okay! thank you, Uncle. I will get it by the end of the day!"
+Aunt Reina: "No need to rush, Dear."
+|2
+<name>: "
+|3
+
+|4
+
+|5
+
+|6
+
+|7
+
+|8
+
+|9
+
+|10
