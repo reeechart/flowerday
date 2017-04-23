@@ -2,8 +2,7 @@ package stage;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import plant.Flower;
-import plant.Pot;
+import plant.PlantController;
 
 /**
  * Class Stage.
@@ -26,10 +25,8 @@ public class Stage {
   private int income;
   /** Banyaknya pot yang ada di stage */
   private int pots;
-  /** Array untuk menyimpan bunga yang ditanam oleh player */
-  private Flower[][] flowers;
-  /** Array boolean untuk menyatakan keberadaan pot dalam */
-  private boolean[][] isPotAvailable;
+  /** Matrix untuk menyimpan tanaman yang ditanam oleh player */
+  private PlantController[][] plants;
   private final int DEFAULT_TARGET = 150;
   private final int DEFAULT_MONEY = 30;
   private final int DEFAULT_TIME_LIMIT = 120;
@@ -52,18 +49,17 @@ public class Stage {
     levelOfTruck = truckLv;
     income = 0;
     pots = 2;
-    flowers = new Flower[3][3];
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        isPotAvailable[i][j] = false;
-      }
-    }
-    isPotAvailable[0][0] = true;
-    isPotAvailable[0][1] = true;
+    plants = new PlantController[3][3];
+    plants[0][0] = new PlantController();
+    plants[0][1] = new PlantController();
+  }
+
+  public int getLevel() {
+    return level;
   }
 
   /**
-   * Getter untuk mendapatkan uang di dalam game
+   * Getter untuk mendapatkan uang di dalam stage.
    * @return <code>inGameMoney</code>
    */
   public int getInGameMoney() {
@@ -71,36 +67,78 @@ public class Stage {
   }
 
   /**
-   * Getter untuk mendapatkan seluruh flower yang ada di stage
-   * @return <code>flowers</code>
+   * Getter untuk mendapatkan target uang untuk memenangkan stage.
+   * @return <code>targetMoney</code>
    */
-  public Flower[][] getFlowers() {
-    return flowers;
+  public int getTargetMoney() {
+    return targetMoney;
+  }
+
+  /**
+   * Getter untuk mendapatkan batas waktu untuk memainkan stage.
+   * @return <code>timeLimit</code>
+   */
+  public int getTimeLimit() {
+    return timeLimit;
+  }
+
+  /**
+   * Getter untuk mendapatkan level dari truck yang dipakai dalam stage.
+   * @return <code>levelOfTruck</code>
+   */
+  public final int getLevelOfTruck() {
+    return levelOfTruck;
+  }
+
+  /**
+   * Getter untuk mendapatkan income yang bisa didapat dengan menjual bunga.
+   * @return <code>income</code>
+   */
+  public int getIncome() {
+    return income;
+  }
+
+  /**
+   * Getter untuk mendapatkan banyaknya pot yang ada di dalam stage.
+   * @return <code>pots</code>
+   */
+  public int getPots() {
+    return pots;
+  }
+
+  /**
+   * Getter untuk mendapatkan matrix of PlantController.
+   * @return <code>plants</code>
+   */
+  public PlantController[][] getPlants() {
+    return plants;
+  }
+
+  public void setInGameMoney(int _inGameMoney) {
+    inGameMoney = _inGameMoney;
   }
 
   /**
    * Method untuk menjual bunga yang sudah dipanen.
    */
-  public void sellFlower() {
-    if (income != 0) {
-      final int incomeToBeAdded = income;
-      income = 0;
-      long deliveryTime = DEFAULT_DELIVERY_TIME - ((levelOfTruck - 1) * 2000);
-      Timer timer = new Timer();
-      TimerTask deliveryTask = new TimerTask() {
-        @Override
-        public void run() {
-          long startTime = System.currentTimeMillis();
-          // DISABLE SELL BUTTON, ANIMASI TRUCK JIKA PERLU
-          while (System.currentTimeMillis() - startTime <= deliveryTime) {
-            // wait until delivery is finished
-          }
-          inGameMoney += incomeToBeAdded;
-          timer.cancel();
+  public void sellFlowers() {
+    final int incomeToBeAdded = income;
+    income = 0;
+    long deliveryTime = DEFAULT_DELIVERY_TIME - ((levelOfTruck - 1) * 2000);
+    Timer timer = new Timer();
+    TimerTask deliveryTask = new TimerTask() {
+      @Override
+      public void run() {
+        long startTime = System.currentTimeMillis();
+        // DISABLE SELL BUTTON, ANIMASI TRUCK JIKA PERLU
+        while (System.currentTimeMillis() - startTime <= deliveryTime) {
+          // wait until delivery is finished
         }
-      };
-      timer.schedule(deliveryTask, 30);
-    }
+        inGameMoney += incomeToBeAdded;
+        timer.cancel();
+      }
+    };
+    timer.schedule(deliveryTask, 30);
   }
 
   /**
@@ -110,41 +148,31 @@ public class Stage {
    */
   public void harvestFlower(int row, int col) {
     // CEK KEBERADAAN POT DI CONTROLLER
-    income += flowers[row][col].getPrice();
-    flowers[row][col] = null;
+    income += plants[row][col].harvest();
+    plants[row][col] = new PlantController();
     // HAPUS GAMBAR BUNGA DI LAYAR
   }
 
   /**
    * Method untuk menambahkan flower ke dalam stage.
-   * @param flowerToBeAdded flower yang akan ditambahkan ke matrix flowers
+   * @param flowerName flower yang akan ditambahkan ke matrix flowers
    * @param row baris tempat bunga akan ditambahkan
    * @param col kolom tempat bunga akan ditambahkan
    */
-  public void buyFlower(Flower flowerToBeAdded, int row, int col) {
-    if (inGameMoney >= flowerToBeAdded.getPrice()) {
-      inGameMoney -= flowerToBeAdded.getPrice();
-      flowers[row][col] = flowerToBeAdded;
-      // TAMPILKAN BUNGA DI LAYAR DI pot[row][col]
-    }
+  public void buyFlower(String flowerName, int row, int col) {
+    plants[row][col].addFlowerToPot(flowerName);
+    // TAMPILKAN BUNGA DI LAYAR DI pot[row][col]
   }
 
   /**
    * Method untuk menambahkan pot yang baru dibeli ke dalam stage.
    */
   public void buyPot() {
-    Pot pot = new Pot();
-    if (inGameMoney > pot.getPrice()) {
-      try {
-        pots++;
-        int row = (pots - 1) / 3;
-        int col = (pots - 1) / 3;
-        isPotAvailable[row][col] = true;
-        // KELUARKAN GAMBAR POT DI MATRIX pot[row][col]
-      } catch (ArrayIndexOutOfBoundsException e) {
-        // DO NOTHING
-      }
-    }
+    pots++;
+    int row = (pots - 1) / 3;
+    int col = (pots - 1) % 3;
+    plants[row][col] = new PlantController();
+    // KELUARKAN GAMBAR POT DI MATRIX pot[row][col]
   }
 
   /**
@@ -153,7 +181,7 @@ public class Stage {
    * @param col kolom tempat bunga yang akan disiram
    */
   public void waterFlower(int row, int col) {
-    flowers[row][col].grow();
+    plants[row][col].growTheFlower();
     // UBAH GAMBAR FLOWER DI LAYAR JADI LEBIH BESAR
   }
 }

@@ -1,7 +1,5 @@
 package stage;
 
-import plant.Flower;
-
 /**
  * Class StageController.
  * Class controller untuk mengatur model <code>Stage</code>
@@ -20,6 +18,12 @@ public class StageController {
     stage = new Stage(stageLv, truckLv);
   }
 
+  public void sendFlowersToTown() {
+    if (stage.getIncome() > 0) {
+      stage.sellFlowers();
+    }
+  }
+
   /**
    * Method untuk memanen bunga di stage yang diatur.
    * @param row urutan baris bunga dalam stage yang diatur
@@ -30,29 +34,39 @@ public class StageController {
   }
 
   /**
-   * Method untuk menyiram bunga dalam stage yang diatur.
-   * @param row urutan baris bunga yang disiram
-   * @param col urutan kolom bunga yang disiram
+   * Method untuk membeli bunga tertentu yang tersedia di panel stage.
+   * @param _flowerName nama flower yang ingin ditambahkan ke stage
+   * @param row baris tempat flower akan ditambahkan
+   * @param col kolom tempat flower akan ditambahkan
    */
-  public void waterFlowerInStage(int row, int col) {
-    stage.waterFlower(row, col);
+  public void buyFlowerInStage(String _flowerName, int row, int col) {
+    int stageMoney = stage.getInGameMoney();
+    int flowerPrice = stage.getPlants()[row][col].getFlowerPrice(_flowerName);
+    if (stageMoney >= flowerPrice) {
+      stage.setInGameMoney(stageMoney - flowerPrice);
+      stage.buyFlower(_flowerName, row, col);
+    }
   }
 
   /**
    * Method untuk membeli pot dalam stage yang diatur.
    */
   public void buyPotInStage() {
-    stage.buyPot();
+    int stageMoney = stage.getInGameMoney();
+    int potPrice = stage.getPlants()[0][0].getPotPrice();
+    if ((stageMoney >= potPrice) && (stage.getPots() < 9)) {
+      stage.setInGameMoney(stageMoney - potPrice);
+      stage.buyPot();
+    }
   }
 
   /**
-   * Method untuk membeli bunga tertentu yang tersedia di panel stage.
-   * @param _flowerToBeAdded flower yang ingin ditambahkan ke stage
-   * @param row baris tempat flower akan ditambahkan
-   * @param col kolom tempat flower akan ditambahkan
+   * Method untuk menyiram bunga dalam stage yang diatur.
+   * @param row urutan baris bunga yang disiram
+   * @param col urutan kolom bunga yang disiram
    */
-  public void buyFlowerInStage(Flower _flowerToBeAdded, int row, int col) {
-    stage.buyFlower();
+  public void waterFlowerInStage(int row, int col) {
+    stage.waterFlower(row, col);
   }
 }
 
