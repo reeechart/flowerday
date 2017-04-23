@@ -2,6 +2,12 @@ package stage;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 import plant.PlantController;
 
 /**
@@ -27,10 +33,6 @@ public class Stage {
   private int pots;
   /** Matrix untuk menyimpan tanaman yang ditanam oleh player */
   private PlantController[][] plants;
-  private final int DEFAULT_TARGET = 150;
-  private final int DEFAULT_MONEY = 30;
-  private final int DEFAULT_TIME_LIMIT = 120;
-  private final int TARGET_GROWTH = 45;
   private final int DEFAULT_DELIVERY_TIME = 10000;
 
   /**
@@ -40,18 +42,40 @@ public class Stage {
    */
   public Stage(int stageLevel, int truckLv) {
     level = stageLevel;
-    inGameMoney = DEFAULT_MONEY + (15*(stageLevel-1));
-    targetMoney = DEFAULT_TARGET + (70*(stageLevel)-1);
-    if (stageLevel > 4) {
-      targetMoney += TARGET_GROWTH;
-    }
-    timeLimit = DEFAULT_TIME_LIMIT;
     levelOfTruck = truckLv;
-    income = 0;
-    pots = 2;
-    plants = new PlantController[3][3];
-    plants[0][0] = new PlantController();
-    plants[0][1] = new PlantController();
+
+    String filename = "asset/stageconf.txt";
+    String line = null;
+
+    try
+    {
+      int cnt = 0;
+
+      FileReader fileReader = new FileReader(filename);
+      BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+      while ((line = bufferedReader.readLine()) != null) {
+        cnt++;
+        String pattern = "^\\s*startMoney\\s*:\\s*(\\d+)\\s*,\\s*targetMoney\\s*:\\s*(\\d+)\\s*,\\s*timeLimit\\s*:\\s*(\\d+)\\s*$";
+
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(line);
+
+        if(m.find() && cnt == stageLevel) {
+         inGameMoney = Integer.parseInt(m.group(1));
+         targetMoney = Integer.parseInt(m.group(2));
+         timeLimit = Integer.parseInt(m.group(3));
+        }
+      }
+
+      bufferedReader.close();
+    }
+    catch(FileNotFoundException e) {
+      // do something here
+    }
+    catch(IOException e) {
+      // do something here
+    }
   }
 
   public int getLevel() {
