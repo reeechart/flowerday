@@ -1,0 +1,104 @@
+package gui;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+/**
+ * Created by ireneedriadr on 4/23/17.
+ */
+public class Level {
+  public Level(JDesktopPane dep) {
+    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    int width = gd.getDisplayMode().getWidth();
+    int height = gd.getDisplayMode().getHeight();
+    ImageIcon image = new ImageIcon("asset/story1.png");
+    JLabel labelimage = new JLabel(image);
+    labelimage.setBounds(0,0,1440,900);
+    dep.add(labelimage, 150);
+
+    ImageIcon i1 = new ImageIcon("asset/1.png");
+    JButton b1 = new JButton(i1);
+    b1.setOpaque(false);
+    b1.setContentAreaFilled(false);
+    b1.setBorderPainted(false);
+    /*b1.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                new Level(dep);
+              }
+            }
+    );*/
+    b1.setBounds(100,50,350,350);
+    dep.add(b1, new Integer(700));
+
+    ImageIcon i2 = new ImageIcon("asset/2.png");
+    JButton b2 = new JButton(i2);
+    b2.setOpaque(false);
+    b2.setContentAreaFilled(false);
+    b2.setBorderPainted(false);
+    b2.setBounds(300, 50, 350, 350);
+    dep.add(b2, new Integer(700));
+
+    ImageIcon i3 = new ImageIcon("asset/3.png");
+    JButton b3 = new JButton(i3);
+    b3.setOpaque(false);
+    b3.setContentAreaFilled(false);
+    b3.setBorderPainted(false);
+    b3.setBounds(500, 50, 350, 350);
+    dep.add(b3, new Integer(700));
+
+    ImageIcon i4 = new ImageIcon("asset/4.png");
+    JButton b4 = new JButton(i4);
+    b4.setOpaque(false);
+    b4.setContentAreaFilled(false);
+    b4.setBorderPainted(false);
+    b4.setBounds(100, 250, 350, 350);
+    dep.add(b4, new Integer(700));
+
+
+    ImageIcon i5 = new ImageIcon("asset/5.png");
+    JButton b5 = new JButton(i5);
+    b5.setOpaque(false);
+    b5.setContentAreaFilled(false);
+    b5.setBorderPainted(false);
+    b5.setBounds(300, 250, 350, 350);
+    dep.add(b5, new Integer(700));
+
+
+    ImageIcon i6 = new ImageIcon("asset/6.png");
+    JButton b6 = new JButton(i6);
+    b6.setOpaque(false);
+    b6.setContentAreaFilled(false);
+    b6.setBorderPainted(false);
+    b6.setBounds(500,250,350,350);
+    dep.add(b6,new Integer(700));
+
+    ImageIcon i7 = new ImageIcon("asset/7.png");
+    JButton b7 = new JButton(i7);
+    b7.setOpaque(false);
+    b7.setBorderPainted(false);
+    b7.setContentAreaFilled(false);
+    b7.setBounds(100,450,350,350);
+    dep.add(b7, new Integer(700));
+
+    ImageIcon i8 = new ImageIcon("asset/8.png");
+    JButton b8 = new JButton(i8);
+    b8.setOpaque(false);
+    b8.setBorderPainted(false);
+    b8.setContentAreaFilled(false);
+    b8.setBounds(300,450,350,350);
+    dep.add(b8, new Integer(700));
+
+    ImageIcon i9 = new ImageIcon("asset/9.png");
+    JButton b9 = new JButton(i9);
+    b9.setOpaque(false);
+    b9.setBorderPainted(false);
+    b9.setContentAreaFilled(false);
+    b9.setBounds(500, 450, 350, 350);
+    dep.add(b9, new Integer(700));
+
+  }
+}
