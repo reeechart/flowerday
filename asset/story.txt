@@ -22,19 +22,51 @@ Uncle Ben: "Well, if you insist, you can give me 150 Wonders for that garden."
 <name>: "Okay! thank you, Uncle. I will get it by the end of the day!"
 Aunt Reina: "No need to rush, Dear."
 |2
-<name>: "
+<name>: "The fence looks all weather. It might be a good idea to build a new one. I better get the money before the end of the day."
 |3
-
+Aunt Reina: "Oh no! It looks like your house is leaking!"
+<name>: "Really? Oh, you are right :("
+Aunt Reina: "It's better to fix it before the day after tomorrow. A great storm was forecasted that day."
+<name>: "Okay, thanks for the information! I'll get the money."
 |4
-
+Uncle Ben: "Psstt..."
+<name>: "What's up, Uncle?"
+Uncle Ben: "I just want to remind you that tour aunt's birthday is tomorrow."
+<name>: "Is that so? Well, I better save up some money to buy her present."
+Uncle Ben: "Good luck, kiddo!"
 |5
-
+<name>: "Happy Birthday, Aunty! Here is your present!"
+Aunt Reina: "Thanks, Dear! You are so thoughtful. :)"
+Uncle Ben: "You sure have worked hard, huh? Do you want to join us go to Wonderland?"
+<name>: "Seems fun! When will you guys go?"
+Aunt Reina: "Next month."
+<name>: "Right! I'll collect the money starting today!"
 |6
-
+<name>: "Uh-oh! The pump is broken. I should replace it with a new one..."
 |7
-
+Stranded Dog: "Woof! Woof!"
+<name>: "Hey, buddy.. What's wrong? Who is your master?"
+Stranded Dog: *howl*
+<name>: "He looks like a stranded dog and seems hurt. Here, buddy, let me take a look."
+Stranded Dog: "Grrrr!"
+<name>: "He seems broke its bone due to a fight. He must be hospitalized immidiately! Poor thing.. I will adopt him."
+<name>: "Okay, buddy! Now your name is Line, alright? I'll save up some money for your surgery!"
+Line: *wagging tail*
 |8
-
+Phone: "Ring!! Ring!!"
+<name>: "Hello?"
+Mom: "How are you? And.. How is your farm?"
+<name>: "We are both safe and sound!"
+Mom: "Glad to hear that... <name>, do you have any spare money? Your sister want to enter college and we are lack of Wonders."
+<name>: "Sure, mom.. But give me a few days okay?"
+Mom: "It's alright. Thank you very much, Sweetie."
 |9
-
+<name>: "Oh no! Only one week away until the trip to Wonderland and I failed to collect enough money. I should work extra hard then!"
 |10
+<name> was able to make it to Wonderland with Uncle Ben and Aunt Reina.
+Line was saved and now being part of <name>'s family.
+And <name>'s sister finally able to go to a proper college thanks to <name>!
+This is the end of the story about <name>!
+
+Or is it not?
+The End   ?
