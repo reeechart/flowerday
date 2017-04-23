@@ -1,6 +1,10 @@
 package stage;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import plant.Flower;
+
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * Class Stage.
@@ -31,6 +35,7 @@ public class Stage {
   private final int DEFAULT_MONEY = 30;
   private final int DEFAULT_TIME_LIMIT = 120;
   private final int TARGET_GROWTH = 45;
+  private final int DEFAULT_DELIVERY_TIME = 10000;
 
   /**
    * Constructor.
@@ -59,16 +64,43 @@ public class Stage {
   }
 
   /**
+   * Getter untuk mendapatkan uang di dalam game
+   * @return <code>inGameMoney</code>
+   */
+  public int getInGameMoney() {
+    return inGameMoney;
+  }
+
+  /**
+   * Getter untuk mendapatkan seluruh flower yang ada di stage
+   * @return <code>flowers</code>
+   */
+  public Flower[][] getFlowers() {
+    return flowers;
+  }
+
+  /**
    * Method untuk menjual bunga yang sudah dipanen.
    */
   public void sellFlower() {
     if (income != 0) {
-      // DISABLE SELL BUTTON, ANIMASI TRUCK JIKA PERLU
-      // BUAT THREAD UNTUK HITUNG WAKTU SELAMA 3 DETIK
-      int duration = 10000 - ((levelOfTruck-1)*2000);
-      // SLEEP THREAD SELAMA DURATION
-      inGameMoney += income;
+     final int incomeToBeAdded = income;
       income = 0;
+      long deliveryTime = DEFAULT_DELIVERY_TIME - ((levelOfTruck - 1) * 2000);
+      Timer timer = new Timer();
+      TimerTask deliveryTask = new TimerTask() {
+        public void run() {
+          long startTime = System.currentTimeMillis();
+          // DISABLE SELL BUTTON, ANIMASI TRUCK JIKA PERLU
+          while (System.currentTimeMillis() - startTime <= deliveryTime) {
+            // wait until delivery is finished
+          }
+          inGameMoney += incomeToBeAdded;
+          timer.cancel();
+          return;
+        }
+      };
+      timer.schedule(deliveryTask, 30);
     }
   }
 
@@ -108,6 +140,16 @@ public class Stage {
     } catch (ArrayIndexOutOfBoundsException e) {
       // DO NOTHING
     }
+  }
+
+  /**
+   * Method untuk menyiram air ke bunga yang ada di baris row dan kolom col
+   * @param row baris tempat bunga yang akan disiram
+   * @param col kolom tempat bunga yang akan disiram
+   */
+  public void waterFlower(int row, int col) {
+    flowers[row][col].grow();
+    // UBAH GAMBAR FLOWER DI LAYAR JADI LEBIH BESAR
   }
 }
 
