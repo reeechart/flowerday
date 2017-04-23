@@ -4,8 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import plant.Flower;
 
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 /**
  * Class Stage.
  *
@@ -89,6 +87,7 @@ public class Stage {
       long deliveryTime = DEFAULT_DELIVERY_TIME - ((levelOfTruck - 1) * 2000);
       Timer timer = new Timer();
       TimerTask deliveryTask = new TimerTask() {
+        @Override
         public void run() {
           long startTime = System.currentTimeMillis();
           // DISABLE SELL BUTTON, ANIMASI TRUCK JIKA PERLU
