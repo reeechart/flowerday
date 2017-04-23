@@ -17,10 +17,11 @@ public class Menu extends JPanel {
 
   static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
   JFrame fr = new JFrame();
-  ImageIcon image = new ImageIcon("asset/main.png");
+  ImageIcon image = new ImageIcon("asset/main3.png");
   public JDesktopPane dp = new JDesktopPane();
   JLabel labelimage = new JLabel(image);
   JPanel panel = new JPanel();
+
 
 
   public static void confirm(){
@@ -55,6 +56,7 @@ public class Menu extends JPanel {
 
 
     //Main Menu
+
     labelimage.setBounds(0,0,1440,900);
 
     ImageIcon start = new ImageIcon("asset/water.png");
@@ -66,6 +68,7 @@ public class Menu extends JPanel {
 
     dp.add(labelimage, new Integer(50));
     dp.add(buttonstart, new Integer(350));
+
 
     //Main
     ImageIcon exit = new ImageIcon("asset/sun.png");
@@ -106,4 +109,3 @@ public class Menu extends JPanel {
 
   }
 }
-
