@@ -27,6 +27,10 @@ public class Stage {
   private Flower[][] flowers;
   /** Array boolean untuk menyatakan keberadaan pot dalam */
   private boolean[][] isPotAvailable;
+  private final int DEFAULT_TARGET = 150;
+  private final int DEFAULT_MONEY = 30;
+  private final int DEFAULT_TIME_LIMIT = 120;
+  private final int TARGET_GROWTH = 45;
 
   /**
    * Constructor.
@@ -35,12 +39,12 @@ public class Stage {
    */
   public Stage(int stageLevel, int truckLv) {
     level = stageLevel;
-    inGameMoney = 30 + (15*(stageLevel-1));
-    targetMoney = 500 + (70*(stageLevel)-1);
+    inGameMoney = DEFAULT_MONEY + (15*(stageLevel-1));
+    targetMoney = DEFAULT_TARGET + (70*(stageLevel)-1);
     if (stageLevel > 4) {
-      targetMoney += 45;
+      targetMoney += TARGET_GROWTH;
     }
-    timeLimit = 120;
+    timeLimit = DEFAULT_TIME_LIMIT;
     levelOfTruck = truckLv;
     income = 0;
     pots = 2;
@@ -61,7 +65,7 @@ public class Stage {
     if (income != 0) {
       // DISABLE SELL BUTTON, ANIMASI TRUCK JIKA PERLU
       // BUAT THREAD UNTUK HITUNG WAKTU SELAMA 3 DETIK
-      int duration = 3000 - ((levelOfTruck-1)*1000);
+      int duration = 10000 - ((levelOfTruck-1)*2000);
       // SLEEP THREAD SELAMA DURATION
       inGameMoney += income;
       income = 0;
