@@ -26,7 +26,7 @@ public class StageView {
     PlantController[][] pc = stage.getPlants();
     ImageIcon potimage = pc[x][y].getImage();
     JButton buttonpot = new JButton(potimage);
-    buttonpot.setBounds((y*100)+500,(x*100)+150,100,100);
+    buttonpot.setBounds((y*150)+500,(x*150)+150,150,150);
     buttonpot.setOpaque(false);
     buttonpot.setBorderPainted(false);
     buttonpot.setContentAreaFilled(false);
@@ -44,7 +44,7 @@ public class StageView {
     PlantController[][] pc = stage.getPlants();
     ImageIcon bibitimage = pc[row][col].getImage();
     JButton buttonpotbibit = new JButton(bibitimage);
-    buttonpotbibit.setBounds((col * 100) + 500, (row * 100) + 150, 100, 100);
+    buttonpotbibit.setBounds((col * 150) + 500, (row * 150) + 150, 150, 150);
     buttonpotbibit.setOpaque(false);
     buttonpotbibit.setBorderPainted(false);
     buttonpotbibit.setContentAreaFilled(false);
@@ -52,7 +52,7 @@ public class StageView {
     field[row][col] = buttonpotbibit;
     updateMoney(dep, stage);
     i++;
-    dep.add(buttonpotbibit, new Integer(1200+(i*100)));
+    dep.add(buttonpotbibit, new Integer(1200+(i*150)));
   }
 
   public void updateMoney(JDesktopPane dep, Stage stage) {
@@ -162,7 +162,7 @@ public class StageView {
     for(int i = 0 ; i < 1; i++) {
       for (int j = 0; j < 2; j++) {
         field[i][j] = new JButton(potimage);
-        field[i][j].setBounds((j * 100) + 500, (i * 100) + 150, 100, 100);
+        field[i][j].setBounds((j * 150) + 500, (i * 150) + 150, 150, 150);
         field[i][j].setBorderPainted(false);
         field[i][j].setContentAreaFilled(false);
         field[i][j].setOpaque(false);
@@ -176,8 +176,6 @@ public class StageView {
     JLabel labelfield = new JLabel(field);
     labelfield.setBounds(500,150,400,400);
     dep.add(labelfield, new Integer(1000));*/
-
-
 
     ImageIcon can = new ImageIcon("asset/wateringcan.png");
     JButton buttoncan = new JButton(can);
