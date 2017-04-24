@@ -3,6 +3,8 @@ package stage;
 import player.Player;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Class StageController.
@@ -15,6 +17,31 @@ public class StageController {
   private Stage stage;
   private StageView sview;
   private Player player;
+
+  ActionListener plantListener = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      JButton source = (JButton)e.getSource();
+
+      int potNumber = stage.getPots();
+      int row,col;
+      int buttonRow,buttonCol;
+
+      for(int i=0;i<potNumber;i++) {
+        row = i/3;
+        col = i%3;
+
+        if(sview.field[row][col] == source) {
+          buttonRow = row;
+          buttonCol = col;
+          break;
+        }
+      }
+
+      
+    }
+  };
+
   /**
    * Constructor.
    * @param stageLv level stage yang akan dibuat
@@ -23,7 +50,7 @@ public class StageController {
   public StageController(JDesktopPane dp, int stageLv, int truckLv, Player p) {
     player = p;
     stage = new Stage(stageLv, truckLv);
-    sview = new StageView(dp, player, stageLv);
+    sview = new StageView(this, dp, player, stageLv, plantListener);
   }
 
   public void sendFlowersToTown() {
@@ -65,6 +92,7 @@ public class StageController {
     if ((stageMoney >= potPrice) && (stage.getPots() < 9)) {
       stage.setInGameMoney(stageMoney - potPrice);
       stage.buyPot();
+      //sview.addPot();
     }
   }
 

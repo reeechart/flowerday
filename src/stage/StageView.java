@@ -12,7 +12,9 @@ import java.awt.event.ActionListener;
  */
 public class StageView {
 
-  public StageView(JDesktopPane dep, Player p, int l) {
+  JButton[][] field = new JButton[3][3];
+
+  public StageView(StageController sc, JDesktopPane dep, Player p, int l, ActionListener pListener) {
 
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();
@@ -76,20 +78,26 @@ public class StageView {
     buttonpot.setOpaque(false);
     buttonpot.setContentAreaFilled(false);
     buttonpot.setBorderPainted(false);
-    buttonpot.addActionListener(
-            new ActionListener() {
-              @Override
-              public void actionPerformed(ActionEvent e) {
-
-              }
-            }
-    );
+    buttonpot.addActionListener(pListener);
     dep.add(buttonpot, new Integer(1000));
 
-    ImageIcon field = new ImageIcon("asset/field.png");
+    ImageIcon potimage = new ImageIcon("asset/potempty.png");
+    for(int i = 0 ; i < 1; i++) {
+      for (int j = 0; j < 2; j++) {
+        field[i][j] = new JButton(potimage);
+        field[i][j].setBounds((j * 100) + 500, (i * 100) + 150, 100, 100);
+        field[i][j].setBorderPainted(false);
+        field[i][j].setContentAreaFilled(false);
+        field[i][j].setOpaque(false);
+        dep.add(field[i][j],new Integer(1000));
+      }
+    }
+    /*ImageIcon field = new ImageIcon("asset/field.png");
     JLabel labelfield = new JLabel(field);
     labelfield.setBounds(500,150,400,400);
-    dep.add(labelfield, new Integer(1000));
+    dep.add(labelfield, new Integer(1000));*/
+
+
 
     ImageIcon can = new ImageIcon("asset/wateringcan.png");
     JButton buttoncan = new JButton(can);
@@ -119,4 +127,5 @@ public class StageView {
     buttontruck.setContentAreaFilled(false);
     dep.add(buttontruck, new Integer(1000));
   }
+
 }
