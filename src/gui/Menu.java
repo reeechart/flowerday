@@ -1,6 +1,7 @@
 package gui;
 
 import org.w3c.dom.css.Counter;
+import player.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +22,7 @@ public class Menu extends JPanel {
   public JDesktopPane dp = new JDesktopPane();
   JLabel labelimage = new JLabel(image);
   JPanel panel = new JPanel();
-
-
+  public Player p = new Player("irene");
 
   public static void confirm(){
     ImageIcon quit = new ImageIcon("asset/quit.png");
@@ -53,7 +53,6 @@ public class Menu extends JPanel {
       }
     };
     new Timer(delay, task).start();
-
 
     //Main Menu
 
@@ -95,7 +94,7 @@ public class Menu extends JPanel {
               public void actionPerformed(ActionEvent e) {
                 dp.remove(buttonstart);
                 dp.remove(labelimage);
-                new Story(dp,0);
+                new Story(dp,0, p);
 
               }
             }

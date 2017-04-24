@@ -1,6 +1,8 @@
 package gui;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import player.Player;
+import stage.StageController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +16,7 @@ import java.util.Scanner;
  */
 public class Story extends JPanel {
 
-  Story(JDesktopPane dep, int x) {
+  Story(JDesktopPane dep, int x, Player p) {
     final boolean f = false;
     String[] story = new String [500];
     int n = 0;
@@ -64,7 +66,7 @@ public class Story extends JPanel {
                 dep.remove(truck);
                 dep.remove(labelimage);
                 dep.remove(labelstory);
-                new Level(dep);
+                new Level(dep,p);
 
               }
             }

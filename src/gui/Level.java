@@ -1,5 +1,7 @@
 package gui;
 
+import player.Player;
+import stage.StageController;
 import stage.StageView;
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +12,12 @@ import java.awt.event.ActionListener;
  * Created by ireneedriadr on 4/23/17.
  */
 public class Level {
-  public Level(JDesktopPane dep) {
+
+  StageController sc;
+
+
+  public Level(JDesktopPane dep, Player p) {
+
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();
     int height = gd.getDisplayMode().getHeight();
@@ -105,7 +112,7 @@ public class Level {
                 dep.remove(b8);
                 dep.remove(b9);
                 dep.remove(labelimage);
-                new stage.StageView(dep, 1);
+                sc = new StageController(dep, 1,p.getTruckLevel(), p);
               }
             }
     );

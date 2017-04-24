@@ -1,5 +1,11 @@
 package stage;
 
+import player.Player;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * Class StageController.
  * Class controller untuk mengatur model <code>Stage</code>
@@ -9,13 +15,42 @@ package stage;
  */
 public class StageController {
   private Stage stage;
+  private StageView sview;
+  private Player player;
+
+  ActionListener plantListener = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      JButton source = (JButton)e.getSource();
+
+      int potNumber = stage.getPots();
+      int row,col;
+      int buttonRow,buttonCol;
+
+      for(int i=0;i<potNumber;i++) {
+        row = i/3;
+        col = i%3;
+
+        if(sview.field[row][col] == source) {
+          buttonRow = row;
+          buttonCol = col;
+          break;
+        }
+      }
+
+
+    }
+  };
+
   /**
    * Constructor.
    * @param stageLv level stage yang akan dibuat
    * @param truckLv level truck yang akan dipakai dalam stage
    */
-  public StageController(int stageLv, int truckLv) {
+  public StageController(JDesktopPane dp, int stageLv, int truckLv, Player p) {
+    player = p;
     stage = new Stage(stageLv, truckLv);
+    sview = new StageView(this, dp, player, stageLv, plantListener);
   }
 
   public void sendFlowersToTown() {
@@ -57,6 +92,7 @@ public class StageController {
     if ((stageMoney >= potPrice) && (stage.getPots() < 9)) {
       stage.setInGameMoney(stageMoney - potPrice);
       stage.buyPot();
+      //sview.addPot();
     }
   }
 
