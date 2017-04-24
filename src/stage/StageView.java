@@ -1,5 +1,7 @@
 package stage;
 
+import player.Player;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,14 +12,11 @@ import java.awt.event.ActionListener;
  */
 public class StageView {
 
-  public StageView(JDesktopPane dep, int x) {
-    StageController sc;
+  public StageView(JDesktopPane dep, Player p, int l) {
 
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();
     int height = gd.getDisplayMode().getHeight();
-
-    sc = new StageController(x,x);
 
     ImageIcon image = new ImageIcon("asset/gameback.png");
     JLabel labelimage = new JLabel(image);
@@ -77,6 +76,14 @@ public class StageView {
     buttonpot.setOpaque(false);
     buttonpot.setContentAreaFilled(false);
     buttonpot.setBorderPainted(false);
+    buttonpot.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+
+              }
+            }
+    );
     dep.add(buttonpot, new Integer(1000));
 
     ImageIcon field = new ImageIcon("asset/field.png");
@@ -99,6 +106,10 @@ public class StageView {
     buttonscissors.setContentAreaFilled(false);
     buttonscissors.setBorderPainted(false);
     dep.add(buttonscissors,new Integer(1000));
+
+    JLabel trucklevel = new JLabel(Integer.toString(p.getTruckLevel()));
+    trucklevel.setBounds(150,500,100,100);
+    dep.add(trucklevel,new Integer(1000));
 
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
     JButton buttontruck = new JButton(truck);

@@ -1,5 +1,9 @@
 package stage;
 
+import player.Player;
+
+import javax.swing.*;
+
 /**
  * Class StageController.
  * Class controller untuk mengatur model <code>Stage</code>
@@ -9,13 +13,17 @@ package stage;
  */
 public class StageController {
   private Stage stage;
+  private StageView sview;
+  private Player player;
   /**
    * Constructor.
    * @param stageLv level stage yang akan dibuat
    * @param truckLv level truck yang akan dipakai dalam stage
    */
-  public StageController(int stageLv, int truckLv) {
+  public StageController(JDesktopPane dp, int stageLv, int truckLv, Player p) {
+    player = p;
     stage = new Stage(stageLv, truckLv);
+    sview = new StageView(dp, player, stageLv);
   }
 
   public void sendFlowersToTown() {
