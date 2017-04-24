@@ -14,8 +14,9 @@ import java.util.ArrayList;
 public class StageView {
 
   JButton[][] field = new JButton[3][3];
+  JLabel labelmoney1;
 
-  public void updatePot(JDesktopPane dep, Stage stage) {
+  public void newPot(JDesktopPane dep, Stage stage) {
     ImageIcon potimage = new ImageIcon("asset/potempty.png");
     int n = stage.getPots()-1;
     int x = n/3;
@@ -25,8 +26,28 @@ public class StageView {
     buttonpot.setOpaque(false);
     buttonpot.setBorderPainted(false);
     buttonpot.setContentAreaFilled(false);
+    updateMoney(dep,stage);
     dep.add(buttonpot, new Integer(1000));
 
+  }
+
+  public void updatePot(JDesktopPane dep, Stage stage, int phase,int row, int col) {
+    ImageIcon bibitimage = new ImageIcon("asset/potbibit.png");
+    JButton buttonpotbibit = new JButton(bibitimage);
+    buttonpotbibit.setBounds((col*100)+500,(row*100)+150,100,100);
+    buttonpotbibit.setOpaque(false);
+    buttonpotbibit.setBorderPainted(false);
+    buttonpotbibit.setContentAreaFilled(false);
+    updateMoney(dep,stage);
+    dep.add(buttonpotbibit, new Integer(1500));
+  }
+
+  public void updateMoney(JDesktopPane dep, Stage stage) {
+    String gameMoney= new String(Integer.toString(stage.getInGameMoney()));
+    labelmoney1.setVisible(false);
+    labelmoney1 = new JLabel(gameMoney);
+    labelmoney1.setBounds(180,270,100,100);
+    dep.add(labelmoney1,new Integer(1000));
   }
 
   public StageView(Stage stage, StageController sc, JDesktopPane dep, Player p, int l, ArrayList<ActionListener> actList) {
@@ -51,6 +72,11 @@ public class StageView {
     JLabel labelmoney = new JLabel(money);
     labelmoney.setBounds(80, 270, 100, 100);
     dep.add(labelmoney, new Integer(1000));
+
+    String gameMoney= new String(Integer.toString(stage.getInGameMoney()));
+    labelmoney1 = new JLabel(gameMoney);
+    labelmoney1.setBounds(180,270,100,100);
+    dep.add(labelmoney1,new Integer(1000));
 
     ImageIcon shop = new ImageIcon("asset/shop.png");
     JLabel labelshop = new JLabel(shop);

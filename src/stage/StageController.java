@@ -56,6 +56,7 @@ public class StageController {
     @Override
     public void actionPerformed(ActionEvent e) {
       stage.activeButton = new StringBuffer("water");
+
     }
   };
 
@@ -163,6 +164,7 @@ public class StageController {
     if (stageMoney >= flowerPrice) {
       stage.setInGameMoney(stageMoney - flowerPrice);
       stage.buyFlower(_flowerName, row, col);
+      sview.updatePot(dptemp,stage,1,row,col);
     }
   }
 
@@ -175,7 +177,7 @@ public class StageController {
     if ((stageMoney >= potPrice) && (stage.getPots() < 9)) {
       stage.setInGameMoney(stageMoney - potPrice);
       stage.buyPot();
-      sview.updatePot(dptemp,stage);
+      sview.newPot(dptemp,stage);
     }
   }
 
