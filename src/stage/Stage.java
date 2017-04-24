@@ -219,6 +219,7 @@ public class Stage {
    */
   public void waterFlower(int row, int col) {
     plants[row][col].growTheFlower();
+
     // UBAH GAMBAR FLOWER DI LAYAR JADI LEBIH BESAR
   }
 }

@@ -1,5 +1,6 @@
 package plant;
 
+import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -51,6 +52,7 @@ public class PlantController extends Thread {
       default:
         // do nothing
     }
+    viewInControl = new PlantView(flowerInControl);
   }
 
   /**
@@ -144,5 +146,9 @@ public class PlantController extends Thread {
         // bunga busuk; do nothing
     }
     viewInControl = new PlantView(flowerInControl);
+  }
+
+  public ImageIcon getImage() {
+    return viewInControl.getImage();
   }
 }

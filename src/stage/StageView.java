@@ -1,5 +1,6 @@
 package stage;
 
+import plant.PlantController;
 import player.Player;
 
 import javax.swing.*;
@@ -15,12 +16,15 @@ public class StageView {
 
   JButton[][] field = new JButton[3][3];
   JLabel labelmoney1;
+  public int i = 0;
 
   public void newPot(JDesktopPane dep, Stage stage, ActionListener a) {
-    ImageIcon potimage = new ImageIcon("asset/potempty.png");
+
     int n = stage.getPots()-1;
     int x = n/3;
     int y = n%3;
+    PlantController[][] pc = stage.getPlants();
+    ImageIcon potimage = pc[x][y].getImage();
     JButton buttonpot = new JButton(potimage);
     buttonpot.setBounds((y*100)+500,(x*100)+150,100,100);
     buttonpot.setOpaque(false);
@@ -33,15 +37,17 @@ public class StageView {
 
   }
 
-  public void updatePot(JDesktopPane dep, Stage stage, int phase,int row, int col) {
-    ImageIcon bibitimage = new ImageIcon("asset/potbibit.png");
-    JButton buttonpotbibit = new JButton(bibitimage);
-    buttonpotbibit.setBounds((col*100)+500,(row*100)+150,100,100);
-    buttonpotbibit.setOpaque(false);
-    buttonpotbibit.setBorderPainted(false);
-    buttonpotbibit.setContentAreaFilled(false);
-    updateMoney(dep,stage);
-    dep.add(buttonpotbibit, new Integer(1500));
+  public void updatePot(JDesktopPane dep, Stage stage, int row, int col) {
+      PlantController[][] pc = stage.getPlants();
+      ImageIcon bibitimage = pc[row][col].getImage();
+      JButton buttonpotbibit = new JButton(bibitimage);
+      buttonpotbibit.setBounds((col * 100) + 500, (row * 100) + 150, 100, 100);
+      buttonpotbibit.setOpaque(false);
+      buttonpotbibit.setBorderPainted(false);
+      buttonpotbibit.setContentAreaFilled(false);
+      updateMoney(dep, stage);
+      i++;
+      dep.add(buttonpotbibit, new Integer(1200+(i*100)));
   }
 
   public void updateMoney(JDesktopPane dep, Stage stage) {

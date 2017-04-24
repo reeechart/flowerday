@@ -1,5 +1,6 @@
 package stage;
 
+import plant.PlantController;
 import player.Player;
 
 import javax.swing.*;
@@ -114,8 +115,6 @@ public class StageController {
     }
   };
 
-
-
   /**
    * Constructor.
    * @param stageLv level stage yang akan dibuat
@@ -164,7 +163,7 @@ public class StageController {
     if (stageMoney >= flowerPrice) {
       stage.setInGameMoney(stageMoney - flowerPrice);
       stage.buyFlower(_flowerName, row, col);
-      sview.updatePot(dptemp,stage,1,row,col);
+      sview.updatePot(dptemp,stage,row,col);
     }
   }
 
@@ -188,5 +187,6 @@ public class StageController {
    */
   public void waterFlowerInStage(int row, int col) {
     stage.waterFlower(row, col);
+    sview.updatePot(dptemp, stage, row, col);
   }
 }
