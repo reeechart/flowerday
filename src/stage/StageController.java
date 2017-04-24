@@ -71,7 +71,7 @@ public class StageController {
   ActionListener sellListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-      sendFlowersToTown();
+      sendFlowersToTown(sellListener);
     }
   };
 
@@ -136,9 +136,19 @@ public class StageController {
     sview = new StageView(stage, this, dptemp, player, stageLv, actionListenerList);
   }
 
-  public void sendFlowersToTown() {
+  public void sendFlowersToTown(ActionListener a) {
     if (stage.getIncome() > 0) {
       stage.sellFlowers();
+      int delay = 11000;
+      sview.updateIncome(dptemp, stage, a);
+      ActionListener task = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          sview.updateMoney(dptemp, stage);
+        }
+      };
+      new Timer(delay, task).start();
+
     }
   }
 
@@ -149,6 +159,8 @@ public class StageController {
    */
   public void harvestFlowerInStage(int row, int col, ActionListener a) {
     stage.harvestFlower(row, col);
+    sview.updatePot(dptemp, stage, row, col, a);
+    sview.updateIncome(dptemp, stage, a);
   }
 
   /**
@@ -176,7 +188,7 @@ public class StageController {
     if ((stageMoney >= potPrice) && (stage.getPots() < 9)) {
       stage.setInGameMoney(stageMoney - potPrice);
       stage.buyPot();
-      sview.newPot(dptemp,stage,a);
+      sview.newPot(dptemp, stage, a);
     }
   }
 

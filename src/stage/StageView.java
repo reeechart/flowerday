@@ -16,13 +16,13 @@ public class StageView {
 
   JButton[][] field = new JButton[3][3];
   JLabel labelmoney1;
+  JLabel labelincome;
   public int i = 0;
 
   public void newPot(JDesktopPane dep, Stage stage, ActionListener a) {
-
-    int n = stage.getPots()-1;
-    int x = n/3;
-    int y = n%3;
+    int n = stage.getPots() - 1;
+    int x = n / 3;
+    int y = n % 3;
     PlantController[][] pc = stage.getPlants();
     ImageIcon potimage = pc[x][y].getImage();
     JButton buttonpot = new JButton(potimage);
@@ -32,24 +32,27 @@ public class StageView {
     buttonpot.setContentAreaFilled(false);
     buttonpot.addActionListener(a);
     field[x][y] = buttonpot;
-    updateMoney(dep,stage);
+    updateMoney(dep, stage);
     dep.add(buttonpot, new Integer(1000));
+  }
 
+  public void updateIncome(JDesktopPane dep, Stage stage, ActionListener a) {
+    updateIncome(dep,stage);
   }
 
   public void updatePot(JDesktopPane dep, Stage stage, int row, int col, ActionListener a) {
-      PlantController[][] pc = stage.getPlants();
-      ImageIcon bibitimage = pc[row][col].getImage();
-      JButton buttonpotbibit = new JButton(bibitimage);
-      buttonpotbibit.setBounds((col * 100) + 500, (row * 100) + 150, 100, 100);
-      buttonpotbibit.setOpaque(false);
-      buttonpotbibit.setBorderPainted(false);
-      buttonpotbibit.setContentAreaFilled(false);
-      buttonpotbibit.addActionListener(a);
-      field[row][col] = buttonpotbibit;
-      updateMoney(dep, stage);
-      i++;
-      dep.add(buttonpotbibit, new Integer(1200+(i*100)));
+    PlantController[][] pc = stage.getPlants();
+    ImageIcon bibitimage = pc[row][col].getImage();
+    JButton buttonpotbibit = new JButton(bibitimage);
+    buttonpotbibit.setBounds((col * 100) + 500, (row * 100) + 150, 100, 100);
+    buttonpotbibit.setOpaque(false);
+    buttonpotbibit.setBorderPainted(false);
+    buttonpotbibit.setContentAreaFilled(false);
+    buttonpotbibit.addActionListener(a);
+    field[row][col] = buttonpotbibit;
+    updateMoney(dep, stage);
+    i++;
+    dep.add(buttonpotbibit, new Integer(1200+(i*100)));
   }
 
   public void updateMoney(JDesktopPane dep, Stage stage) {
@@ -57,7 +60,15 @@ public class StageView {
     labelmoney1.setVisible(false);
     labelmoney1 = new JLabel(gameMoney);
     labelmoney1.setBounds(180,270,100,100);
-    dep.add(labelmoney1,new Integer(1000));
+    dep.add(labelmoney1, new Integer(1000));
+  }
+
+  public void updateIncome(JDesktopPane dep, Stage stage) {
+    String income = new String(Integer.toString(stage.getIncome()));
+    labelincome.setVisible(false);
+    labelincome = new JLabel(income);
+    labelincome.setBounds(180,370,100,100);
+    dep.add(labelincome, new Integer(1000));
   }
 
   public StageView(Stage stage, StageController sc, JDesktopPane dep, Player p, int l, ArrayList<ActionListener> actList) {
@@ -83,15 +94,20 @@ public class StageView {
     labelmoney.setBounds(80, 270, 100, 100);
     dep.add(labelmoney, new Integer(1000));
 
+    String income = new String(Integer.toString(stage.getIncome()));
+    labelincome = new JLabel(income);
+    labelincome.setBounds(180,370,100,100);
+    dep.add(labelincome, new Integer(1000));
+
     String gameMoney= new String(Integer.toString(stage.getInGameMoney()));
     labelmoney1 = new JLabel(gameMoney);
     labelmoney1.setBounds(180,270,100,100);
-    dep.add(labelmoney1,new Integer(1000));
+    dep.add(labelmoney1, new Integer(1000));
 
     ImageIcon shop = new ImageIcon("asset/shop.png");
     JLabel labelshop = new JLabel(shop);
     labelshop.setBounds(1000, 50, 120,120);
-    dep.add(labelshop,new Integer(1000));
+    dep.add(labelshop, new Integer(1000));
 
     ImageIcon rose = new ImageIcon("asset/rose.png");
     JButton buttonrose = new JButton(rose);
@@ -146,7 +162,7 @@ public class StageView {
         field[i][j].setContentAreaFilled(false);
         field[i][j].setOpaque(false);
         field[i][j].addActionListener(actList.get(0));
-        dep.add(field[i][j],new Integer(1000));
+        dep.add(field[i][j], new Integer(1000));
       }
     }
 
@@ -165,7 +181,7 @@ public class StageView {
     buttoncan.setContentAreaFilled(false);
     buttoncan.setBorderPainted(false);
     buttoncan.addActionListener(actList.remove(0));
-    dep.add(buttoncan,new Integer(1000));
+    dep.add(buttoncan, new Integer(1000));
 
     ImageIcon scissors = new ImageIcon("asset/scissors.png");
     JButton buttonscissors = new JButton(scissors);
@@ -174,12 +190,8 @@ public class StageView {
     buttonscissors.setContentAreaFilled(false);
     buttonscissors.setBorderPainted(false);
     buttonscissors.addActionListener(actList.remove(0));
-    dep.add(buttonscissors,new Integer(1000));
-
-    JLabel trucklevel = new JLabel(Integer.toString(p.getTruckLevel()));
-    trucklevel.setBounds(150,500,100,100);
-    dep.add(trucklevel,new Integer(1000));
-
+    dep.add(buttonscissors, new Integer(1000));
+    
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
     JButton buttontruck = new JButton(truck);
     buttontruck.setBounds(150, 650, 150,150);
