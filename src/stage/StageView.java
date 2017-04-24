@@ -94,7 +94,7 @@ public class StageView {
         field[i][j].setBorderPainted(false);
         field[i][j].setContentAreaFilled(false);
         field[i][j].setOpaque(false);
-        filed[i][j].addActionListener(actList.get(0));
+        field[i][j].addActionListener(actList.get(0));
         dep.add(field[i][j],new Integer(1000));
       }
     }

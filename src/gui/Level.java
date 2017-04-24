@@ -112,7 +112,7 @@ public class Level {
                 dep.remove(b8);
                 dep.remove(b9);
                 dep.remove(labelimage);
-                sc = new StageController(dep, 1,p.getTruckLevel(), p);
+                sc = new StageController(dep, 1, p.getTruckLevel(), p);
               }
             }
     );

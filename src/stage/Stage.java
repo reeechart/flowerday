@@ -2,7 +2,7 @@ package stage;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.StringBuffer;
+import java.lang.StringBuffer;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -37,7 +37,7 @@ public class Stage {
   /** Matrix untuk menyimpan tanaman yang ditanam oleh player */
   private PlantController[][] plants;
   /** String untuk menandakan button yang sedang diklik oleh user */
-  private StringBuffer activeButton;
+  public StringBuffer activeButton;
 
   /**
    * Constructor.

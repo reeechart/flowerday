@@ -5,7 +5,7 @@ import player.Player;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.StringBuffer;
+import java.lang.StringBuffer;
 import java.util.ArrayList;
 
 /**
@@ -19,12 +19,19 @@ public class StageController {
   private Stage stage;
   private StageView sview;
   private Player player;
-  private ArrayList<ActionListener> actionListenerList;
+  private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>(9);
 
   ActionListener roseListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       stage.activeButton = new StringBuffer("rose");
+    }
+  };
+
+  ActionListener sunflowerListener = new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      stage.activeButton = new StringBuffer("sunflower");
     }
   };
 
@@ -42,12 +49,7 @@ public class StageController {
     }
   };
 
-  ActionListener sunflowerListener = new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-      stage.activeButton = new StringBuffer("sunflower");
-    }
-  };
+
 
   ActionListener waterListener = new ActionListener() {
     @Override
@@ -84,7 +86,8 @@ public class StageController {
 
       int potNumber = stage.getPots();
       int row,col;
-      int buttonRow,buttonCol;
+      int buttonRow = -1;
+      int buttonCol = -1;
 
       for(int i=0;i<potNumber;i++) {
         row = i/3;
@@ -97,26 +100,19 @@ public class StageController {
         }
       }
 
+
       if(stage.activeButton.equals("rose")) { buyFlowerInStage("rose", buttonRow, buttonCol); }
-      else if(stage.activeButton.equals("chamomile")_ { buyFlowerInStage("chamomile", buttonRow, buttonCol); }
+      else if(stage.activeButton.equals("chamomile")) { buyFlowerInStage("chamomile", buttonRow, buttonCol); }
       else if(stage.activeButton.equals("orchid"))  { buyFlowerInStage("orchid", buttonRow, buttonCol); }
       else if(stage.activeButton.equals("sunflower"))  { buyFlowerInStage("sunflower", buttonRow, buttonCol); }
       else if(stage.activeButton.equals("water"))  { waterFlowerInStage(buttonRow, buttonCol);}
       else if(stage.activeButton.equals("harvest"))  { harvestFlowerInStage(buttonRow, buttonCol); }
 
-      activeButton = new StringBuffer("null");
+      stage.activeButton = new StringBuffer("null");
     }
   };
 
-  actionListenerList.add(roseListener);
-  actionListenerList.add(sunflowerListener);
-  actionListenerList.add(chamomileListener);
-  actionListenerList.add(orchidListener);
-  actionListenerList.add(potListener);
-  actionListenerList.add(plantListener);
-  actionListenerList.add(waterListener);
-  actionListenerList.add(harvestListener);
-  actionListenerList.add(sellListener);
+
 
   /**
    * Constructor.
@@ -124,6 +120,15 @@ public class StageController {
    * @param truckLv level truck yang akan dipakai dalam stage
    */
   public StageController(JDesktopPane dp, int stageLv, int truckLv, Player p) {
+    actionListenerList.add(roseListener);
+    actionListenerList.add(sunflowerListener);
+    actionListenerList.add(chamomileListener);
+    actionListenerList.add(orchidListener);
+    actionListenerList.add(potListener);
+    actionListenerList.add(plantListener);
+    actionListenerList.add(waterListener);
+    actionListenerList.add(harvestListener);
+    actionListenerList.add(sellListener);
     player = p;
     stage = new Stage(stageLv, truckLv);
     sview = new StageView(this, dp, player, stageLv, actionListenerList);
