@@ -106,12 +106,12 @@ public class StageView {
 
     ImageIcon shop = new ImageIcon("asset/shop.png");
     JLabel labelshop = new JLabel(shop);
-    labelshop.setBounds(1000, 50, 120,120);
+    labelshop.setBounds(1050, 30, 150,150);
     dep.add(labelshop, new Integer(1000));
 
     ImageIcon rose = new ImageIcon("asset/rose.png");
     JButton buttonrose = new JButton(rose);
-    buttonrose.setBounds(1020, 180, 40, 40);
+    buttonrose.setBounds(1020, 210, 100, 100);
     buttonrose.setOpaque(false);
     buttonrose.setBorderPainted(false);
     buttonrose.setContentAreaFilled(false);
@@ -120,7 +120,7 @@ public class StageView {
 
     ImageIcon sunflower = new ImageIcon("asset/sunflower.png");
     JButton buttonsunflower = new JButton(sunflower);
-    buttonsunflower.setBounds(1070, 180,40,40);
+    buttonsunflower.setBounds(1130, 210,100,100);
     buttonsunflower.setOpaque(false);
     buttonsunflower.setContentAreaFilled(false);
     buttonsunflower.setBorderPainted(false);
@@ -129,7 +129,7 @@ public class StageView {
 
     ImageIcon chamomile = new ImageIcon("asset/chamomile.png");
     JButton buttonchamomile = new JButton(chamomile);
-    buttonchamomile.setBounds(1020,230,40,40);
+    buttonchamomile.setBounds(1020,320,100,100);
     buttonchamomile.setOpaque(false);
     buttonchamomile.setBorderPainted(false);
     buttonchamomile.setContentAreaFilled(false);
@@ -138,7 +138,7 @@ public class StageView {
 
     ImageIcon orchid = new ImageIcon("asset/orchid.png");
     JButton buttonorchid = new JButton(orchid);
-    buttonorchid.setBounds(1070,230,40,40);
+    buttonorchid.setBounds(1130,320,100,100);
     buttonorchid.setOpaque(false);
     buttonorchid.setContentAreaFilled(false);
     buttonorchid.setBorderPainted(false);
@@ -147,12 +147,17 @@ public class StageView {
 
     ImageIcon pot = new ImageIcon("asset/pot.png");
     JButton buttonpot = new JButton(pot);
-    buttonpot.setBounds(1035,280,60,60);
+    buttonpot.setBounds(1080,430,100,100);
     buttonpot.setOpaque(false);
     buttonpot.setContentAreaFilled(false);
     buttonpot.setBorderPainted(false);
     buttonpot.addActionListener(actList.remove(0));
     dep.add(buttonpot, new Integer(1000));
+
+    ImageIcon garden = new ImageIcon("asset/garden.png");
+    JLabel labelgarden = new JLabel(garden);
+    labelgarden.setBounds(330, 30, 150,150);
+    dep.add(labelgarden, new Integer(1000));
 
     for(int i = 0 ; i < 1; i++) {
       for (int j = 0; j < 2; j++) {
