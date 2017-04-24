@@ -22,7 +22,7 @@ public class Menu extends JPanel {
   public JDesktopPane dp = new JDesktopPane();
   JLabel labelimage = new JLabel(image);
   JPanel panel = new JPanel();
-  public Player p = new Player("irene");
+  public Player p;
 
   public static void confirm(){
     ImageIcon quit = new ImageIcon("asset/quit.png");
@@ -33,6 +33,7 @@ public class Menu extends JPanel {
       System.exit(0);
     }
   }
+
 
   public Menu() {
 
@@ -77,6 +78,8 @@ public class Menu extends JPanel {
     buttonclose.setBorderPainted(false);
     buttonclose.setBounds(10,10,150,150);
 
+
+
     dp.add(buttonclose, new Integer(500));
 
     buttonclose.addActionListener(
@@ -92,10 +95,28 @@ public class Menu extends JPanel {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dp.remove(buttonstart);
-                dp.remove(labelimage);
-                new Story(dp,0, p);
+                JTextField name = new JTextField("");
+                name.setBounds(640,300,150,30);
 
+                JButton buttonok = new JButton("ok");
+                buttonok.setBounds(640,350,50,50);
+
+                dp.add(name,new Integer(350));
+                dp.add(buttonok, new Integer(350));
+
+                buttonok.addActionListener(
+                        new ActionListener() {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
+                            p = new Player(name.getText());
+                            new Story(dp,0, p);
+                            dp.remove(name);
+                            dp.remove(buttonok);
+                            dp.remove(buttonstart);
+                            dp.remove(labelimage);
+                          }
+                        }
+                );
               }
             }
     );
@@ -107,4 +128,5 @@ public class Menu extends JPanel {
     fr.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
   }
+
 }

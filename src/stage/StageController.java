@@ -19,6 +19,7 @@ public class StageController {
   private Stage stage;
   private StageView sview;
   private Player player;
+  JDesktopPane dptemp = new JDesktopPane();
   private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>(9);
 
   ActionListener roseListener = new ActionListener() {
@@ -130,8 +131,9 @@ public class StageController {
     actionListenerList.add(harvestListener);
     actionListenerList.add(sellListener);
     player = p;
+    dptemp = dp;
     stage = new Stage(stageLv, truckLv);
-    sview = new StageView(this, dp, player, stageLv, actionListenerList);
+    sview = new StageView(stage, this, dptemp, player, stageLv, actionListenerList);
   }
 
   public void sendFlowersToTown() {
@@ -173,7 +175,7 @@ public class StageController {
     if ((stageMoney >= potPrice) && (stage.getPots() < 9)) {
       stage.setInGameMoney(stageMoney - potPrice);
       stage.buyPot();
-      //sview.addPot();
+      sview.updatePot(dptemp,stage);
     }
   }
 

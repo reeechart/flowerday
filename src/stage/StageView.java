@@ -15,11 +15,27 @@ public class StageView {
 
   JButton[][] field = new JButton[3][3];
 
-  public StageView(StageController sc, JDesktopPane dep, Player p, int l, ArrayList<ActionListener> actList) {
+  public void updatePot(JDesktopPane dep, Stage stage) {
+    ImageIcon potimage = new ImageIcon("asset/potempty.png");
+    int n = stage.getPots()-1;
+    int x = n/3;
+    int y = n%3;
+    JButton buttonpot = new JButton(potimage);
+    buttonpot.setBounds((y*100)+500,(x*100)+150,100,100);
+    buttonpot.setOpaque(false);
+    buttonpot.setBorderPainted(false);
+    buttonpot.setContentAreaFilled(false);
+    dep.add(buttonpot, new Integer(1000));
+
+  }
+
+  public StageView(Stage stage, StageController sc, JDesktopPane dep, Player p, int l, ArrayList<ActionListener> actList) {
 
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();
     int height = gd.getDisplayMode().getHeight();
+
+    ImageIcon potimage = new ImageIcon("asset/potempty.png");
 
     ImageIcon image = new ImageIcon("asset/gameback.png");
     JLabel labelimage = new JLabel(image);
@@ -86,7 +102,6 @@ public class StageView {
     buttonpot.addActionListener(actList.remove(0));
     dep.add(buttonpot, new Integer(1000));
 
-    ImageIcon potimage = new ImageIcon("asset/potempty.png");
     for(int i = 0 ; i < 1; i++) {
       for (int j = 0; j < 2; j++) {
         field[i][j] = new JButton(potimage);

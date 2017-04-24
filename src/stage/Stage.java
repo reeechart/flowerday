@@ -50,6 +50,8 @@ public class Stage {
     income = 0;
     pots = 2;
 
+    plants = new PlantController[3][3];
+
     plants[0][0] = new PlantController();
     plants[0][1] = new PlantController();
 
