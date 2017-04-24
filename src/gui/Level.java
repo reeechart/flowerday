@@ -1,5 +1,6 @@
 package gui;
 
+import stage.StageView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +14,7 @@ public class Level {
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();
     int height = gd.getDisplayMode().getHeight();
-    ImageIcon image = new ImageIcon("asset/story1.png");
+    ImageIcon image = new ImageIcon("asset/main2.png");
     JLabel labelimage = new JLabel(image);
     labelimage.setBounds(0,0,1440,900);
     dep.add(labelimage, 150);
@@ -23,15 +24,7 @@ public class Level {
     b1.setOpaque(false);
     b1.setContentAreaFilled(false);
     b1.setBorderPainted(false);
-    /*b1.addActionListener(
-            new ActionListener() {
-              @Override
-              public void actionPerformed(ActionEvent e) {
-                new Level(dep);
-              }
-            }
-    );*/
-    b1.setBounds(100,50,350,350);
+    b1.setBounds(200,50,200,200);
     dep.add(b1, new Integer(700));
 
     ImageIcon i2 = new ImageIcon("asset/2.png");
@@ -39,7 +32,7 @@ public class Level {
     b2.setOpaque(false);
     b2.setContentAreaFilled(false);
     b2.setBorderPainted(false);
-    b2.setBounds(300, 50, 350, 350);
+    b2.setBounds(400, 50, 200, 200);
     dep.add(b2, new Integer(700));
 
     ImageIcon i3 = new ImageIcon("asset/3.png");
@@ -47,7 +40,7 @@ public class Level {
     b3.setOpaque(false);
     b3.setContentAreaFilled(false);
     b3.setBorderPainted(false);
-    b3.setBounds(500, 50, 350, 350);
+    b3.setBounds(600, 50, 200, 200);
     dep.add(b3, new Integer(700));
 
     ImageIcon i4 = new ImageIcon("asset/4.png");
@@ -55,25 +48,23 @@ public class Level {
     b4.setOpaque(false);
     b4.setContentAreaFilled(false);
     b4.setBorderPainted(false);
-    b4.setBounds(100, 250, 350, 350);
+    b4.setBounds(200, 250, 200, 200);
     dep.add(b4, new Integer(700));
-
 
     ImageIcon i5 = new ImageIcon("asset/5.png");
     JButton b5 = new JButton(i5);
     b5.setOpaque(false);
     b5.setContentAreaFilled(false);
     b5.setBorderPainted(false);
-    b5.setBounds(300, 250, 350, 350);
+    b5.setBounds(400, 250, 200, 200);
     dep.add(b5, new Integer(700));
-
 
     ImageIcon i6 = new ImageIcon("asset/6.png");
     JButton b6 = new JButton(i6);
     b6.setOpaque(false);
     b6.setContentAreaFilled(false);
     b6.setBorderPainted(false);
-    b6.setBounds(500,250,350,350);
+    b6.setBounds(600,250,200,200);
     dep.add(b6,new Integer(700));
 
     ImageIcon i7 = new ImageIcon("asset/7.png");
@@ -81,7 +72,7 @@ public class Level {
     b7.setOpaque(false);
     b7.setBorderPainted(false);
     b7.setContentAreaFilled(false);
-    b7.setBounds(100,450,350,350);
+    b7.setBounds(200,450,200,200);
     dep.add(b7, new Integer(700));
 
     ImageIcon i8 = new ImageIcon("asset/8.png");
@@ -89,7 +80,7 @@ public class Level {
     b8.setOpaque(false);
     b8.setBorderPainted(false);
     b8.setContentAreaFilled(false);
-    b8.setBounds(300,450,350,350);
+    b8.setBounds(400,450,200,200);
     dep.add(b8, new Integer(700));
 
     ImageIcon i9 = new ImageIcon("asset/9.png");
@@ -97,8 +88,26 @@ public class Level {
     b9.setOpaque(false);
     b9.setBorderPainted(false);
     b9.setContentAreaFilled(false);
-    b9.setBounds(500, 450, 350, 350);
+    b9.setBounds(600, 450, 200, 200);
     dep.add(b9, new Integer(700));
 
+    b1.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                new stage.StageView(dep, 1);
+              }
+            }
+    );
   }
 }

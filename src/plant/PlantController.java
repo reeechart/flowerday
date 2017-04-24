@@ -29,6 +29,8 @@ public class PlantController extends Thread {
 
   /**
    * Menginisialisasi <code>Flower</code> yang ada pada controller ini.
+   * I.S.: Pot kosong.
+   * F.S.: Bunga state 1 tertanam pada pot.
    *
    * @param flowerName nama bunga yang ingin dimasukkan
    */
@@ -77,13 +79,33 @@ public class PlantController extends Thread {
 
   /**
    * Fungsi untuk mendapatkan nilai jual bunga saat dipanen.
+   * Pot kosong juga akan menghasilkan 0 Wonder.
    *
-   * @return harga jual bunga
+   * @return harga jual bunga atau 0 jika pot kosong
    */
   public int harvest() {
-    return flowerInControl.getSellingPrice();
+    if (flowerInControl == null) {
+      return 0;
+    }
+    else {
+      return flowerInControl.getSellingPrice();
+    }
   }
 
+  /**
+   * Fungsi untuk mendapatkan nilai beli pot.
+   *
+   * @return harga beli pot
+   */
+  public int getPotPrice() {
+    return potInControl.getPrice();
+  }
+
+  /**
+   * Prosedur untuk mengurus kehidupan bunga yang telah ditanam.
+   * I.S.: Bunga disiram.
+   * F.S.: Bunga tumbuh ke stage selanjutnya.
+   */
   public void growTheFlower() {
     switch (flowerInControl.getFlowerState()) {
       case 1:

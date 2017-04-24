@@ -1,0 +1,9 @@
+startMoney: 30, targetMoney: 150, timeLimit: 120
+startMoney: 50, targetMoney: 200, timeLimit: 120
+startMoney: 65, targetMoney: 500, timeLimit: 240
+startMoney: 85, targetMoney: 300, timeLimit: 150
+startMoney: 120, targetMoney: 500, timeLimit: 180
+startMoney: 150, targetMoney: 700, timeLimit: 180
+startMoney: 170, targetMoney: 600, timeLimit: 120
+startMoney: 200, targetMoney: 1000, timeLimit: 180
+startMoney: 200, targetMoney: 1500, timeLimit: 210
