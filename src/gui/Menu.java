@@ -95,11 +95,18 @@ public class Menu extends JPanel {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
+                JLabel namePlayer = new JLabel();
+                namePlayer.setVerticalTextPosition(JLabel.TOP);
+                namePlayer.setBounds(540,300,400,200);
+                namePlayer.setBackground(new Color(255,255,255,100));
+                namePlayer.setOpaque(true);
+                dp.add(namePlayer, new Integer(300));
+
                 JTextField name = new JTextField("");
-                name.setBounds(640,300,150,30);
+                name.setBounds(640,350,200,30);
 
                 JButton buttonok = new JButton("ok");
-                buttonok.setBounds(640,350,50,50);
+                buttonok.setBounds(710,400,50,50);
 
                 dp.add(name,new Integer(350));
                 dp.add(buttonok, new Integer(350));
@@ -114,6 +121,7 @@ public class Menu extends JPanel {
                             dp.remove(buttonok);
                             dp.remove(buttonstart);
                             dp.remove(labelimage);
+                            dp.remove(namePlayer);
                           }
                         }
                 );
