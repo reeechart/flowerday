@@ -37,7 +37,7 @@ public class StageView {
 
   }
 
-  public void updatePot(JDesktopPane dep, Stage stage, int row, int col) {
+  public void updatePot(JDesktopPane dep, Stage stage, int row, int col, ActionListener a) {
       PlantController[][] pc = stage.getPlants();
       ImageIcon bibitimage = pc[row][col].getImage();
       JButton buttonpotbibit = new JButton(bibitimage);
@@ -45,6 +45,8 @@ public class StageView {
       buttonpotbibit.setOpaque(false);
       buttonpotbibit.setBorderPainted(false);
       buttonpotbibit.setContentAreaFilled(false);
+      buttonpotbibit.addActionListener(a);
+      field[row][col] = buttonpotbibit;
       updateMoney(dep, stage);
       i++;
       dep.add(buttonpotbibit, new Integer(1200+(i*100)));

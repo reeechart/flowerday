@@ -104,12 +104,12 @@ public class StageController {
       }
 
 
-      if(stage.activeButton.toString().equals("rose")) { buyFlowerInStage("rose", buttonRow, buttonCol); }
-      else if(stage.activeButton.toString().equals("chamomile")) { buyFlowerInStage("chamomile", buttonRow, buttonCol); }
-      else if(stage.activeButton.toString().equals("orchid"))  { buyFlowerInStage("orchid", buttonRow, buttonCol); }
-      else if(stage.activeButton.toString().equals("sunflower"))  { buyFlowerInStage("sunflower", buttonRow, buttonCol); }
-      else if(stage.activeButton.toString().equals("water"))  { waterFlowerInStage(buttonRow, buttonCol);}
-      else if(stage.activeButton.toString().equals("harvest"))  { harvestFlowerInStage(buttonRow, buttonCol); }
+      if(stage.activeButton.toString().equals("rose")) { buyFlowerInStage("rose", buttonRow, buttonCol, plantListener); }
+      else if(stage.activeButton.toString().equals("chamomile")) { buyFlowerInStage("chamomile", buttonRow, buttonCol, plantListener); }
+      else if(stage.activeButton.toString().equals("orchid"))  { buyFlowerInStage("orchid", buttonRow, buttonCol, plantListener); }
+      else if(stage.activeButton.toString().equals("sunflower"))  { buyFlowerInStage("sunflower", buttonRow, buttonCol, plantListener); }
+      else if(stage.activeButton.toString().equals("water"))  { waterFlowerInStage(buttonRow, buttonCol, plantListener);}
+      else if(stage.activeButton.toString().equals("harvest"))  { harvestFlowerInStage(buttonRow, buttonCol, plantListener); }
 
       stage.activeButton = new StringBuffer("null");
     }
@@ -147,7 +147,7 @@ public class StageController {
    * @param row urutan baris bunga dalam stage yang diatur
    * @param col urutan kolom bunga dalam stage yang diatur
    */
-  public void harvestFlowerInStage(int row, int col) {
+  public void harvestFlowerInStage(int row, int col, ActionListener a) {
     stage.harvestFlower(row, col);
   }
 
@@ -157,13 +157,13 @@ public class StageController {
    * @param row baris tempat flower akan ditambahkan
    * @param col kolom tempat flower akan ditambahkan
    */
-  public void buyFlowerInStage(String _flowerName, int row, int col) {
+  public void buyFlowerInStage(String _flowerName, int row, int col, ActionListener a) {
     int stageMoney = stage.getInGameMoney();
     int flowerPrice = stage.getPlants()[row][col].getFlowerPrice(_flowerName);
     if (stageMoney >= flowerPrice) {
       stage.setInGameMoney(stageMoney - flowerPrice);
       stage.buyFlower(_flowerName, row, col);
-      sview.updatePot(dptemp,stage,row,col);
+      sview.updatePot(dptemp, stage, row, col, a);
     }
   }
 
@@ -185,8 +185,8 @@ public class StageController {
    * @param row urutan baris bunga yang disiram
    * @param col urutan kolom bunga yang disiram
    */
-  public void waterFlowerInStage(int row, int col) {
+  public void waterFlowerInStage(int row, int col, ActionListener a) {
     stage.waterFlower(row, col);
-    sview.updatePot(dptemp, stage, row, col);
+    sview.updatePot(dptemp, stage, row, col, a);
   }
 }
