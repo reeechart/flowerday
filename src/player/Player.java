@@ -26,7 +26,7 @@ public class Player {
    */
   public Player(String playerName) {
     name = playerName;
-    lastStageOpened = 0;
+    lastStageOpened = 1;
     truckLevel = 1;
   }
 
@@ -61,6 +61,9 @@ public class Player {
 
   /**
    * Setter untuk mengubah stage terakhir yang bisa dimainkan dalam game.
+   * I.S. : Player terdefinisi dengan atribut lastStageOpened tertentu.
+   * F.S. : <code>lastStageOpened</code> berubah menjadi lastStage.
+   *
    * @param lastStage stage terakhir yang bisa dimainkan <code>Player</code>
    */
   public void setLastStageOpened(int lastStage) {
@@ -69,10 +72,15 @@ public class Player {
 
   /**
    * Method untuk melakukan upgrade truck menjadi lebih cepat.
-   * Meningkatkan nilai dari <code>truckLevel</code>
+   * Meningkatkan nilai dari <code>truckLevel</code>.
+   * I.S. : Player terdefinisi dengan <code>truckLevel</code> tertentu.
+   * F.S. : <code>truckLevel</code> player bertambah 1.
    */
   public void upgradeTruck() {
-    truckLevel++;
+    if (money >= 3000 * truckLevel) {
+      money = money - (3000 * truckLevel);
+      truckLevel++;
+    }
   }
 
   /**
@@ -85,6 +93,9 @@ public class Player {
 
   /**
    * Method untuk menambahkan uang player setelah memenangkan sebuah stage.
+   * I.S. : <code>Player</code> terdefinisi dengan jumlah uang tertentu.
+   * F.S. : Uang player bertambah sejumlah amount.
+   *
    * @param amount jumlah uang yang ingin ditambahkan ke player dalam Wonders
    */
   public void addMoney(int amount) {

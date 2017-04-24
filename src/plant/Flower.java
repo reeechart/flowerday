@@ -82,7 +82,11 @@ public abstract class Flower extends StoreItem {
     return flowerState;
   }
 
-  /** Menumbuhkan bunga dengan cara menaikkan state dari bunga. */
+  /**
+   * Menumbuhkan bunga dengan cara menaikkan state dari bunga.
+   * I.S. : Flower terdefinisi dengan <code>flowerState</code> tertentu.
+   * F.S. : <code>flowerState</code> dari <code>Flower</code> bertambah satu.
+   */
   public void grow() {
     flowerState++;
   }

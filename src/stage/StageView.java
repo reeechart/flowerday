@@ -191,7 +191,7 @@ public class StageView {
     buttonscissors.setBorderPainted(false);
     buttonscissors.addActionListener(actList.remove(0));
     dep.add(buttonscissors, new Integer(1000));
-    
+
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
     JButton buttontruck = new JButton(truck);
     buttontruck.setBounds(150, 650, 150,150);
