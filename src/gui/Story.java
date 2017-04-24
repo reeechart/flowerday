@@ -17,6 +17,8 @@ import java.util.Scanner;
  */
 public class Story extends JPanel {
 
+  StageController sc;
+
   Story(JDesktopPane dep, int x, Player p) {
     final boolean f = false;
     String[] story = new String [500];
@@ -72,10 +74,31 @@ public class Story extends JPanel {
                 dep.remove(truck);
                 dep.remove(labelimage);
                 dep.remove(labelstory);
-                new Level(dep,p);
-
+                if (x == 1) {
+                  sc = new StageController(dep, 1, p.getTruckLevel(), p);
+                } else if (x == 2) {
+                  sc = new StageController(dep, 2, p.getTruckLevel(), p);
+                } else if (x == 3) {
+                  sc = new StageController(dep, 3, p.getTruckLevel(), p);
+                } else if( x == 4) {
+                  sc = new StageController(dep, 4, p.getTruckLevel(), p);
+                } else if (x == 5) {
+                  sc = new StageController(dep, 5, p.getTruckLevel(), p);
+                } else if (x == 6) {
+                  sc = new StageController(dep, 6, p.getTruckLevel(), p);
+                } else if (x == 7) {
+                  sc = new StageController(dep, 7, p.getTruckLevel(), p);
+                } else if (x == 8) {
+                  sc = new StageController(dep, 8, p.getTruckLevel(), p);
+                } else if (x == 9) {
+                  sc = new StageController(dep, 9, p.getTruckLevel(), p);
+                }
+                else {
+                  new Level(dep, p);
+                }
               }
             }
     );
+
   }
 }

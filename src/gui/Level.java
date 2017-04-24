@@ -7,13 +7,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
 
 /**
  * Created by ireneedriadr on 4/23/17.
  */
 public class Level {
 
-  StageController sc;
+
+  Story story;
 
 
   public Level(JDesktopPane dep, Player p) {
@@ -112,7 +114,151 @@ public class Level {
                 dep.remove(b8);
                 dep.remove(b9);
                 dep.remove(labelimage);
-                sc = new StageController(dep, 1, p.getTruckLevel(), p);
+                story = new Story(dep, 1, p);
+              }
+            }
+    );
+    b2.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                story = new Story(dep, 2, p);
+              }
+            }
+    );
+    b3.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                story = new Story(dep, 3, p);
+              }
+            }
+    );
+    b4.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                story = new Story(dep, 4, p);
+              }
+            }
+    );
+    b5.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                story = new Story(dep, 5, p);
+              }
+            }
+    );
+    b6.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                story = new Story(dep, 6, p);
+              }
+            }
+    );
+    b7.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                story = new Story(dep, 7, p);
+              }
+            }
+    );
+    b8.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                story = new Story(dep, 8, p);
+              }
+            }
+    );
+    b9.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                story = new Story(dep, 9, p);
               }
             }
     );
