@@ -20,7 +20,7 @@ public class PlantController extends Thread {
   /** Default waktu perpindahan state pertumbuhan dalam ms. */
   private final int GROWTH_TIME = 3000;
   /** Default batas waktu dalam ms untuk memanen bunga sebelum membusuk. */
-  private final int HARVEST_TIME = 3000;
+  private final int HARVEST_TIME = 4000;
 
   /** Konstruktor. */
   public PlantController() {
@@ -121,11 +121,12 @@ public class PlantController extends Thread {
             while (System.currentTimeMillis() - startTime <= GROWTH_TIME) {
               // wait for growing delay
             }
+            flowerInControl.grow();
+            viewInControl = new PlantView(flowerInControl);
             growingTimer.cancel();
           }
         };
         growingTimer.schedule(growingTask, 30);
-        flowerInControl.grow();
         break;
       case 3:
         Timer harvestTimer = new Timer();
@@ -136,11 +137,12 @@ public class PlantController extends Thread {
             while (System.currentTimeMillis() - startTime <= HARVEST_TIME) {
               // wait for growing delay
             }
+            flowerInControl.grow();
+            viewInControl = new PlantView(flowerInControl);
             harvestTimer.cancel();
           }
         };
         harvestTimer.schedule(harvestTask, 30);
-        flowerInControl.grow();
         break;
       default:
         // bunga busuk; do nothing

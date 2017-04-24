@@ -154,6 +154,9 @@ public class StageController {
 
   /**
    * Method untuk memanen bunga di stage yang diatur.
+   * I.S. : Stage terdefinisi dengan ada flower di baris row dan kolom col.
+   * F.S. : Flower di baris row dan kolom col dipanen dan income bertambah.
+   *
    * @param row urutan baris bunga dalam stage yang diatur
    * @param col urutan kolom bunga dalam stage yang diatur
    */
@@ -165,6 +168,9 @@ public class StageController {
 
   /**
    * Method untuk membeli bunga tertentu yang tersedia di panel stage.
+   * I.S. : Stage beserta atributnya terdefinisi.
+   * F.S. : Flower dengan nama <code>_flowerPot</code> berhasil ditambahkan.
+   *
    * @param _flowerName nama flower yang ingin ditambahkan ke stage
    * @param row baris tempat flower akan ditambahkan
    * @param col kolom tempat flower akan ditambahkan
@@ -181,6 +187,8 @@ public class StageController {
 
   /**
    * Method untuk membeli pot dalam stage yang diatur.
+   * I.S. : Stage beserta atributnya terdefinisi.
+   * F.S. : Pot ditambahkan berdasar kapasitas dari pot dalam stage.
    */
   public void buyPotInStage(ActionListener a) {
     int stageMoney = stage.getInGameMoney();
@@ -194,11 +202,21 @@ public class StageController {
 
   /**
    * Method untuk menyiram bunga dalam stage yang diatur.
+   * I.S. : Stage beserta atributnya terdefinisi.
+   * F.S. : Flower di baris row dan kolom col berhasil disiram.
+   *
    * @param row urutan baris bunga yang disiram
    * @param col urutan kolom bunga yang disiram
    */
   public void waterFlowerInStage(int row, int col, ActionListener a) {
     stage.waterFlower(row, col);
-    sview.updatePot(dptemp, stage, row, col, a);
+    int delay = 3400;
+    ActionListener waterTask = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        sview.updatePot(dptemp, stage, row, col, a);
+      }
+    };
+    new Timer(delay, waterTask).start();
   }
 }
