@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * Created by ireneedriadr on 4/23/17.
@@ -14,7 +15,7 @@ public class StageView {
 
   JButton[][] field = new JButton[3][3];
 
-  public StageView(StageController sc, JDesktopPane dep, Player p, int l, ActionListener pListener) {
+  public StageView(StageController sc, JDesktopPane dep, Player p, int l, ArrayList<ActionListener> actList) {
 
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();
@@ -46,6 +47,7 @@ public class StageView {
     buttonrose.setOpaque(false);
     buttonrose.setBorderPainted(false);
     buttonrose.setContentAreaFilled(false);
+    buttonrose.addActionListener(actList.remove(0));
     dep.add(buttonrose, new Integer(1000));
 
     ImageIcon sunflower = new ImageIcon("asset/sunflower.png");
@@ -54,6 +56,7 @@ public class StageView {
     buttonsunflower.setOpaque(false);
     buttonsunflower.setContentAreaFilled(false);
     buttonsunflower.setBorderPainted(false);
+    buttonsunflower.addActionListener(actList.remove(0));
     dep.add(buttonsunflower, new Integer(1000));
 
     ImageIcon chamomile = new ImageIcon("asset/chamomile.png");
@@ -62,6 +65,7 @@ public class StageView {
     buttonchamomile.setOpaque(false);
     buttonchamomile.setBorderPainted(false);
     buttonchamomile.setContentAreaFilled(false);
+    buttonchamomile.addActionListener(actList.remove(0));
     dep.add(buttonchamomile, new Integer(1000));
 
     ImageIcon orchid = new ImageIcon("asset/orchid.png");
@@ -70,6 +74,7 @@ public class StageView {
     buttonorchid.setOpaque(false);
     buttonorchid.setContentAreaFilled(false);
     buttonorchid.setBorderPainted(false);
+    buttonorchid.addActionListener(actList.remove(0));
     dep.add(buttonorchid, new Integer(1000));
 
     ImageIcon pot = new ImageIcon("asset/pot.png");
@@ -78,7 +83,7 @@ public class StageView {
     buttonpot.setOpaque(false);
     buttonpot.setContentAreaFilled(false);
     buttonpot.setBorderPainted(false);
-    buttonpot.addActionListener(pListener);
+    buttonpot.addActionListener(actList.remove(0));
     dep.add(buttonpot, new Integer(1000));
 
     ImageIcon potimage = new ImageIcon("asset/potempty.png");
@@ -89,9 +94,12 @@ public class StageView {
         field[i][j].setBorderPainted(false);
         field[i][j].setContentAreaFilled(false);
         field[i][j].setOpaque(false);
+        filed[i][j].addActionListener(actList.get(0));
         dep.add(field[i][j],new Integer(1000));
       }
     }
+
+    actList.remove(0);
     /*ImageIcon field = new ImageIcon("asset/field.png");
     JLabel labelfield = new JLabel(field);
     labelfield.setBounds(500,150,400,400);
@@ -105,6 +113,7 @@ public class StageView {
     buttoncan.setOpaque(false);
     buttoncan.setContentAreaFilled(false);
     buttoncan.setBorderPainted(false);
+    buttoncan.addActionListener(actList.remove(0));
     dep.add(buttoncan,new Integer(1000));
 
     ImageIcon scissors = new ImageIcon("asset/scissors.png");
@@ -113,6 +122,7 @@ public class StageView {
     buttonscissors.setOpaque(false);
     buttonscissors.setContentAreaFilled(false);
     buttonscissors.setBorderPainted(false);
+    buttonscissors.addActionListener(actList.remove(0));
     dep.add(buttonscissors,new Integer(1000));
 
     JLabel trucklevel = new JLabel(Integer.toString(p.getTruckLevel()));
@@ -125,7 +135,7 @@ public class StageView {
     buttontruck.setOpaque(false);
     buttontruck.setBorderPainted(false);
     buttontruck.setContentAreaFilled(false);
+    buttontruck.addActionListener(actList.remove(0));
     dep.add(buttontruck, new Integer(1000));
   }
-
 }

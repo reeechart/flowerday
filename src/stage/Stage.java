@@ -2,6 +2,7 @@ package stage;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.StringBuffer;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -17,6 +18,8 @@ import plant.PlantController;
  * Created on 22-Apr-2017.
  */
 public class Stage {
+  private final int DEFAULT_DELIVERY_TIME = 10000;
+
   /** Level stage yang akan dibentuk. */
   private final int level;
   /** Uang dalam stage yang bisa digunakan untuk membeli pot dan bunga. */
@@ -33,7 +36,8 @@ public class Stage {
   private int pots;
   /** Matrix untuk menyimpan tanaman yang ditanam oleh player */
   private PlantController[][] plants;
-  private final int DEFAULT_DELIVERY_TIME = 10000;
+  /** String untuk menandakan button yang sedang diklik oleh user */
+  private StringBuffer activeButton;
 
   /**
    * Constructor.
@@ -43,6 +47,13 @@ public class Stage {
   public Stage(int stageLevel, int truckLv) {
     level = stageLevel;
     levelOfTruck = truckLv;
+    income = 0;
+    pots = 2;
+
+    plants[0][0] = new PlantController();
+    plants[0][1] = new PlantController();
+
+    activeButton = new StringBuffer("null");
 
     String filename = "asset/stageconf.txt";
     String line = null;
@@ -209,4 +220,3 @@ public class Stage {
     // UBAH GAMBAR FLOWER DI LAYAR JADI LEBIH BESAR
   }
 }
-
