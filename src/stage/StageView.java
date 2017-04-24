@@ -2,6 +2,8 @@ package stage;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by ireneedriadr on 4/23/17.
@@ -9,9 +11,13 @@ import java.awt.*;
 public class StageView {
 
   public StageView(JDesktopPane dep, int x) {
+    StageController sc;
+
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();
     int height = gd.getDisplayMode().getHeight();
+
+    sc = new StageController(x,x);
 
     ImageIcon image = new ImageIcon("asset/gameback.png");
     JLabel labelimage = new JLabel(image);
@@ -101,7 +107,5 @@ public class StageView {
     buttontruck.setBorderPainted(false);
     buttontruck.setContentAreaFilled(false);
     dep.add(buttontruck, new Integer(1000));
-
   }
-
 }

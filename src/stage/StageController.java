@@ -1,7 +1,5 @@
 package stage;
 
-import player.Player;
-
 /**
  * Class StageController.
  * Class controller untuk mengatur model <code>Stage</code>
@@ -11,15 +9,13 @@ import player.Player;
  */
 public class StageController {
   private Stage stage;
-  private Player player;
   /**
    * Constructor.
    * @param stageLv level stage yang akan dibuat
    * @param truckLv level truck yang akan dipakai dalam stage
    */
-  public StageController(int stageLv, int truckLv, Player player) {
+  public StageController(int stageLv, int truckLv) {
     stage = new Stage(stageLv, truckLv);
-    this.player = player;
   }
 
   public void sendFlowersToTown() {
@@ -71,14 +67,6 @@ public class StageController {
    */
   public void waterFlowerInStage(int row, int col) {
     stage.waterFlower(row, col);
-  }
-
-  /**
-   * Method untuk menambahkan uang ke player yang bermain dalam game
-   * @param amount jumlah uang yang ingin ditambahkan ke player
-   */
-  public void addMoneyToPlayer(int amount) {
-    player.addMoney(amount);
   }
 }
 
