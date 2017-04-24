@@ -77,7 +77,7 @@ public class StageController {
   ActionListener potListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-      buyPotInStage();
+      buyPotInStage(plantListener);
     }
   };
 
@@ -103,12 +103,12 @@ public class StageController {
       }
 
 
-      if(stage.activeButton.equals("rose")) { buyFlowerInStage("rose", buttonRow, buttonCol); }
-      else if(stage.activeButton.equals("chamomile")) { buyFlowerInStage("chamomile", buttonRow, buttonCol); }
-      else if(stage.activeButton.equals("orchid"))  { buyFlowerInStage("orchid", buttonRow, buttonCol); }
-      else if(stage.activeButton.equals("sunflower"))  { buyFlowerInStage("sunflower", buttonRow, buttonCol); }
-      else if(stage.activeButton.equals("water"))  { waterFlowerInStage(buttonRow, buttonCol);}
-      else if(stage.activeButton.equals("harvest"))  { harvestFlowerInStage(buttonRow, buttonCol); }
+      if(stage.activeButton.toString().equals("rose")) { buyFlowerInStage("rose", buttonRow, buttonCol); }
+      else if(stage.activeButton.toString().equals("chamomile")) { buyFlowerInStage("chamomile", buttonRow, buttonCol); }
+      else if(stage.activeButton.toString().equals("orchid"))  { buyFlowerInStage("orchid", buttonRow, buttonCol); }
+      else if(stage.activeButton.toString().equals("sunflower"))  { buyFlowerInStage("sunflower", buttonRow, buttonCol); }
+      else if(stage.activeButton.toString().equals("water"))  { waterFlowerInStage(buttonRow, buttonCol);}
+      else if(stage.activeButton.toString().equals("harvest"))  { harvestFlowerInStage(buttonRow, buttonCol); }
 
       stage.activeButton = new StringBuffer("null");
     }
@@ -171,13 +171,13 @@ public class StageController {
   /**
    * Method untuk membeli pot dalam stage yang diatur.
    */
-  public void buyPotInStage() {
+  public void buyPotInStage(ActionListener a) {
     int stageMoney = stage.getInGameMoney();
     int potPrice = stage.getPlants()[0][0].getPotPrice();
     if ((stageMoney >= potPrice) && (stage.getPots() < 9)) {
       stage.setInGameMoney(stageMoney - potPrice);
       stage.buyPot();
-      sview.newPot(dptemp,stage);
+      sview.newPot(dptemp,stage,a);
     }
   }
 

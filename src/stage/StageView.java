@@ -16,7 +16,7 @@ public class StageView {
   JButton[][] field = new JButton[3][3];
   JLabel labelmoney1;
 
-  public void newPot(JDesktopPane dep, Stage stage) {
+  public void newPot(JDesktopPane dep, Stage stage, ActionListener a) {
     ImageIcon potimage = new ImageIcon("asset/potempty.png");
     int n = stage.getPots()-1;
     int x = n/3;
@@ -26,6 +26,8 @@ public class StageView {
     buttonpot.setOpaque(false);
     buttonpot.setBorderPainted(false);
     buttonpot.setContentAreaFilled(false);
+    buttonpot.addActionListener(a);
+    field[x][y] = buttonpot;
     updateMoney(dep,stage);
     dep.add(buttonpot, new Integer(1000));
 
