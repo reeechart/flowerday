@@ -143,5 +143,6 @@ public class PlantController extends Thread {
       default:
         // bunga busuk; do nothing
     }
+    viewInControl = new PlantView(flowerInControl);
   }
 }
