@@ -1,15 +1,12 @@
 package stage;
 
-import plant.PlantController;
 import player.Player;
 
 import javax.swing.*;
-import javax.swing.Timer;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.StringBuffer;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.TimerTask;
 
 /**
  * Class StageController.
@@ -250,8 +247,8 @@ public class StageController {
       status = 1;
       int x = player.getLastStageOpened();
       x++;
-      System.out.println(x);
       player.setLastStageOpened(x);
+      player.addMoney(stage.getInGameMoney()*50/100);
     }
     else {
       status = 0;
