@@ -4,15 +4,21 @@ package player;
  * Class real Player yang merepresentasikan pemain dalam game FlowerDay.
  * Player memiliki nama, stage terakhir yang sudah terbuka, dan level truck.
  *
- * @author Ferdinandus Richard
- * Created on 22-Apr-2017.
+ * @author Ferdinandus Richard Created on 22-Apr-2017.
  */
 public class Player {
-  /** Nama player. */
+
+  /**
+   * Nama player.
+   */
   private final String name;
-  /** Stage terakhir dalam game yang bisa dimainkan. */
+  /**
+   * Stage terakhir dalam game yang bisa dimainkan.
+   */
   private int lastStageOpened;
-  /** Level truck yang menentukan waktu yang diperlukan untuk penjualan. */
+  /**
+   * Level truck yang menentukan waktu yang diperlukan untuk penjualan.
+   */
   private int truckLevel;
   /**
    * Uang player dalam game dalam satuan Wonder.
@@ -22,6 +28,7 @@ public class Player {
 
   /**
    * Constructor default.
+   *
    * @param playerName nama player yang akan dibuat
    */
   public Player(String playerName) {
@@ -33,6 +40,7 @@ public class Player {
   /**
    * Constructor dengan parameter.
    * Constructor ini digunakan untuk pembentukan player yang sudah ada datanya.
+   *
    * @param playerName nama player yang akan dibuat
    * @param lastStage stage terakhir yang bisa dimainkan dalam game
    * @param truckLv level truck player yang akan dibentuk
@@ -45,6 +53,7 @@ public class Player {
 
   /**
    * Getter untuk nama player dalam game.
+   *
    * @return <code>name</code>
    */
   public String getName() {
@@ -53,10 +62,29 @@ public class Player {
 
   /**
    * Getter untuk mendapatkan stage terakhir yang bisa dimainkan dalam game.
+   *
    * @return <code>lastStageOpened</code>
    */
   public int getLastStageOpened() {
     return lastStageOpened;
+  }
+
+  /**
+   * Getter untuk level truck yang dipakai dalam game.
+   *
+   * @return <code>truckLevel</code>
+   */
+  public int getTruckLevel() {
+    return truckLevel;
+  }
+
+  /**
+   * Getter untuk uang player dalam game.
+   *
+   * @return <code>money</code>
+   */
+  public int getMoney() {
+    return money;
   }
 
   /**
@@ -84,14 +112,6 @@ public class Player {
   }
 
   /**
-   * Getter untuk level truck yang dipakai dalam game.
-   * @return <code>truckLevel</code>
-   */
-  public int getTruckLevel() {
-    return truckLevel;
-  }
-
-  /**
    * Method untuk menambahkan uang player setelah memenangkan sebuah stage.
    * I.S. : <code>Player</code> terdefinisi dengan jumlah uang tertentu.
    * F.S. : Uang player bertambah sejumlah amount.
@@ -100,13 +120,5 @@ public class Player {
    */
   public void addMoney(int amount) {
     money += amount;
-  }
-
-  /**
-   * Getter untuk uang player dalam game.
-   * @return <code>money</code>
-   */
-  public int getMoney() {
-    return money;
   }
 }

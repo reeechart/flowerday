@@ -18,11 +18,16 @@ package plant;
  * @author Gisela Supardi
  * @version 22/04/2017
  */
-public abstract class Flower extends StoreItem {
-  /** Nama jenis bunga. */
+abstract class Flower extends StoreItem {
+
+  /**
+   * Nama jenis bunga.
+   */
   private String flowerName;
 
-  /** Banyak Wonders yang bisa didapatkan ketika menjual bunga. */
+  /**
+   * Banyak Wonders yang bisa didapatkan ketika menjual bunga.
+   */
   private int sellingPrice;
 
   /**
@@ -41,7 +46,7 @@ public abstract class Flower extends StoreItem {
    * @param price harga beli sebuah bunga yang diinginkan.
    * @param sellingPrice harga jual sebuah bunga yang diinginkan.
    */
-  public Flower(String name, int price, int sellingPrice) {
+  Flower(String name, int price, int sellingPrice) {
     super(price);
     flowerName = name;
     this.sellingPrice = sellingPrice;
@@ -53,22 +58,20 @@ public abstract class Flower extends StoreItem {
    *
    * @return <code>flowerName</code>
    */
-  public final String getFlowerName() {
+  final String getFlowerName() {
     return flowerName;
   }
 
   /**
    * Getter dari harga jual bunga.
    *
-   * @return harga jual bunga. Untuk bunga yang siap panen
-   *         dihargai sebanyak <code>sellingPrice</code>,
-   *         sedangkan selain itu dihargai 0 Wonder.
+   * @return harga jual bunga. Untuk bunga yang siap panen dihargai sebanyak
+   * <code>sellingPrice</code>, sedangkan selain itu dihargai 0 Wonder.
    */
-  public final int getSellingPrice() {
+  final int getSellingPrice() {
     if (flowerState == 3) {
       return sellingPrice;
-    }
-    else {
+    } else {
       return 0;
     }
   }
@@ -78,7 +81,7 @@ public abstract class Flower extends StoreItem {
    *
    * @return <code>flowerState</code>
    */
-  public final int getFlowerState() {
+  final int getFlowerState() {
     return flowerState;
   }
 
@@ -87,7 +90,7 @@ public abstract class Flower extends StoreItem {
    * I.S. : Flower terdefinisi dengan <code>flowerState</code> tertentu.
    * F.S. : <code>flowerState</code> dari <code>Flower</code> bertambah satu.
    */
-  public void grow() {
+  void grow() {
     flowerState++;
   }
 }

@@ -6,9 +6,12 @@ package plant;
  * @author Gisela Supardi
  * @version 22/04/2017
  */
-public class Rose extends Flower {
-  /** Konstruktor. */
-  public Rose() {
+class Rose extends Flower {
+
+  /**
+   * Konstruktor.
+   */
+  Rose() {
     super("rose", 40, 70);
   }
 }

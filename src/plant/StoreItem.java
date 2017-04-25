@@ -7,8 +7,11 @@ package plant;
  * @author Gisela Supardi
  * @version 22/04/2017
  */
-public abstract class StoreItem {
-  /** Harga yang harus dibayar untuk membeli item ini. */
+abstract class StoreItem {
+
+  /**
+   * Harga yang harus dibayar untuk membeli item ini.
+   */
   private int price;
 
   /**
@@ -16,7 +19,7 @@ public abstract class StoreItem {
    *
    * @param c harga yang diinginkan untuk item ini.
    */
-  public StoreItem(int c) {
+  StoreItem(int c) {
     price = c;
   }
 
@@ -25,7 +28,7 @@ public abstract class StoreItem {
    *
    * @return <code>price</code>
    */
-  public int getPrice() {
+  int getPrice() {
     return price;
   }
 }

@@ -1,6 +1,6 @@
 package plant;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 
 /**
  * Kelas real yang mengurus tentang tampilan pot dan bunga pada layar.
@@ -8,15 +8,16 @@ import javax.swing.*;
  * @author Gisela Supardi
  * @version 23/04/2017
  */
-public class PlantView extends JPanel {
-  /** Image untuk ditampilkan. */
-  private ImageIcon image;
-  /** Konstanta yang menyimpan lebar image untuk plant. */
-  private final int WIDTH_SIZE = 100;
-  /** Konstanta yang menyimpan tinggi image untuk plant */
-  private final int HEIGHT_SIZE = 100;
+public class PlantView {
 
-  /** Konstruktor untuk tampilan pot yang belum ditanami bunga. */
+  /**
+   * Image untuk ditampilkan.
+   */
+  private ImageIcon image;
+
+  /**
+   * Konstruktor untuk tampilan pot yang belum ditanami bunga.
+   */
   PlantView() {
     image = new ImageIcon("asset/potempty.png");
   }
@@ -52,7 +53,7 @@ public class PlantView extends JPanel {
    *
    * @return gambar dari pot atau bunga.
    */
-  public ImageIcon getImage() {
+  ImageIcon getImage() {
     return image;
   }
 }

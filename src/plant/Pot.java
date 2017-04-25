@@ -9,9 +9,12 @@ package plant;
  * @author Gisela Supardi
  * @version 22/04/2017
  */
-public class Pot extends StoreItem {
-  /** Konstruktor. */
-  public Pot() {
+class Pot extends StoreItem {
+
+  /**
+   * Konstruktor.
+   */
+  Pot() {
     super(100);
   }
 }
