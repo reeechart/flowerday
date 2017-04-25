@@ -221,7 +221,7 @@ public class StageView {
 
   public void endStageView(Stage stage, JDesktopPane dep, int stat, Player p) {
     if(stat == 1) {
-      ImageIcon quit = new ImageIcon("asset/quit.png");
+      ImageIcon quit = new ImageIcon("asset/quithappy.png");
       JFrame frame = new JFrame();
       JOptionPane.showMessageDialog(null, "Congratulations, you won!", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
     }
