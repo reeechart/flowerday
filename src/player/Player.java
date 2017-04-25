@@ -35,6 +35,7 @@ public class Player {
     name = playerName;
     lastStageOpened = 1;
     truckLevel = 1;
+    money = 0;
   }
 
   /**
@@ -49,6 +50,7 @@ public class Player {
     name = playerName;
     lastStageOpened = lastStage;
     truckLevel = truckLv;
+    money = 0;
   }
 
   /**

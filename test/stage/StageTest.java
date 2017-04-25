@@ -1,9 +1,11 @@
 package stage;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Ferdinandus Richard
+ * Created on 25-Apr-2017.
  */
 
 public class StageTest {
@@ -11,23 +13,23 @@ public class StageTest {
   public void testGetLevelMethod() {
     Stage s;
     s = new Stage(1, 2);
-    assert(s.getLevel() == 1);
+    assertTrue(s.getLevel() == 1);
     s = new Stage(2, 4);
-    assert(s.getLevel() == 2);
+    assertTrue(s.getLevel() == 2);
     s = new Stage(3, 1);
-    assert(s.getLevel() == 3);
+    assertTrue(s.getLevel() == 3);
     s = new Stage(4, 5);
-    assert(s.getLevel() == 4);
+    assertTrue(s.getLevel() == 4);
     s = new Stage(5, 2);
-    assert(s.getLevel() == 5);
+    assertTrue(s.getLevel() == 5);
     s = new Stage(6, 1);
-    assert(s.getLevel() == 6);
+    assertTrue(s.getLevel() == 6);
     s = new Stage(7, 3);
-    assert(s.getLevel() == 7);
+    assertTrue(s.getLevel() == 7);
     s = new Stage(8, 4);
-    assert(s.getLevel() == 8);
+    assertTrue(s.getLevel() == 8);
     s = new Stage(9, 4);
-    assert(s.getLevel() == 9);
+    assertTrue(s.getLevel() == 9);
     System.out.println("Stage getLevel method correct.");
   }
 
@@ -35,23 +37,23 @@ public class StageTest {
   public void testGetInGameMoneyMethod() {
     Stage s;
     s = new Stage(1, 2);
-    assert(s.getInGameMoney() == 35);
+    assertTrue(s.getInGameMoney() == 35);
     s = new Stage(2, 2);
-    assert(s.getInGameMoney() == 50);
+    assertTrue(s.getInGameMoney() == 50);
     s = new Stage(3, 1);
-    assert(s.getInGameMoney() == 65);
+    assertTrue(s.getInGameMoney() == 65);
     s = new Stage(4, 3);
-    assert(s.getInGameMoney() == 85);
+    assertTrue(s.getInGameMoney() == 85);
     s = new Stage(5, 2);
-    assert(s.getInGameMoney() == 120);
+    assertTrue(s.getInGameMoney() == 120);
     s = new Stage(6, 3);
-    assert(s.getInGameMoney() == 150);
+    assertTrue(s.getInGameMoney() == 150);
     s = new Stage(7, 4);
-    assert(s.getInGameMoney() == 170);
+    assertTrue(s.getInGameMoney() == 170);
     s = new Stage(8, 4);
-    assert(s.getInGameMoney() == 200);
+    assertTrue(s.getInGameMoney() == 200);
     s = new Stage(9, 3);
-    assert(s.getInGameMoney() == 200);
+    assertTrue(s.getInGameMoney() == 200);
     System.out.println("Stage getInGameMoney method correct.");
   }
 
@@ -59,23 +61,23 @@ public class StageTest {
   public void testGetTargetMoneyMethod() {
     Stage s;
     s = new Stage(1, 2);
-    assert(s.getTargetMoney() == 150);
+    assertTrue(s.getTargetMoney() == 150);
     s = new Stage(2, 2);
-    assert(s.getTargetMoney() == 200);
+    assertTrue(s.getTargetMoney() == 200);
     s = new Stage(3, 1);
-    assert(s.getTargetMoney() == 500);
+    assertTrue(s.getTargetMoney() == 500);
     s = new Stage(4, 3);
-    assert(s.getTargetMoney() == 300);
+    assertTrue(s.getTargetMoney() == 300);
     s = new Stage(5, 2);
-    assert(s.getTargetMoney() == 500);
+    assertTrue(s.getTargetMoney() == 500);
     s = new Stage(6, 3);
-    assert(s.getTargetMoney() == 700);
+    assertTrue(s.getTargetMoney() == 700);
     s = new Stage(7, 4);
-    assert(s.getTargetMoney() == 600);
+    assertTrue(s.getTargetMoney() == 600);
     s = new Stage(8, 4);
-    assert(s.getTargetMoney() == 1000);
+    assertTrue(s.getTargetMoney() == 1000);
     s = new Stage(9, 3);
-    assert(s.getTargetMoney() == 1500);
+    assertTrue(s.getTargetMoney() == 1500);
     System.out.println("Stage getTargetMoney method correct.");
   }
 
@@ -83,23 +85,23 @@ public class StageTest {
   public void testGetTimeLimitMethod() {
     Stage s;
     s = new Stage(1, 2);
-    assert(s.getTimeLimit() == 120);
+    assertTrue(s.getTimeLimit() == 120);
     s = new Stage(2, 2);
-    assert(s.getTimeLimit() == 120);
+    assertTrue(s.getTimeLimit() == 120);
     s = new Stage(3, 1);
-    assert(s.getTimeLimit() == 240);
+    assertTrue(s.getTimeLimit() == 240);
     s = new Stage(4, 3);
-    assert(s.getTimeLimit() == 150);
+    assertTrue(s.getTimeLimit() == 150);
     s = new Stage(5, 2);
-    assert(s.getTimeLimit() == 180);
+    assertTrue(s.getTimeLimit() == 180);
     s = new Stage(6, 3);
-    assert(s.getTimeLimit() == 180);
+    assertTrue(s.getTimeLimit() == 180);
     s = new Stage(7, 4);
-    assert(s.getTimeLimit() == 120);
+    assertTrue(s.getTimeLimit() == 120);
     s = new Stage(8, 4);
-    assert(s.getTimeLimit() == 180);
+    assertTrue(s.getTimeLimit() == 180);
     s = new Stage(9, 3);
-    assert(s.getTimeLimit() == 210);
+    assertTrue(s.getTimeLimit() == 210);
     System.out.println("Stage getTimeLimit method correct.");
   }
 
@@ -107,17 +109,17 @@ public class StageTest {
   public void testGetLevelOfTruckMethod() {
     Stage s;
     s = new Stage(1, 2);
-    assert(s.getLevelOfTruck() == 2);
+    assertTrue(s.getLevelOfTruck() == 2);
     s = new Stage(2, 4);
-    assert(s.getLevelOfTruck() == 4);
+    assertTrue(s.getLevelOfTruck() == 4);
     s = new Stage(3, 1);
-    assert(s.getLevelOfTruck() == 1);
+    assertTrue(s.getLevelOfTruck() == 1);
     s = new Stage(4, 5);
-    assert(s.getLevelOfTruck() == 5);
+    assertTrue(s.getLevelOfTruck() == 5);
     s = new Stage(5, 3);
-    assert(s.getLevelOfTruck() == 3);
+    assertTrue(s.getLevelOfTruck() == 3);
     s = new Stage(6, 6);
-    assert(s.getLevel() == 6);
+    assertTrue(s.getLevel() == 6);
     System.out.println("Stage getLevelOfTruck method correct.");
   }
 
@@ -125,11 +127,11 @@ public class StageTest {
   public void testGetIncomeMethod() {
     Stage s;
     s = new Stage(1,2);
-    assert(s.getIncome() == 0);
+    assertTrue(s.getIncome() == 0);
     s = new Stage(2, 3);
-    assert(s.getIncome() == 0);
+    assertTrue(s.getIncome() == 0);
     s = new Stage(9, 3);
-    assert(s.getIncome() == 0);
+    assertTrue(s.getIncome() == 0);
     System.out.println("Stage getIncome method correct.");
   }
 
@@ -137,20 +139,20 @@ public class StageTest {
   public void testGetPotsMethod() {
     Stage s;
     s = new Stage(1,2);
-    assert(s.getPots() == 2);
+    assertTrue(s.getPots() == 2);
     s = new Stage(7, 3);
-    assert(s.getPots() == 2);
+    assertTrue(s.getPots() == 2);
     s.buyPot();
-    assert(s.getPots() == 3);
+    assertTrue(s.getPots() == 3);
     s.buyPot();
-    assert(s.getPots() == 4);
+    assertTrue(s.getPots() == 4);
     s.buyPot();
-    assert(s.getPots() == 5);
+    assertTrue(s.getPots() == 5);
     s = new Stage(3, 4);
     s.buyPot();
-    assert(s.getPots() == 3);
+    assertTrue(s.getPots() == 3);
     s.buyPot();
-    assert(s.getPots() == 4);
+    assertTrue(s.getPots() == 4);
     System.out.println("Stage getPots method correct.");
   }
 
@@ -158,13 +160,13 @@ public class StageTest {
   public void testSetInGameMoneyMethod() {
     Stage s;
     s = new Stage(7, 4);
-    assert(s.getInGameMoney() == 170);
+    assertTrue(s.getInGameMoney() == 170);
     s.setInGameMoney(400);
-    assert(s.getInGameMoney() == 400);
+    assertTrue(s.getInGameMoney() == 400);
     s.setInGameMoney(1020);
-    assert(s.getInGameMoney() == 1020);
+    assertTrue(s.getInGameMoney() == 1020);
     s.setInGameMoney(395);
-    assert(s.getInGameMoney() == 395);
+    assertTrue(s.getInGameMoney() == 395);
     System.out.println("Stage setInGameMoney method correct.");
   }
 }
