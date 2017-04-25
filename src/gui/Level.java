@@ -21,7 +21,7 @@ import player.Player;
  * @author Irene Edria
  * @version 4/25/17
  */
-class Level {
+public class Level {
 
   /**
    * Layar cerita yang akan dipanggil oleh <code>Level</code>.
@@ -34,7 +34,7 @@ class Level {
    * @param dep Wadah untuk meletakkan item-item GUI pada layar
    * @param p Keterangan mengenai player yang sedang bermain
    */
-  Level(JDesktopPane dep, Player p) {
+  public Level(JDesktopPane dep, Player p) {
     // Background
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();

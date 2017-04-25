@@ -123,4 +123,5 @@ public class Player {
   public void addMoney(int amount) {
     money += amount;
   }
+
 }

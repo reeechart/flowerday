@@ -1,5 +1,6 @@
 package stage;
 
+import gui.Level;
 import plant.PlantController;
 import player.Player;
 
@@ -13,11 +14,25 @@ import java.util.ArrayList;
  * Created by ireneedriadr on 4/23/17.
  */
 public class StageView {
-
+  public int i = 0;
   JButton[][] field = new JButton[3][3];
   JLabel labelmoney1;
   JLabel labelincome;
-  public int i = 0;
+  JButton buttontruck;
+  JButton buttonscissors;
+  JButton buttoncan;
+  JLabel labelgarden;
+  JButton buttonpot;
+  JButton buttonorchid;
+  JButton buttonchamomile;
+  JButton buttonsunflower;
+  JButton buttonrose;
+  JLabel labelmoney;
+  JLabel labellevel;
+  JLabel labelimage;
+  JLabel labelshop;
+
+
 
   public void newPot(JDesktopPane dep, Stage stage, ActionListener a) {
     int n = stage.getPots() - 1;
@@ -25,7 +40,7 @@ public class StageView {
     int y = n % 3;
     PlantController[][] pc = stage.getPlants();
     ImageIcon potimage = pc[x][y].getImage();
-    JButton buttonpot = new JButton(potimage);
+    buttonpot = new JButton(potimage);
     buttonpot.setBounds((y*150)+500,(x*150)+150,150,150);
     buttonpot.setOpaque(false);
     buttonpot.setBorderPainted(false);
@@ -36,6 +51,7 @@ public class StageView {
     dep.add(buttonpot, new Integer(1000));
   }
 
+
   public void updateIncome(JDesktopPane dep, Stage stage, ActionListener a) {
     updateIncome(dep,stage);
   }
@@ -43,6 +59,7 @@ public class StageView {
   public void updatePot(JDesktopPane dep, Stage stage, int row, int col, ActionListener a) {
     PlantController[][] pc = stage.getPlants();
     ImageIcon bibitimage = pc[row][col].getImage();
+    dep.remove(field[row][col]);
     JButton buttonpotbibit = new JButton(bibitimage);
     buttonpotbibit.setBounds((col * 150) + 500, (row * 150) + 150, 150, 150);
     buttonpotbibit.setOpaque(false);
@@ -52,12 +69,12 @@ public class StageView {
     field[row][col] = buttonpotbibit;
     updateMoney(dep, stage);
     i++;
-    dep.add(buttonpotbibit, new Integer(1200+(i*150)));
+    dep.add(buttonpotbibit, new Integer(1000+(i*150)));
   }
 
   public void updateMoney(JDesktopPane dep, Stage stage) {
     String gameMoney= new String(Integer.toString(stage.getInGameMoney()));
-    labelmoney1.setVisible(false);
+    dep.remove(labelmoney1);
     labelmoney1 = new JLabel(gameMoney);
     labelmoney1.setBounds(180,270,100,100);
     dep.add(labelmoney1, new Integer(1000));
@@ -80,17 +97,17 @@ public class StageView {
     ImageIcon potimage = new ImageIcon("asset/potempty.png");
 
     ImageIcon image = new ImageIcon("asset/gameback.png");
-    JLabel labelimage = new JLabel(image);
+    labelimage = new JLabel(image);
     labelimage.setBounds(0,0,1440,900);
     dep.add(labelimage, new Integer(150));
 
     ImageIcon level = new ImageIcon("asset/1small.png");
-    JLabel labellevel = new JLabel(level);
+    labellevel = new JLabel(level);
     labellevel.setBounds(80,200,100,100);
     dep.add(labellevel, new Integer(1000));
 
     ImageIcon money = new ImageIcon("asset/money.png");
-    JLabel labelmoney = new JLabel(money);
+    labelmoney = new JLabel(money);
     labelmoney.setBounds(80, 270, 100, 100);
     dep.add(labelmoney, new Integer(1000));
 
@@ -105,12 +122,12 @@ public class StageView {
     dep.add(labelmoney1, new Integer(1000));
 
     ImageIcon shop = new ImageIcon("asset/shop.png");
-    JLabel labelshop = new JLabel(shop);
+    labelshop = new JLabel(shop);
     labelshop.setBounds(1050, 30, 150,150);
     dep.add(labelshop, new Integer(1000));
 
     ImageIcon rose = new ImageIcon("asset/rose.png");
-    JButton buttonrose = new JButton(rose);
+    buttonrose = new JButton(rose);
     buttonrose.setBounds(1020, 210, 100, 100);
     buttonrose.setOpaque(false);
     buttonrose.setBorderPainted(false);
@@ -119,7 +136,7 @@ public class StageView {
     dep.add(buttonrose, new Integer(1000));
 
     ImageIcon sunflower = new ImageIcon("asset/sunflower.png");
-    JButton buttonsunflower = new JButton(sunflower);
+    buttonsunflower = new JButton(sunflower);
     buttonsunflower.setBounds(1130, 210,100,100);
     buttonsunflower.setOpaque(false);
     buttonsunflower.setContentAreaFilled(false);
@@ -128,7 +145,7 @@ public class StageView {
     dep.add(buttonsunflower, new Integer(1000));
 
     ImageIcon chamomile = new ImageIcon("asset/chamomile.png");
-    JButton buttonchamomile = new JButton(chamomile);
+    buttonchamomile = new JButton(chamomile);
     buttonchamomile.setBounds(1020,320,100,100);
     buttonchamomile.setOpaque(false);
     buttonchamomile.setBorderPainted(false);
@@ -137,7 +154,7 @@ public class StageView {
     dep.add(buttonchamomile, new Integer(1000));
 
     ImageIcon orchid = new ImageIcon("asset/orchid.png");
-    JButton buttonorchid = new JButton(orchid);
+    buttonorchid = new JButton(orchid);
     buttonorchid.setBounds(1130,320,100,100);
     buttonorchid.setOpaque(false);
     buttonorchid.setContentAreaFilled(false);
@@ -146,7 +163,7 @@ public class StageView {
     dep.add(buttonorchid, new Integer(1000));
 
     ImageIcon pot = new ImageIcon("asset/pot.png");
-    JButton buttonpot = new JButton(pot);
+    buttonpot = new JButton(pot);
     buttonpot.setBounds(1080,430,100,100);
     buttonpot.setOpaque(false);
     buttonpot.setContentAreaFilled(false);
@@ -155,7 +172,7 @@ public class StageView {
     dep.add(buttonpot, new Integer(1000));
 
     ImageIcon garden = new ImageIcon("asset/garden.png");
-    JLabel labelgarden = new JLabel(garden);
+    labelgarden = new JLabel(garden);
     labelgarden.setBounds(330, 30, 150,150);
     dep.add(labelgarden, new Integer(1000));
 
@@ -172,13 +189,9 @@ public class StageView {
     }
 
     actList.remove(0);
-    /*ImageIcon field = new ImageIcon("asset/field.png");
-    JLabel labelfield = new JLabel(field);
-    labelfield.setBounds(500,150,400,400);
-    dep.add(labelfield, new Integer(1000));*/
 
     ImageIcon can = new ImageIcon("asset/wateringcan.png");
-    JButton buttoncan = new JButton(can);
+    buttoncan = new JButton(can);
     buttoncan.setBounds(300,150,200,200);
     buttoncan.setOpaque(false);
     buttoncan.setContentAreaFilled(false);
@@ -187,7 +200,7 @@ public class StageView {
     dep.add(buttoncan, new Integer(1000));
 
     ImageIcon scissors = new ImageIcon("asset/scissors.png");
-    JButton buttonscissors = new JButton(scissors);
+    buttonscissors = new JButton(scissors);
     buttonscissors.setBounds(300,300,200,200);
     buttonscissors.setOpaque(false);
     buttonscissors.setContentAreaFilled(false);
@@ -196,12 +209,47 @@ public class StageView {
     dep.add(buttonscissors, new Integer(1000));
 
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
-    JButton buttontruck = new JButton(truck);
+    buttontruck = new JButton(truck);
     buttontruck.setBounds(150, 650, 150,150);
     buttontruck.setOpaque(false);
     buttontruck.setBorderPainted(false);
     buttontruck.setContentAreaFilled(false);
     buttontruck.addActionListener(actList.remove(0));
     dep.add(buttontruck, new Integer(1000));
+  }
+
+  public void endStageView(Stage stage, JDesktopPane dep, int stat, Player p) {
+    if(stat == 1) {
+      ImageIcon quit = new ImageIcon("asset/quit.png");
+      JFrame frame = new JFrame();
+      JOptionPane.showMessageDialog(null, "Congratulations, you won!", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+    }
+    else {
+      ImageIcon quit = new ImageIcon("asset/quit.png");
+      JFrame frame = new JFrame();
+      JOptionPane.showMessageDialog(null, "Sorry, you lose :(", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+    }
+    int n = stage.getPots();
+    for (int pot = 0; pot < n; pot++) {
+      int x = pot / 3;
+      int y = pot % 3;
+      dep.remove(field[x][y]);
+    }
+    dep.remove(labelmoney1);
+    dep.remove(labelincome);
+    dep.remove(buttontruck);
+    dep.remove(buttonscissors);
+    dep.remove(buttoncan);
+    dep.remove(labelgarden);
+    dep.remove(buttonpot);
+    dep.remove(buttonorchid);
+    dep.remove(labelshop);
+    dep.remove(buttonchamomile);
+    dep.remove(buttonsunflower);
+    dep.remove(buttonrose);
+    dep.remove(labelmoney);
+    dep.remove(labellevel);
+    dep.remove(labelimage);
+    new Level(dep, p);
   }
 }

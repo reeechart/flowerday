@@ -4,10 +4,11 @@ import plant.PlantController;
 import player.Player;
 
 import javax.swing.*;
+import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.StringBuffer;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Class StageController.
@@ -132,6 +133,21 @@ public class StageController {
     dptemp = dp;
     stage = new Stage(stageLv, truckLv);
     sview = new StageView(stage, this, dptemp, player, stageLv, actionListenerList);
+    java.util.Timer timer = new java.util.Timer();
+    TimerTask endGame = new TimerTask() {
+      @Override
+      public void run() {
+        boolean f = true;
+        long startTime = System.currentTimeMillis();
+        while (System.currentTimeMillis() - startTime <= stage.getTimeLimit()*1000) {
+          // wait until delivery is finished
+        }
+        endGame();
+        timer.cancel();
+
+      }
+    };
+    timer.schedule(endGame, 30);
   }
 
   public void sendFlowersToTown(ActionListener a) {
@@ -216,5 +232,20 @@ public class StageController {
       }
     };
     new Timer(delay, waterTask).start();
+  }
+
+  public void endGame() {
+    int status;
+    if (stage.getInGameMoney() >= stage.getTargetMoney()) {
+      status = 1;
+      int x = player.getLastStageOpened();
+      x++;
+      System.out.println(x);
+      player.setLastStageOpened(x);
+    }
+    else {
+      status = 0;
+    }
+    sview.endStageView(stage, dptemp, status, player);
   }
 }
