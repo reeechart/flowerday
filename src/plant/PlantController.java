@@ -132,42 +132,39 @@ public class PlantController {
   public void growTheFlower() {
     switch (flowerInControl.getFlowerState()) {
       case 1:
-        //fall through karena aksi yang dilakukan sama dengan 2
-      case 2:
-        Timer growingTimer = new Timer();
-        TimerTask growingTask = new TimerTask() {
-          @Override
-          public void run() {
-            long startTime = System.currentTimeMillis();
-            while (System.currentTimeMillis() - startTime <= growthTime) {
-              // wait for growing delay
-            }
-            flowerInControl.grow();
-            viewInControl = new PlantView(flowerInControl);
-            growingTimer.cancel();
-          }
-        };
-        growingTimer.schedule(growingTask, 30);
+        waitToGrow(growthTime);
         break;
+      case 2:
+        waitToGrow(growthTime);
+        // fall through agar bunga busuk jika tidak di harvest
       case 3:
-        Timer harvestTimer = new Timer();
-        TimerTask harvestTask = new TimerTask() {
-          @Override
-          public void run() {
-            long startTime = System.currentTimeMillis();
-            while (System.currentTimeMillis() - startTime <= harvestTime) {
-              // wait for growing delay
-            }
-            flowerInControl.grow();
-            viewInControl = new PlantView(flowerInControl);
-            harvestTimer.cancel();
-          }
-        };
-        harvestTimer.schedule(harvestTask, 30);
+        waitToGrow(harvestTime);
         break;
       default:
         // bunga busuk; do nothing
     }
     viewInControl = new PlantView(flowerInControl);
+  }
+
+  /**
+   * Prosedur untuk menjalankan waktu tumbuh bunga.
+   *
+   * @param time berapa lama waktu tunggunya
+   */
+  private void waitToGrow(int time) {
+    Timer timer = new Timer();
+    TimerTask task = new TimerTask() {
+      @Override
+      public void run() {
+        long startTime = System.currentTimeMillis();
+        while (System.currentTimeMillis() - startTime <= time) {
+          // wait for growing delay
+        }
+        flowerInControl.grow();
+        viewInControl = new PlantView(flowerInControl);
+        timer.cancel();
+      }
+    };
+    timer.schedule(task, 30);
   }
 }
