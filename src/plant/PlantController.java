@@ -165,6 +165,10 @@ public class PlantController {
         timer.cancel();
       }
     };
-    timer.schedule(task, 30);
+    if (time == harvestTime) {
+      timer.schedule(task, 3000);
+    } else {
+      timer.schedule(task, 30);
+    }
   }
 }
