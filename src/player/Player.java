@@ -46,11 +46,11 @@ public class Player {
    * @param lastStage stage terakhir yang bisa dimainkan dalam game
    * @param truckLv level truck player yang akan dibentuk
    */
-  public Player(String playerName, int lastStage, int truckLv) {
+  public Player(String playerName, int lastStage, int truckLv, int _money) {
     name = playerName;
     lastStageOpened = lastStage;
     truckLevel = truckLv;
-    money = 0;
+    money = _money;
   }
 
   /**
