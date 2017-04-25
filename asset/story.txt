@@ -1,72 +1,11 @@
-|0
-Phone: "Ring!! Ringg!!"
-<name>: "Hello?"
-Aunt Reina: "Hello, <name>. Uncle Ben had just bought a new land and our old garden has no one to take care of. Are you interested to look after it?"
-<name>: "Yes! Definitely yes!"
-Aunt Reina: "Glad to hear your excitement! Come hear as soon as possible, Dear."
-<name>: "Okay! Thank you and see you then!"
-Phone: *hunged up*
-
-<name> is currently live in Wonder Town. <name> has just finish college and unemployed.
-Upon the phone call, <name> rushed from Wonder Town to Wonder Village, <name>'s hometown and where Uncle Ben and Aunt Reina live.
-<name> loves gardening, especially growing flowers, so this is such a big opportunity.
-|1
-Uncle Ben: "Here comes our young gardener!"
-Aunt Reina: "Welcome, <name>!"
-<name>: "Hi all! Thank you for trusting your garden to me."
-Uncle Ben: "Actually I'm planning to give it to you as free."
-<name>: "What? No, I won't accept that."
-Aunt Reina: "It's okay, <name>. We don't need it anymore, anyway."
-<name>: "Please let me pay.."
-Uncle Ben: "Well, if you insist, you can give me 150 Wonders for that garden."
-<name>: "Okay! thank you, Uncle. I will get it by the end of the day!"
-Aunt Reina: "No need to rush, Dear."
-|2
+Phone: "Ring!! Ringg!!"\n<name>: "Hello?"\nAunt Reina: "Hello, <name>. Uncle Ben had just bought a new land and our old garden has no one to take care of. Are you interested to look after it?"\n<name>: "Yes! Definitely yes!"\nAunt Reina: "Glad to hear your excitement! Come hear as soon as possible, Dear."\n<name>: "Okay! Thank you and see you then!"\nPhone: *hunged up*\n\n<name> is currently live in Wonder Town. <name> has just finish college and unemployed.\nUpon the phone call, <name> rushed from Wonder Town to Wonder Village, <name>'s hometown and where Uncle Ben and Aunt Reina live.\n<name> loves gardening, especially growing flowers, so this is such a big opportunity.
+Uncle Ben: "Here comes our young gardener!"\nAunt Reina: "Welcome, <name>!"\n<name>: "Hi all! Thank you for trusting your garden to me."\nUncle Ben: "Actually I'm planning to give it to you as free."\n<name>: "What? No, I won't accept that."\nAunt Reina: "It's okay, <name>. We don't need it anymore, anyway."\n<name>: "Please let me pay.."\nUncle Ben: "Well, if you insist, you can give me 150 Wonders for that garden."\n<name>: "Okay! thank you, Uncle. I will get it by the end of the day!"\nAunt Reina: "No need to rush, Dear."
 <name>: "The fence looks all weather. It might be a good idea to build a new one. I better get the money before the end of the day."
-|3
-Aunt Reina: "Oh no! It looks like your house is leaking!"
-<name>: "Really? Oh, you are right :("
-Aunt Reina: "It's better to fix it before the day after tomorrow. A great storm was forecasted that day."
-<name>: "Okay, thanks for the information! I'll get the money."
-|4
-Uncle Ben: "Psstt..."
-<name>: "What's up, Uncle?"
-Uncle Ben: "I just want to remind you that tour aunt's birthday is tomorrow."
-<name>: "Is that so? Well, I better save up some money to buy her present."
-Uncle Ben: "Good luck, kiddo!"
-|5
-<name>: "Happy Birthday, Aunty! Here is your present!"
-Aunt Reina: "Thanks, Dear! You are so thoughtful. :)"
-Uncle Ben: "You sure have worked hard, huh? Do you want to join us go to Wonderland?"
-<name>: "Seems fun! When will you guys go?"
-Aunt Reina: "Next month."
-<name>: "Right! I'll collect the money starting today!"
-|6
+Aunt Reina: "Oh no! It looks like your house is leaking!"\n<name>: "Really? Oh, you are right :("\nAunt Reina: "It's better to fix it before the day after tomorrow. A great storm was forecasted that day."\n<name>: "Okay, thanks for the information! I'll get the money."
+Uncle Ben: "Psstt..."\n<name>: "What's up, Uncle?"\nUncle Ben: "I just want to remind you that tour aunt's birthday is tomorrow."\n<name>: "Is that so? Well, I better save up some money to buy her present."\nUncle Ben: "Good luck, kiddo!"
+<name>: "Happy Birthday, Aunty! Here is your present!"\nAunt Reina: "Thanks, Dear! You are so thoughtful. :)"\nUncle Ben: "You sure have worked hard, huh? Do you want to join us go to Wonderland?"\n<name>: "Seems fun! When will you guys go?"\nAunt Reina: "Next month."\n<name>: "Right! I'll collect the money starting today!"
 <name>: "Uh-oh! The pump is broken. I should replace it with a new one..."
-|7
-Stranded Dog: "Woof! Woof!"
-<name>: "Hey, buddy.. What's wrong? Who is your master?"
-Stranded Dog: *howl*
-<name>: "He looks like a stranded dog and seems hurt. Here, buddy, let me take a look."
-Stranded Dog: "Grrrr!"
-<name>: "He seems broke its bone due to a fight. He must be hospitalized immidiately! Poor thing.. I will adopt him."
-<name>: "Okay, buddy! Now your name is Line, alright? I'll save up some money for your surgery!"
-Line: *wagging tail*
-|8
-Phone: "Ring!! Ring!!"
-<name>: "Hello?"
-Mom: "How are you? And.. How is your farm?"
-<name>: "We are both safe and sound!"
-Mom: "Glad to hear that... <name>, do you have any spare money? Your sister want to enter college and we are lack of Wonders."
-<name>: "Sure, mom.. But give me a few days okay?"
-Mom: "It's alright. Thank you very much, Sweetie."
-|9
+Stranded Dog: "Woof! Woof!"\n<name>: "Hey, buddy.. What's wrong? Who is your master?"\nStranded Dog: *howl*\n<name>: "He looks like a stranded dog and seems hurt. Here, buddy, let me take a look."\nStranded Dog: "Grrrr!"\n<name>: "He seems broke its bone due to a fight. He must be hospitalized immidiately! Poor thing.. I will adopt him."\n<name>: "Okay, buddy! Now your name is Line, alright? I'll save up some money for your surgery!"\nLine: *wagging tail*
+Phone: "Ring!! Ring!!"\n<name>: "Hello?"\nMom: "How are you? And.. How is your farm?"\n<name>: "We are both safe and sound!"\nMom: "Glad to hear that... <name>, do you have any spare money? Your sister want to enter college and we are lack of Wonders."\n<name>: "Sure, mom.. But give me a few days okay?"\nMom: "It's alright. Thank you very much, Sweetie."
 <name>: "Oh no! Only one week away until the trip to Wonderland and I failed to collect enough money. I should work extra hard then!"
-|10
-<name> was able to make it to Wonderland with Uncle Ben and Aunt Reina.
-Line was saved and now being part of <name>'s family.
-And <name>'s sister finally able to go to a proper college thanks to <name>!
-This is the end of the story about <name>!
-
-Or is it not?
-The End   ?
+<name> was able to make it to Wonderland with Uncle Ben and Aunt Reina.\nLine was saved and now being part of <name>'s family.\nAnd <name>'s sister finally able to go to a proper college thanks to <name>!\nThis is the end of the story about <name>!\n\nOr is it not?\nThe End   ?
