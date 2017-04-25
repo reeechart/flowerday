@@ -34,6 +34,30 @@ public class StageView {
   JLabel labelshop;
   JLabel labelmoneybag;
   JLabel labelmoneybag1;
+  JLabel labelland;
+  JLabel labelcity;
+
+  public void moveTruckToCity(JDesktopPane dep) {
+    buttontruck.setVisible(false);
+    ImageIcon truck = new ImageIcon("asset/truckmini.png");
+    buttontruck = new JButton(truck);
+    buttontruck.setBounds(920, 650, 150,150);
+    buttontruck.setOpaque(false);
+    buttontruck.setBorderPainted(false);
+    buttontruck.setContentAreaFilled(false);
+    dep.add(buttontruck, new Integer(1000));
+  }
+
+  public void moveTruckToWonderLand(JDesktopPane dep) {
+    buttontruck.setVisible(false);
+    ImageIcon truck = new ImageIcon("asset/truckmini.png");
+    buttontruck = new JButton(truck);
+    buttontruck.setBounds(200, 650, 150,150);
+    buttontruck.setOpaque(false);
+    buttontruck.setBorderPainted(false);
+    buttontruck.setContentAreaFilled(false);
+    dep.add(buttontruck, new Integer(1000));
+  }
 
   public void newPot(JDesktopPane dep, Stage stage, ActionListener a) {
     int n = stage.getPots() - 1;
@@ -87,7 +111,7 @@ public class StageView {
     labelincome.setVisible(false);
     labelincome = new JLabel(income);
     labelincome.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    labelincome.setBounds(180,370,100,100);
+    labelincome.setBounds(180,600,100,100);
     dep.add(labelincome, new Integer(1000));
   }
 
@@ -138,7 +162,7 @@ public class StageView {
     String income = new String(Integer.toString(stage.getIncome()));
     labelincome = new JLabel(income);
     labelincome.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    labelincome.setBounds(180,370,100,100);
+    labelincome.setBounds(180,600,100,100);
     dep.add(labelincome, new Integer(1000));
 
     String gameMoney= new String(Integer.toString(stage.getInGameMoney()));
@@ -234,14 +258,24 @@ public class StageView {
     buttonscissors.addActionListener(actList.remove(0));
     dep.add(buttonscissors, new Integer(1000));
 
+    ImageIcon land = new ImageIcon("asset/land.png");
+    labelland = new JLabel(land);
+    labelland.setBounds(50, 650, 150, 150);
+    dep.add(labelland, new Integer(1000));
+
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
     buttontruck = new JButton(truck);
-    buttontruck.setBounds(150, 650, 150,150);
+    buttontruck.setBounds(200, 650, 150,150);
     buttontruck.setOpaque(false);
     buttontruck.setBorderPainted(false);
     buttontruck.setContentAreaFilled(false);
     buttontruck.addActionListener(actList.remove(0));
     dep.add(buttontruck, new Integer(1000));
+
+    ImageIcon city = new ImageIcon("asset/city.png");
+    labelcity = new JLabel(city);
+    labelcity.setBounds(1100, 590, 200, 200);
+    dep.add(labelcity, new Integer(1000));
   }
 
   public void endStageView(Stage stage, JDesktopPane dep, int stat, Player p) {
@@ -278,6 +312,8 @@ public class StageView {
     dep.remove(labelimage);
     dep.remove(labelmoneybag);
     dep.remove(labelmoneybag1);
+    dep.remove(labelland);
+    dep.remove(labelcity);
     new Level(dep, p);
   }
 }
