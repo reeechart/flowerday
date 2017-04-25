@@ -110,8 +110,6 @@ public class StageController {
       else if(stage.activeButton.toString().equals("sunflower"))  { buyFlowerInStage("sunflower", buttonRow, buttonCol, plantListener); }
       else if(stage.activeButton.toString().equals("water"))  { waterFlowerInStage(buttonRow, buttonCol, plantListener);}
       else if(stage.activeButton.toString().equals("harvest"))  { harvestFlowerInStage(buttonRow, buttonCol, plantListener); }
-
-      stage.activeButton = new StringBuffer("null");
     }
   };
 

@@ -21,19 +21,29 @@ public class Story extends JPanel {
 
   Story(JDesktopPane dep, int x, Player p) {
     final boolean f = false;
-    String[] story = new String [500];
-    int n = 0;
+    String story = new String();
+    int counter = 0;
+
     try (BufferedReader br = new BufferedReader(new FileReader("asset/story.txt"))) {
       String sCurrentLine;
 
-      String find = "<name>";
-      String replace = p.getName();
-      Pattern pattern = Pattern.compile(find);
+      String findName = "<name>";
+      String findNewline = "\\\\n";
+      String replaceName = p.getName();
+      String replaceNewline = "<br>";
+
+      Pattern namePattern = Pattern.compile(findName);
+      Pattern newlinePattern = Pattern.compile(findNewline);
 
       while((sCurrentLine = br.readLine()) != null) {
-        Matcher matcher = pattern.matcher(sCurrentLine);
-        story[n] = matcher.replaceAll(replace);
-        n++;
+        if(counter == x) {
+          Matcher nameMatcher = namePattern.matcher(sCurrentLine);
+          String nameReplaced = nameMatcher.replaceAll(replaceName);
+          Matcher newlineMatcher = newlinePattern.matcher(nameReplaced);
+          story = newlineMatcher.replaceAll(replaceNewline);
+        }
+
+        counter++;
       }
     } catch (IOException e) {
       e.printStackTrace();
@@ -47,8 +57,8 @@ public class Story extends JPanel {
     labelimage.setBounds(0,0,1440,900);
 
     JLabel labelstory = new JLabel();
-    for(int i = 0 ; i < n; i++) {
-      labelstory.setText("<html>"+labelstory.getText()+"<br>"+story[i]);
+    for(int i = 0 ; i < counter; i++) {
+      labelstory.setText("<html>"+labelstory.getText()+"<br>"+story);
     }
     labelstory.setFont(new Font("Grinched 2.0", Font.BOLD,24));
     labelstory.setBounds(10,300,500,300);
