@@ -161,7 +161,7 @@ public class Stage {
   public void sellFlowers() {
     final int incomeToBeAdded = income;
     income = 0;
-    long deliveryTime = DEFAULT_DELIVERY_TIME - ((levelOfTruck - 1) * 2000);
+    long deliveryTime = DEFAULT_DELIVERY_TIME - ((levelOfTruck - 1) * 1500);
     Timer timer = new Timer();
     TimerTask deliveryTask = new TimerTask() {
       @Override
