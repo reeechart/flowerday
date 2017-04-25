@@ -1,18 +1,20 @@
 package driver;
 
+import gui.Menu;
+
 /**
- * <p>Class real FlowerDay berfungsi sebagai driver dari aplikasi ini.
+ * Class real FlowerDay berfungsi sebagai driver dari aplikasi ini.
  * Driver akan menghidupkan main menu.
- * Setelah itu main menu akan menghidupkan kelas lainnya berdaasr pilihan.</p>
+ * Setelah itu main menu akan menghidupkan kelas lainnya berdasar pilihan.
  *
  * @author Ferdinandus Richard
- * Created on 22-Apr-2017.
+ * @version 22/04/17
  */
 public class FlowerDay {
   /**
-   * Constructor,
+   * Konstruktor.
    */
   public FlowerDay() {
-
+    Menu mainMenu = new Menu();
   }
 }
