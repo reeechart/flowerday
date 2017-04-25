@@ -57,11 +57,9 @@ public class Story extends JPanel {
     labelimage.setBounds(0,0,1440,900);
 
     JLabel labelstory = new JLabel();
-    for(int i = 0 ; i < counter; i++) {
-      labelstory.setText("<html>"+labelstory.getText()+"<br>"+story);
-    }
+    labelstory.setText("<html>"+labelstory.getText()+"<br>"+story);
     labelstory.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    labelstory.setBounds(10,300,500,300);
+    labelstory.setBounds(10,250,600,500);
     labelstory.setBackground(new Color(255,255,255,100));
     labelstory.setOpaque(true);
     dep.add(labelstory, new Integer(50));

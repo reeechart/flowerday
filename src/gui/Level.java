@@ -16,7 +16,7 @@ public class Level {
 
 
   Story story;
-
+  int playerLevel;
 
   public Level(JDesktopPane dep, Player p) {
 
@@ -100,6 +100,8 @@ public class Level {
     b9.setBounds(600, 450, 200, 200);
     dep.add(b9, new Integer(700));
 
+    playerLevel = p.getLastStageOpened();
+
     b1.addActionListener(
             new ActionListener() {
               @Override
@@ -122,17 +124,24 @@ public class Level {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dep.remove(b1);
-                dep.remove(b2);
-                dep.remove(b3);
-                dep.remove(b4);
-                dep.remove(b5);
-                dep.remove(b6);
-                dep.remove(b7);
-                dep.remove(b8);
-                dep.remove(b9);
-                dep.remove(labelimage);
-                story = new Story(dep, 2, p);
+                if (playerLevel < 2) {
+                  ImageIcon quit = new ImageIcon("asset/quit.png");
+                  JFrame frame = new JFrame();
+                  JOptionPane.showMessageDialog(null, "You can not play this stage", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+
+                } else {
+                  story = new Story(dep, 2, p);
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                }
               }
             }
     );
@@ -140,17 +149,24 @@ public class Level {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dep.remove(b1);
-                dep.remove(b2);
-                dep.remove(b3);
-                dep.remove(b4);
-                dep.remove(b5);
-                dep.remove(b6);
-                dep.remove(b7);
-                dep.remove(b8);
-                dep.remove(b9);
-                dep.remove(labelimage);
-                story = new Story(dep, 3, p);
+                if (playerLevel < 3) {
+                  ImageIcon quit = new ImageIcon("asset/quit.png");
+                  JFrame frame = new JFrame();
+                  JOptionPane.showMessageDialog(null, "You can not play this stage", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+                }
+                else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  story = new Story(dep, 3, p);
+                }
               }
             }
     );
@@ -158,17 +174,23 @@ public class Level {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dep.remove(b1);
-                dep.remove(b2);
-                dep.remove(b3);
-                dep.remove(b4);
-                dep.remove(b5);
-                dep.remove(b6);
-                dep.remove(b7);
-                dep.remove(b8);
-                dep.remove(b9);
-                dep.remove(labelimage);
-                story = new Story(dep, 4, p);
+                if (playerLevel < 4) {
+                  ImageIcon quit = new ImageIcon("asset/quit.png");
+                  JFrame frame = new JFrame();
+                  JOptionPane.showMessageDialog(null, "You can not play this stage", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  story = new Story(dep, 4, p);
+                }
               }
             }
     );
@@ -176,17 +198,23 @@ public class Level {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dep.remove(b1);
-                dep.remove(b2);
-                dep.remove(b3);
-                dep.remove(b4);
-                dep.remove(b5);
-                dep.remove(b6);
-                dep.remove(b7);
-                dep.remove(b8);
-                dep.remove(b9);
-                dep.remove(labelimage);
-                story = new Story(dep, 5, p);
+                if (playerLevel < 5) {
+                  ImageIcon quit = new ImageIcon("asset/quit.png");
+                  JFrame frame = new JFrame();
+                  JOptionPane.showMessageDialog(null, "You can not play this stage", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  story = new Story(dep, 5, p);
+                }
               }
             }
     );
@@ -194,17 +222,23 @@ public class Level {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dep.remove(b1);
-                dep.remove(b2);
-                dep.remove(b3);
-                dep.remove(b4);
-                dep.remove(b5);
-                dep.remove(b6);
-                dep.remove(b7);
-                dep.remove(b8);
-                dep.remove(b9);
-                dep.remove(labelimage);
-                story = new Story(dep, 6, p);
+                if (playerLevel < 6) {
+                  ImageIcon quit = new ImageIcon("asset/quit.png");
+                  JFrame frame = new JFrame();
+                  JOptionPane.showMessageDialog(null, "You can not play this stage", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  story = new Story(dep, 6, p);
+                }
               }
             }
     );
@@ -212,17 +246,23 @@ public class Level {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dep.remove(b1);
-                dep.remove(b2);
-                dep.remove(b3);
-                dep.remove(b4);
-                dep.remove(b5);
-                dep.remove(b6);
-                dep.remove(b7);
-                dep.remove(b8);
-                dep.remove(b9);
-                dep.remove(labelimage);
-                story = new Story(dep, 7, p);
+                if (playerLevel < 7) {
+                  ImageIcon quit = new ImageIcon("asset/quit.png");
+                  JFrame frame = new JFrame();
+                  JOptionPane.showMessageDialog(null, "You can not play this stage", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  story = new Story(dep, 7, p);
+                }
               }
             }
     );
@@ -230,17 +270,23 @@ public class Level {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dep.remove(b1);
-                dep.remove(b2);
-                dep.remove(b3);
-                dep.remove(b4);
-                dep.remove(b5);
-                dep.remove(b6);
-                dep.remove(b7);
-                dep.remove(b8);
-                dep.remove(b9);
-                dep.remove(labelimage);
-                story = new Story(dep, 8, p);
+                if (playerLevel < 8) {
+                  ImageIcon quit = new ImageIcon("asset/quit.png");
+                  JFrame frame = new JFrame();
+                  JOptionPane.showMessageDialog(null, "You can not play this stage", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  story = new Story(dep, 8, p);
+                }
               }
             }
     );
@@ -248,17 +294,23 @@ public class Level {
             new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                dep.remove(b1);
-                dep.remove(b2);
-                dep.remove(b3);
-                dep.remove(b4);
-                dep.remove(b5);
-                dep.remove(b6);
-                dep.remove(b7);
-                dep.remove(b8);
-                dep.remove(b9);
-                dep.remove(labelimage);
-                story = new Story(dep, 9, p);
+                if (playerLevel < 9) {
+                  ImageIcon quit = new ImageIcon("asset/quit.png");
+                  JFrame frame = new JFrame();
+                  JOptionPane.showMessageDialog(null, "You can not play this stage", "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  story = new Story(dep, 9, p);
+                }
               }
             }
     );
