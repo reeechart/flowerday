@@ -14,13 +14,13 @@ public class PlayerTest {
     Player player;
     player = new Player("James");
     assertTrue(player.getName().equals("James"));
-    player = new Player("Richard", 3, 2);
+    player = new Player("Richard", 3, 2, 500);
     assertTrue(player.getName().equals("Richard"));
-    player = new Player("Irene", 4, 3);
+    player = new Player("Irene", 4, 3, 700);
     assertTrue(player.getName().equals("Irene"));
-    player = new Player("Reinhard", 6, 2);
+    player = new Player("Reinhard", 6, 2, 900);
     assertTrue(player.getName().equals("Reinhard"));
-    player = new Player("Gisela", 5, 1);
+    player = new Player("Gisela", 5, 1, 1020);
     assertTrue(player.getName().equals("Gisela"));
     System.out.println("Player getName method correct.");
   }
@@ -30,13 +30,13 @@ public class PlayerTest {
     Player player;
     player = new Player("James");
     assertTrue(player.getLastStageOpened() == 1);
-    player = new Player("Richard", 3, 2);
+    player = new Player("Richard", 3, 2, 500);
     assertTrue(player.getLastStageOpened() == 3);
-    player = new Player("Irene", 4, 3);
+    player = new Player("Irene", 4, 3, 700);
     assertTrue(player.getLastStageOpened() == 4);
-    player = new Player("Reinhard", 6, 2);
+    player = new Player("Reinhard", 6, 2, 900);
     assertTrue(player.getLastStageOpened() == 6);
-    player = new Player("Gisela", 5, 1);
+    player = new Player("Gisela", 5, 1, 1020);
     assertTrue(player.getLastStageOpened() == 5);
     System.out.println("Player getLastStageOpened method correct.");
   }
@@ -46,13 +46,13 @@ public class PlayerTest {
     Player player;
     player = new Player("James");
     assertTrue(player.getTruckLevel() == 1);
-    player = new Player("Richard", 3, 2);
+    player = new Player("Richard", 3, 2, 500);
     assertTrue(player.getTruckLevel() == 2);
-    player = new Player("Irene", 4, 3);
+    player = new Player("Irene", 4, 3, 700);
     assertTrue(player.getTruckLevel() == 3);
-    player = new Player("Reinhard", 6, 2);
+    player = new Player("Reinhard", 6, 2,  900);
     assertTrue(player.getTruckLevel() == 2);
-    player = new Player("Gisela", 5, 1);
+    player = new Player("Gisela", 5, 1,  1020);
     assertTrue(player.getTruckLevel() == 1);
     System.out.println("Player getTruckLevel method correct.");
   }
@@ -62,14 +62,14 @@ public class PlayerTest {
     Player player;
     player = new Player("James");
     assertTrue(player.getMoney() == 0);
-    player = new Player("Richard", 3, 2);
-    assertTrue(player.getMoney() == 0);
-    player = new Player("Irene", 4, 3);
-    assertTrue(player.getMoney() == 0);
-    player = new Player("Reinhard", 6, 2);
-    assertTrue(player.getMoney() == 0);
-    player = new Player("Gisela", 5, 1);
-    assertTrue(player.getMoney() == 0);
+    player = new Player("Richard", 3, 2, 500);
+    assertTrue(player.getMoney() == 500);
+    player = new Player("Irene", 4, 3, 700);
+    assertTrue(player.getMoney() == 700);
+    player = new Player("Reinhard", 6, 2, 900);
+    assertTrue(player.getMoney() == 900);
+    player = new Player("Gisela", 5, 1, 1020);
+    assertTrue(player.getMoney() == 1020);
     System.out.println("Player getMoney method correct.");
   }
 
@@ -80,23 +80,23 @@ public class PlayerTest {
     assertTrue(player.getLastStageOpened() == 1);
     player.setLastStageOpened(3);
     assertTrue(player.getLastStageOpened() == 3);
-    player = new Player("Richard", 2, 5);
+    player = new Player("Richard", 2, 5, 500);
     assertTrue(player.getLastStageOpened() == 2);
     player.setLastStageOpened(4);
     assertTrue(player.getLastStageOpened() == 4);
-    player = new Player("Irene", 4, 3);
+    player = new Player("Irene", 4, 3, 700);
     assertTrue(player.getLastStageOpened() == 4);
     player.setLastStageOpened(1);
     assertTrue(player.getLastStageOpened() == 1);
-    player = new Player ("Reinhard", 1, 3);
+    player = new Player ("Reinhard", 1, 3, 900);
     assertTrue(player.getLastStageOpened() == 1);
     player.setLastStageOpened(7);
     assertTrue(player.getLastStageOpened() == 7);
-    player = new Player("Gisela", 3, 5);
+    player = new Player("Gisela", 3, 5, 1020);
     assertTrue(player.getLastStageOpened() == 3);
     player.setLastStageOpened(5);
     assertTrue(player.getLastStageOpened() == 5);
-    System.out.println("Player getLastStageOpened method correct.");
+    System.out.println("Player setLastStageOpened method correct.");
   }
 
   @Test
@@ -109,7 +109,7 @@ public class PlayerTest {
     assertTrue(player.getTruckLevel() == 2);
     player.upgradeTruck();
     assertTrue(player.getTruckLevel() == 3);
-    player = new Player("Ferdi", 4, 3);
+    player = new Player("Ferdi", 4, 3, 200);
     assertTrue(player.getTruckLevel() == 3);
     player.upgradeTruck();
     assertTrue(player.getTruckLevel() == 3);
@@ -127,6 +127,12 @@ public class PlayerTest {
     assertTrue(player.getMoney() == 421);
     player.addMoney(406);
     assertTrue(player.getMoney() == 827);
+    player = new Player("Edria", 5, 2, 1000);
+    assertTrue(player.getMoney() == 1000);
+    player.addMoney(193);
+    assertTrue(player.getMoney() == 1193);
+    player.addMoney(79);
+    assertTrue(player.getMoney() == 1272);
     System.out.println("Player addMoney method correct.");
   }
 }
