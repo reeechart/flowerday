@@ -5,6 +5,7 @@ import player.Player;
 
 import javax.swing.*;
 import javax.swing.Timer;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.StringBuffer;
@@ -21,7 +22,8 @@ public class StageController {
   private Stage stage;
   private StageView sview;
   private Player player;
-  JDesktopPane dptemp = new JDesktopPane();
+  private JDesktopPane dptemp;
+  private Timer swing_timer;
   private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>(9);
 
   ActionListener roseListener = new ActionListener() {
@@ -129,8 +131,10 @@ public class StageController {
     actionListenerList.add(waterListener);
     actionListenerList.add(harvestListener);
     actionListenerList.add(sellListener);
+
     player = p;
     dptemp = dp;
+
     stage = new Stage(stageLv, truckLv);
     sview = new StageView(stage, this, dptemp, player, stageLv, actionListenerList);
     java.util.Timer timer = new java.util.Timer();
@@ -144,7 +148,7 @@ public class StageController {
         }
         endGame();
         timer.cancel();
-
+        timer.purge();
       }
     };
     timer.schedule(endGame, 30);
@@ -155,14 +159,17 @@ public class StageController {
       stage.sellFlowers();
       int delay = 11000;
       sview.updateIncome(dptemp, stage, a);
+
       ActionListener task = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
           sview.updateMoney(dptemp, stage);
+          swing_timer.stop();
         }
       };
-      new Timer(delay, task).start();
-
+      swing_timer = new Timer(delay, task);
+      swing_timer.setRepeats(false);
+      swing_timer.start();
     }
   }
 
@@ -229,9 +236,12 @@ public class StageController {
       @Override
       public void actionPerformed(ActionEvent e) {
         sview.updatePot(dptemp, stage, row, col, a);
+        swing_timer.stop();
       }
     };
-    new Timer(delay, waterTask).start();
+    swing_timer = new Timer(delay, waterTask);
+    swing_timer.setRepeats(false);
+    swing_timer.start();
   }
 
   public void endGame() {

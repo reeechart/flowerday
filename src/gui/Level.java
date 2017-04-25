@@ -26,7 +26,6 @@ public class Level {
   /**
    * Layar cerita yang akan dipanggil oleh <code>Level</code>.
    */
-  private Story story;
 
   /**
    * Konstruktor.
@@ -131,7 +130,7 @@ public class Level {
             dep.remove(b8);
             dep.remove(b9);
             dep.remove(labelimage);
-            story = new Story(dep, 1, p);
+            Story story = new Story(dep, 1, p);
           }
         }
     );
@@ -142,7 +141,6 @@ public class Level {
             if (playerLevel < 2) {
               showRestrictionMessage();
             } else {
-              story = new Story(dep, 2, p);
               dep.remove(b1);
               dep.remove(b2);
               dep.remove(b3);
@@ -153,6 +151,7 @@ public class Level {
               dep.remove(b8);
               dep.remove(b9);
               dep.remove(labelimage);
+              Story story = new Story(dep, 2, p);
             }
           }
         }
@@ -174,7 +173,7 @@ public class Level {
               dep.remove(b8);
               dep.remove(b9);
               dep.remove(labelimage);
-              story = new Story(dep, 3, p);
+              Story story = new Story(dep, 3, p);
             }
           }
         }
@@ -196,7 +195,7 @@ public class Level {
               dep.remove(b8);
               dep.remove(b9);
               dep.remove(labelimage);
-              story = new Story(dep, 4, p);
+              Story story = new Story(dep, 4, p);
             }
           }
         }
@@ -218,7 +217,7 @@ public class Level {
               dep.remove(b8);
               dep.remove(b9);
               dep.remove(labelimage);
-              story = new Story(dep, 5, p);
+              Story story = new Story(dep, 5, p);
             }
           }
         }
@@ -240,7 +239,7 @@ public class Level {
               dep.remove(b8);
               dep.remove(b9);
               dep.remove(labelimage);
-              story = new Story(dep, 6, p);
+              Story story = new Story(dep, 6, p);
             }
           }
         }
@@ -262,7 +261,7 @@ public class Level {
               dep.remove(b8);
               dep.remove(b9);
               dep.remove(labelimage);
-              story = new Story(dep, 7, p);
+              Story story = new Story(dep, 7, p);
             }
           }
         }
@@ -284,7 +283,7 @@ public class Level {
               dep.remove(b8);
               dep.remove(b9);
               dep.remove(labelimage);
-              story = new Story(dep, 8, p);
+              Story story = new Story(dep, 8, p);
             }
           }
         }
@@ -306,7 +305,7 @@ public class Level {
               dep.remove(b8);
               dep.remove(b9);
               dep.remove(labelimage);
-              story = new Story(dep, 9, p);
+              Story story = new Story(dep, 9, p);
             }
           }
         }

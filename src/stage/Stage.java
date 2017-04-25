@@ -173,6 +173,7 @@ public class Stage {
         }
         inGameMoney += incomeToBeAdded;
         timer.cancel();
+        timer.purge();
       }
     };
     timer.schedule(deliveryTask, 30);

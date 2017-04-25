@@ -22,6 +22,7 @@ public class StageView {
   JButton buttonscissors;
   JButton buttoncan;
   JLabel labelgarden;
+  JButton buttonpotp;
   JButton buttonpot;
   JButton buttonorchid;
   JButton buttonchamomile;
@@ -163,13 +164,13 @@ public class StageView {
     dep.add(buttonorchid, new Integer(1000));
 
     ImageIcon pot = new ImageIcon("asset/pot.png");
-    buttonpot = new JButton(pot);
-    buttonpot.setBounds(1080,430,100,100);
-    buttonpot.setOpaque(false);
-    buttonpot.setContentAreaFilled(false);
-    buttonpot.setBorderPainted(false);
-    buttonpot.addActionListener(actList.remove(0));
-    dep.add(buttonpot, new Integer(1000));
+    buttonpotp = new JButton(pot);
+    buttonpotp.setBounds(1080,430,100,100);
+    buttonpotp.setOpaque(false);
+    buttonpotp.setContentAreaFilled(false);
+    buttonpotp.setBorderPainted(false);
+    buttonpotp.addActionListener(actList.remove(0));
+    dep.add(buttonpotp, new Integer(1000));
 
     ImageIcon garden = new ImageIcon("asset/garden.png");
     labelgarden = new JLabel(garden);
@@ -241,7 +242,7 @@ public class StageView {
     dep.remove(buttonscissors);
     dep.remove(buttoncan);
     dep.remove(labelgarden);
-    dep.remove(buttonpot);
+    dep.remove(buttonpotp);
     dep.remove(buttonorchid);
     dep.remove(labelshop);
     dep.remove(buttonchamomile);

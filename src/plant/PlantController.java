@@ -163,6 +163,7 @@ public class PlantController {
         flowerInControl.grow();
         viewInControl = new PlantView(flowerInControl);
         timer.cancel();
+        timer.purge();
       }
     };
     if (time == harvestTime) {
