@@ -6,9 +6,12 @@ package plant;
  * @author Gisela Supardi
  * @version 22/04/2017
  */
-public class Orchid extends Flower {
-  /** Konstruktor. */
-  public Orchid() {
+class Orchid extends Flower {
+
+  /**
+   * Konstruktor.
+   */
+  Orchid() {
     super("orchid", 25, 35);
   }
 }
