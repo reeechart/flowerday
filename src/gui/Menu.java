@@ -64,10 +64,19 @@ public class Menu extends JPanel {
     buttonstart.setOpaque(false);
     buttonstart.setContentAreaFilled(false);
     buttonstart.setBorderPainted(false);
-    buttonstart.setBounds(640, 550, 200, 200);
+    buttonstart.setBounds(540, 550, 200, 200);
 
     dp.add(labelimage, new Integer(50));
     dp.add(buttonstart, new Integer(350));
+
+    ImageIcon load = new ImageIcon("asset/leaf.png");
+    JButton buttonload = new JButton(load);
+    buttonload.setOpaque(false);
+    buttonload.setBorderPainted(false);
+    buttonload.setContentAreaFilled(false);
+    buttonload.setBounds(660, 550, 200, 200);
+
+    dp.add(buttonload, new Integer(350));
 
 
     //Main
@@ -122,9 +131,23 @@ public class Menu extends JPanel {
                             dp.remove(buttonstart);
                             dp.remove(labelimage);
                             dp.remove(namePlayer);
+                            dp.remove(buttonload);
                           }
                         }
                 );
+
+
+              }
+            }
+    );
+    buttonload.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                new Load(dp);
+                dp.remove(buttonstart);
+                dp.remove(labelimage);
+                dp.remove(buttonload);
               }
             }
     );
