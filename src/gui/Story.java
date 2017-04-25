@@ -17,6 +17,8 @@ import java.util.Scanner;
  */
 public class Story extends JPanel {
 
+  StageController sc;
+
   Story(JDesktopPane dep, int x, Player p) {
     final boolean f = false;
     String story = new String();
@@ -60,7 +62,7 @@ public class Story extends JPanel {
     labelstory.setBounds(10,250,600,500);
     labelstory.setBackground(new Color(255,255,255,100));
     labelstory.setOpaque(true);
-    dep.add(labelstory, new Integer(50));
+    dep.add(labelstory, new Integer(60));
 
     dep.add(labelimage, new Integer(50));
 
@@ -81,23 +83,23 @@ public class Story extends JPanel {
                 dep.remove(labelimage);
                 dep.remove(labelstory);
                 if (x == 1) {
-                  StageController sc = new StageController(dep, 1, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 1, p.getTruckLevel(), p);
                 } else if (x == 2) {
-                  StageController sc = new StageController(dep, 2, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 2, p.getTruckLevel(), p);
                 } else if (x == 3) {
-                  StageController sc = new StageController(dep, 3, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 3, p.getTruckLevel(), p);
                 } else if( x == 4) {
-                  StageController sc = new StageController(dep, 4, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 4, p.getTruckLevel(), p);
                 } else if (x == 5) {
-                  StageController sc = new StageController(dep, 5, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 5, p.getTruckLevel(), p);
                 } else if (x == 6) {
-                  StageController sc = new StageController(dep, 6, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 6, p.getTruckLevel(), p);
                 } else if (x == 7) {
-                  StageController sc = new StageController(dep, 7, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 7, p.getTruckLevel(), p);
                 } else if (x == 8) {
-                  StageController sc = new StageController(dep, 8, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 8, p.getTruckLevel(), p);
                 } else if (x == 9) {
-                  StageController sc = new StageController(dep, 9, p.getTruckLevel(), p);
+                  sc = new StageController(dep, 9, p.getTruckLevel(), p);
                 }
                 else {
                   new Level(dep, p);

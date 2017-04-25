@@ -132,8 +132,10 @@ public class StageController {
     player = p;
     dptemp = dp;
 
+
     stage = new Stage(stageLv, truckLv);
     sview = new StageView(stage, this, dptemp, player, stageLv, actionListenerList);
+    sview.updatePlayerMoney(dptemp, stage, player);
     java.util.Timer timer = new java.util.Timer();
     TimerTask endGame = new TimerTask() {
       @Override

@@ -32,8 +32,8 @@ public class StageView {
   JLabel labellevel;
   JLabel labelimage;
   JLabel labelshop;
-
-
+  JLabel labelmoneybag;
+  JLabel labelmoneybag1;
 
   public void newPot(JDesktopPane dep, Stage stage, ActionListener a) {
     int n = stage.getPots() - 1;
@@ -77,6 +77,7 @@ public class StageView {
     String gameMoney= new String(Integer.toString(stage.getInGameMoney()));
     dep.remove(labelmoney1);
     labelmoney1 = new JLabel(gameMoney);
+    labelmoney1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
     labelmoney1.setBounds(180,270,100,100);
     dep.add(labelmoney1, new Integer(1000));
   }
@@ -85,8 +86,19 @@ public class StageView {
     String income = new String(Integer.toString(stage.getIncome()));
     labelincome.setVisible(false);
     labelincome = new JLabel(income);
+    labelincome.setFont(new Font("Grinched 2.0", Font.BOLD,24));
     labelincome.setBounds(180,370,100,100);
     dep.add(labelincome, new Integer(1000));
+  }
+
+  public  void updatePlayerMoney(JDesktopPane dep, Stage stage, Player p) {
+    String playerMoney = new String(Integer.toString(p.getMoney()));
+    labelmoneybag1.setVisible(false);
+    labelmoneybag1 = new JLabel(playerMoney);
+    labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+    labelmoneybag1.setBounds(1400, 10, 50, 50);
+    dep.add(labelmoneybag1, new Integer(1000));
+
   }
 
   public StageView(Stage stage, StageController sc, JDesktopPane dep, Player p, int l, ArrayList<ActionListener> actList) {
@@ -102,9 +114,20 @@ public class StageView {
     labelimage.setBounds(0,0,1440,900);
     dep.add(labelimage, new Integer(150));
 
+    ImageIcon moneybag = new ImageIcon("asset/bagmoney.png");
+    labelmoneybag = new JLabel(moneybag);
+    labelmoneybag.setBounds(1300, 10, 100, 100);
+    dep.add(labelmoneybag, new Integer(1000));
+
+    String playerMoney = new String(Integer.toString(p.getMoney()));
+    labelmoneybag1 = new JLabel(playerMoney);
+    labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+    labelmoneybag1.setBounds(1400, 10, 50, 50);
+    dep.add(labelmoneybag1, new Integer(1000));
+
     ImageIcon level = new ImageIcon("asset/1small.png");
     labellevel = new JLabel(level);
-    labellevel.setBounds(80,200,100,100);
+    labellevel.setBounds(1300,110,100,100);
     dep.add(labellevel, new Integer(1000));
 
     ImageIcon money = new ImageIcon("asset/money.png");
@@ -114,12 +137,14 @@ public class StageView {
 
     String income = new String(Integer.toString(stage.getIncome()));
     labelincome = new JLabel(income);
+    labelincome.setFont(new Font("Grinched 2.0", Font.BOLD,24));
     labelincome.setBounds(180,370,100,100);
     dep.add(labelincome, new Integer(1000));
 
     String gameMoney= new String(Integer.toString(stage.getInGameMoney()));
     labelmoney1 = new JLabel(gameMoney);
     labelmoney1.setBounds(180,270,100,100);
+    labelmoney1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
     dep.add(labelmoney1, new Integer(1000));
 
     ImageIcon shop = new ImageIcon("asset/shop.png");
@@ -251,6 +276,8 @@ public class StageView {
     dep.remove(labelmoney);
     dep.remove(labellevel);
     dep.remove(labelimage);
+    dep.remove(labelmoneybag);
+    dep.remove(labelmoneybag1);
     new Level(dep, p);
   }
 }
