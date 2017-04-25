@@ -1,4 +1,4 @@
-startMoney: 1000, targetMoney: 150, timeLimit: 120
+startMoney: 35, targetMoney: 150, timeLimit: 120
 startMoney: 50, targetMoney: 200, timeLimit: 120
 startMoney: 65, targetMoney: 500, timeLimit: 240
 startMoney: 85, targetMoney: 300, timeLimit: 150
