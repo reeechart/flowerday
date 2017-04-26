@@ -1,17 +1,13 @@
 package stage;
 
 import gui.Level;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import plant.PlantController;
 import player.Player;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * Kelas view untuk mengatur menampilkan model <code>Stage</code> ke layar.
@@ -476,6 +472,9 @@ public class StageView {
       JOptionPane.showMessageDialog(null,
           "Sorry, you lose :(", "Message",
           JOptionPane.INFORMATION_MESSAGE, quit);
+    }
+    if (animation.isAlive()) {
+      animation.interrupt();
     }
     int n = stage.getPots();
     for (int pot = 0; pot < n; pot++) {

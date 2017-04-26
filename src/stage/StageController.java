@@ -1,13 +1,12 @@
 package stage;
 
+import player.Player;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.TimerTask;
-import javax.swing.JButton;
-import javax.swing.JDesktopPane;
-import javax.swing.Timer;
-import player.Player;
 
 /**
  * Kelas controller untuk mengatur model <code>Stage</code>.
@@ -212,7 +211,7 @@ public class StageController {
     if (stage.getIncome() > 0) {
       sview.moveTruckToCity(dptemp);
       stage.sellFlowers();
-      int delay = 11000;
+      int delay = 11000 - ((player.getTruckLevel() - 1) * 1500);
       sview.updateIncome(dptemp, stage, a);
 
       ActionListener task = new ActionListener() {
