@@ -1,0 +1,1 @@
+name : irene, maxLv : 1, money : 500, truckLv : 1
