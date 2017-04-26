@@ -27,7 +27,7 @@ public class PlantController {
   /**
    * Default waktu perpindahan state pertumbuhan dalam ms.
    */
-  private final int growthTime = 3000;
+  private final int growthTime = 1000;
   /**
    * Default batas waktu dalam ms untuk memanen bunga sebelum membusuk.
    */
@@ -167,7 +167,7 @@ public class PlantController {
       }
     };
     if (time == harvestTime) {
-      timer.schedule(task, 3000);
+      timer.schedule(task, 1000);
     } else {
       timer.schedule(task, 30);
     }
