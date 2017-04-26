@@ -123,7 +123,7 @@ public class Level {
     String playerMoney = new String(Integer.toString(p.getMoney()));
     labelmoneybag1 = new JLabel(playerMoney);
     labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    labelmoneybag1.setBounds(1350, 10, 50, 50);
+    labelmoneybag1.setBounds(1350, 30, 50, 50);
     dep.add(labelmoneybag1, new Integer(1000));
     // Icon Player Level
     int level = p.getLastStageOpened();
@@ -132,52 +132,56 @@ public class Level {
     if (level == 1) {
       playerLevelIcon = new ImageIcon("asset/1small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level ==2) {
       playerLevelIcon = new ImageIcon("asset/2small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 3) {
       playerLevelIcon = new ImageIcon("asset/3small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 4) {
       playerLevelIcon = new ImageIcon("asset/4small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 5) {
       playerLevelIcon = new ImageIcon("asset/5small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 6) {
       playerLevelIcon = new ImageIcon("asset/6small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 7) {
       playerLevelIcon = new ImageIcon("asset/7small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 8) {
       playerLevelIcon = new ImageIcon("asset/8small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else {
       playerLevelIcon = new ImageIcon("asset/1small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1275, 130, 50, 50);
+      labelLevel.setBounds(1180, 30, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     }
     // Button save
-    JButton buttonSave = new JButton("Save");
-    buttonSave.setBounds(1150, 130, 100, 50);
+    ImageIcon imagesave = new ImageIcon("asset/save.png");
+    JButton buttonSave = new JButton(imagesave);
+    buttonSave.setOpaque(false);
+    buttonSave.setBorderPainted(false);
+    buttonSave.setContentAreaFilled(false);
+    buttonSave.setBounds(1200, 600, 200, 200);
     buttonSave.setFont(new Font("Grinched 2.0", Font.BOLD,24));
     buttonSave.addActionListener(
             new ActionListener() {
@@ -232,15 +236,18 @@ public class Level {
     dep.add(labelTruckLevel, new Integer(1000));
     ImageIcon playerlevel = new ImageIcon();
     // Button Upgrade Truck
-    JButton upgradeTruck = new JButton("Upgrade Truck");
-    upgradeTruck.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    upgradeTruck.setBounds(1100, 180, 150, 50);
+    ImageIcon imagePowerUp = new ImageIcon("asset/powerup.png");
+    JButton upgradeTruck = new JButton(imagePowerUp);
+    upgradeTruck.setOpaque(false);
+    upgradeTruck.setBorderPainted(false);
+    upgradeTruck.setContentAreaFilled(false);
+    upgradeTruck.setBounds(1150, 180, 80, 80);
     dep.add(upgradeTruck, new Integer(1000));
     // Label Upgrade Truck
     String price = new String(Integer.toString(3000*p.getTruckLevel()));
     upgradePrice = new JLabel(price);
     upgradePrice.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    upgradePrice.setBounds(1150, 230, 100, 30);
+    upgradePrice.setBounds(1160, 265, 100, 30);
     dep.add(upgradePrice, new Integer(1000));
     // Mengurus aksi yang dilakukan saat button diklik
     upgradeTruck.addActionListener(
@@ -259,12 +266,12 @@ public class Level {
                 String price = new String(Integer.toString(3000*p.getTruckLevel()));
                 upgradePrice = new JLabel(price);
                 upgradePrice.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-                upgradePrice.setBounds(1150, 230, 100, 30);
+                upgradePrice.setBounds(1160, 265, 100, 30);
                 dep.add(upgradePrice, new Integer(1000));
                 String playerMoney = new String(Integer.toString(p.getMoney()));
                 labelmoneybag1 = new JLabel(playerMoney);
                 labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-                labelmoneybag1.setBounds(1350, 10, 50, 50);
+                labelmoneybag1.setBounds(1350, 30, 50, 50);
                 dep.add(labelmoneybag1, new Integer(1000));
               }
             }

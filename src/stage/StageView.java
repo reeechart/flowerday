@@ -1,7 +1,8 @@
 package stage;
 
 import gui.Level;
-import java.awt.Font;
+
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
@@ -111,6 +112,10 @@ public class StageView {
   private JLabel labelTime;
 
   private JLabel label;
+
+  private JLabel labelTarget;
+
+  private JLabel labelTargetValue;
   /**
    * Tampilan gambar penanda Wonder Town, tempat menjual bunga.
    */
@@ -226,7 +231,7 @@ public class StageView {
     labelIncome.setVisible(false);
     labelIncome = new JLabel(income);
     labelIncome.setFont(new Font("Grinched 2.0", Font.BOLD, 24));
-    labelIncome.setBounds(190, 580, 100, 100);
+    labelIncome.setBounds(250, 580, 100, 100);
     dep.add(labelIncome, new Integer(1000));
   }
 
@@ -316,12 +321,11 @@ public class StageView {
   StageView(Stage stage, JDesktopPane dep, Player p, int stgLevel,
             ArrayList<ActionListener> actList) {
 
-
+    // Time Limit
     labelTime = new JLabel("Time Limit : ");
     labelTime.setBounds(690, 10, 100, 50 );
     labelTime.setFont(new Font("Grinched 2.0", Font.BOLD, 24));
     dep.add(labelTime, new Integer(10000));
-
     long limitTime = stage.getTimeLimit()*1000;
     java.util.Timer timer = new java.util.Timer();
     TimerTask deliveryTask = new TimerTask() {
@@ -330,20 +334,34 @@ public class StageView {
         long startTime = System.currentTimeMillis();
         // DISABLE SELL BUTTON, ANIMASI TRUCK JIKA PERLU
         while (System.currentTimeMillis() - startTime <= limitTime) {
-          label = new JLabel(Long.toString(limitTime-(System.currentTimeMillis()-startTime)));
+          label = new JLabel(Long.toString((limitTime - (System.currentTimeMillis() - startTime)) / 1000));
           label.setBounds(700, 10, 100, 100);
           label.setFont(new Font("Grinched 2.0", Font.BOLD, 24));
           dep.add(label, new Integer(10000));
-          label.setVisible(false);
+          dep.remove(label);
+            //label.setVisible(false);
 
-          // wait until delivery is finished
+            // wait until delivery is finished
         }
         timer.cancel();
         timer.purge();
       }
     };
     timer.schedule(deliveryTask, 30);
-
+    // Target
+    labelTarget = new JLabel("Target : ");
+    labelTarget.setBounds(600, 10, 90, 50);
+    labelTarget.setFont(new Font("Grinched 2.0", Font.BOLD, 24));
+    dep.add(labelTarget, new Integer(10000));
+    String targetValue = new String(Integer.toString(stage.getTargetMoney()));
+    labelTargetValue = new JLabel(targetValue);
+    labelTargetValue.setBounds(620, 10, 100, 100);
+    labelTargetValue.setFont(new Font("Grinched 2.0", Font.BOLD, 24));
+    dep.add(labelTargetValue, new Integer(10000));
+    labelTime = new JLabel("Time Limit : ");
+    labelTime.setBounds(690, 10, 100, 50 );
+    labelTime.setFont(new Font("Grinched 2.0", Font.BOLD, 24));
+    dep.add(labelTime, new Integer(10000));
     // Pot kosong
     ImageIcon potimage = new ImageIcon("asset/potempty.png");
     // Background saat bermain di stage
@@ -374,13 +392,14 @@ public class StageView {
     String income = Integer.toString(stage.getIncome());
     labelIncome = new JLabel(income);
     labelIncome.setFont(new Font("Grinched 2.0", Font.BOLD, 24));
-    labelIncome.setBounds(190, 580, 100, 100);
+    labelIncome.setBounds(250, 580, 100, 100);
     dep.add(labelIncome, new Integer(1000));
     String gameMoney = Integer.toString(stage.getInGameMoney());
     labelMoney = new JLabel(gameMoney);
     labelMoney.setBounds(180, 270, 100, 100);
     labelMoney.setFont(new Font("Grinched 2.0", Font.BOLD, 24));
     dep.add(labelMoney, new Integer(1000));
+    // Kotak
     // Tampilan store
     ImageIcon shop = new ImageIcon("asset/shop.png");
     labelShop = new JLabel(shop);
@@ -465,9 +484,12 @@ public class StageView {
     labelVillage = new JLabel(village);
     labelVillage.setBounds(50, 650, 150, 150);
     dep.add(labelVillage, new Integer(1000));
-    sell = new JButton("Sell");
-    sell.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    sell.setBounds(100, 600, 80, 50);
+    ImageIcon imagesell = new ImageIcon("asset/sell.png");
+    sell = new JButton(imagesell);
+    sell.setOpaque(false);
+    sell.setBorderPainted(false);
+    sell.setContentAreaFilled(false);
+    sell.setBounds(100, 550, 100, 100);
     sell.addActionListener(actList.remove(0));
     dep.add(sell, new Integer(1000));
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
