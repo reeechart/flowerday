@@ -25,6 +25,22 @@ public class Player {
    * Uang dipakai untuk melakukan <code>upgradeTruck</code>.
    */
   private int money;
+  /**
+   * Array yang berisi nama semua player.
+   */
+  private String[] playerArray;
+  /**
+   * Array yang berisi level maksimum yang sudah dicapai masing-masing player.
+   */
+  private int[] maxLevelArray;
+  /**
+   * Array yang berisi total uang yang sudah berhasil dikumpulkan player.
+   */
+  private int[] totalMoneyArray;
+  /**
+   * Array yang berisi level truck terakhir yang dimiliki player.
+   */
+  private int[] truckLevelArray;
 
   /**
    * Constructor default.
@@ -46,11 +62,16 @@ public class Player {
    * @param lastStage stage terakhir yang bisa dimainkan dalam game
    * @param truckLv level truck player yang akan dibentuk
    */
-  public Player(String playerName, int lastStage, int truckLv, int _money) {
-    name = playerName;
-    lastStageOpened = lastStage;
-    truckLevel = truckLv;
-    money = _money;
+  public Player(String[] playerName, int[] lastStage, int[] truckLv, int[] _money, int indeks) {
+    name = playerName[indeks];
+    lastStageOpened = lastStage[indeks];
+    truckLevel = truckLv[indeks];
+    money = _money[indeks];
+
+    playerArray = playerName;
+    maxLevelArray = lastStage;
+    truckLevelArray = truckLv;
+    totalMoneyArray = _money;
   }
 
   /**
@@ -87,6 +108,42 @@ public class Player {
    */
   public int getMoney() {
     return money;
+  }
+
+  /**
+   * Getter untuk nama player dalam game dengan indeks tertentu.
+   * @param index index player
+   * @return <code>playerArray[index]</code>
+   */
+  public String getNameFromIndex(int index) {
+    return playerArray[index];
+  }
+
+  /**
+   * Getter untuk mendapatkan stage terakhir yang bisa dimainkan dalam game dengan indeks tertentu.
+   * @param index index player
+   * @return <code>maxLevelArray[index]</code>
+   */
+  public int getLastStageOpenedFromIndex(int index) {
+    return maxLevelArray[index];
+  }
+
+  /**
+   * Getter untuk level truck yang dipakai dalam game dengan indeks tertentu.
+   * @param index index player
+   * @return <code>truckLevelArray[index]</code>
+   */
+  public int getTruckLevelFromIndex(int index) {
+    return truckLevelArray[index];
+  }
+
+  /**
+   * Getter untuk uang player dalam game dengan indeks tertentu.
+   * @param index index player
+   * @return <code>totalMoneyArray[index]</code>
+   */
+  public int getMoneyFromIndex(int index) {
+    return totalMoneyArray[index];
   }
 
   /**

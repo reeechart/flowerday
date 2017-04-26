@@ -1,9 +1,9 @@
 package gui;
 
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
@@ -23,10 +23,9 @@ import player.Player;
  */
 public class Level {
 
-  /**
-   * Layar cerita yang akan dipanggil oleh <code>Level</code>.
-   */
-
+  JLabel upgradePrice;
+  JLabel labelTruckLevel;
+  JLabel labelmoneybag1;
   /**
    * Konstruktor.
    *
@@ -34,6 +33,7 @@ public class Level {
    * @param p Keterangan mengenai player yang sedang bermain
    */
   public Level(JDesktopPane dep, Player p) {
+
     // Background
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     int width = gd.getDisplayMode().getWidth();
@@ -114,201 +114,401 @@ public class Level {
     b9.setContentAreaFilled(false);
     b9.setBounds(600, 450, 200, 200);
     dep.add(b9, new Integer(700));
+    // Icon Player Money
+    ImageIcon moneybag = new ImageIcon("asset/bagmoney.png");
+    JLabel labelmoneybag = new JLabel(moneybag);
+    labelmoneybag.setBounds(1300, 10, 100, 100);
+    dep.add(labelmoneybag, new Integer(1000));
+    // Label Player Money
+    String playerMoney = new String(Integer.toString(p.getMoney()));
+    labelmoneybag1 = new JLabel(playerMoney);
+    labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+    labelmoneybag1.setBounds(1400, 10, 50, 50);
+    dep.add(labelmoneybag1, new Integer(1000));
+    // Icon Player Level
+    int level = p.getLastStageOpened();
+    ImageIcon playerLevelIcon;
+    JLabel labelLevel;
+    if (level == 1) {
+      playerLevelIcon = new ImageIcon("asset/1small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    } else if (level ==2) {
+      playerLevelIcon = new ImageIcon("asset/2small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    } else if (level == 3) {
+      playerLevelIcon = new ImageIcon("asset/3small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    } else if (level == 4) {
+      playerLevelIcon = new ImageIcon("asset/4small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    } else if (level == 5) {
+      playerLevelIcon = new ImageIcon("asset/5small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    } else if (level == 6) {
+      playerLevelIcon = new ImageIcon("asset/6small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    } else if (level == 7) {
+      playerLevelIcon = new ImageIcon("asset/7small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    } else if (level == 8) {
+      playerLevelIcon = new ImageIcon("asset/8small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    } else {
+      playerLevelIcon = new ImageIcon("asset/1small.png");
+      labelLevel = new JLabel(playerLevelIcon);
+      labelLevel.setBounds(1325, 130, 50, 50);
+      dep.add(labelLevel, new Integer(1000));
+    }
+    // Button save
+    JButton buttonSave = new JButton("Save");
+    buttonSave.setBounds(1150, 130, 100, 50);
+    buttonSave.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+    buttonSave.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+
+                try {
+                  PrintWriter writer = new PrintWriter("asset/player.txt","UTF-8");
+                  for(int i=0;i<3;i++) {
+                    String name = p.getNameFromIndex(i);
+                    int maxLv = p.getLastStageOpenedFromIndex(i);
+                    int money = p.getMoneyFromIndex(i);
+                    int truckLv = p.getTruckLevelFromIndex(i);
+
+                    if(i!=0) writer.println();
+                    writer.print("name : " + name + ", maxLv : " + maxLv + ", money : " + money + ", truckLv : " + truckLv);
+                    writer.close();
+                  }
+                }
+                catch (FileNotFoundException a) {
+                  System.exit(0);
+                }
+                catch (UnsupportedEncodingException a) {
+                  System.exit(0);
+                }
+              }
+            }
+    );
+    dep.add(buttonSave, new Integer(1000));
+    // Icon Truck Level
+    ImageIcon truck = new ImageIcon("asset/truckminimini.png");
+    JLabel labelTruck = new JLabel(truck);
+    labelTruck.setBounds(1300, 180, 100, 100);
+    dep.add(labelTruck, new Integer(1000));
+    // Label Truck Level
+    String truckLevel = new String(Integer.toString(p.getTruckLevel()));
+    labelTruckLevel = new JLabel(truckLevel);
+    labelTruckLevel.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+    labelTruckLevel.setBounds(1400, 200, 50, 50);
+    dep.add(labelTruckLevel, new Integer(1000));
+    ImageIcon playerlevel = new ImageIcon();
+    // Button Upgrade Truck
+    JButton upgradeTruck = new JButton("Upgrade Truck");
+    upgradeTruck.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+    upgradeTruck.setBounds(1150, 180, 150, 50);
+    dep.add(upgradeTruck, new Integer(1000));
+    // Label Upgrade Truck
+    String price = new String(Integer.toString(3000*p.getTruckLevel()));
+    upgradePrice = new JLabel(price);
+    upgradePrice.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+    upgradePrice.setBounds(1200, 230, 100, 30);
+    dep.add(upgradePrice, new Integer(1000));
     // Mengurus aksi yang dilakukan saat button diklik
+    upgradeTruck.addActionListener(
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                p.upgradeTruck();
+                dep.remove(upgradePrice);
+                dep.remove(labelTruckLevel);
+                dep.remove(labelmoneybag1);
+                String truckLevel = new String(Integer.toString(p.getTruckLevel()));
+                labelTruckLevel = new JLabel(truckLevel);
+                labelTruckLevel.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+                labelTruckLevel.setBounds(1400, 200, 50, 50);
+                dep.add(labelTruckLevel, new Integer(1000));
+                String price = new String(Integer.toString(3000*p.getTruckLevel()));
+                upgradePrice = new JLabel(price);
+                upgradePrice.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+                upgradePrice.setBounds(1200, 230, 100, 30);
+                dep.add(upgradePrice, new Integer(1000));
+                String playerMoney = new String(Integer.toString(p.getMoney()));
+                labelmoneybag1 = new JLabel(playerMoney);
+                labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
+                labelmoneybag1.setBounds(1400, 10, 50, 50);
+                dep.add(labelmoneybag1, new Integer(1000));
+              }
+            }
+    );
     int playerLevel = p.getLastStageOpened();
     b1.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            dep.remove(b1);
-            dep.remove(b2);
-            dep.remove(b3);
-            dep.remove(b4);
-            dep.remove(b5);
-            dep.remove(b6);
-            dep.remove(b7);
-            dep.remove(b8);
-            dep.remove(b9);
-            dep.remove(labelimage);
-            Story story = new Story(dep, 1, p);
-          }
-        }
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                dep.remove(b1);
+                dep.remove(b2);
+                dep.remove(b3);
+                dep.remove(b4);
+                dep.remove(b5);
+                dep.remove(b6);
+                dep.remove(b7);
+                dep.remove(b8);
+                dep.remove(b9);
+                dep.remove(labelimage);
+                dep.remove(labelmoneybag);
+                dep.remove(labelmoneybag1);
+                dep.remove(labelTruckLevel);
+                dep.remove(labelLevel);
+                dep.remove(buttonSave);
+                dep.remove(labelTruck);
+                Story story = new Story(dep, 1, p);
+                System.out.println(p.getName());
+                System.out.println(p.getLastStageOpened());
+                System.out.println(p.getMoney());
+                System.out.println(p.getTruckLevel());
+              }
+            }
     );
     b2.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            if (playerLevel < 2) {
-              showRestrictionMessage();
-            } else {
-              dep.remove(b1);
-              dep.remove(b2);
-              dep.remove(b3);
-              dep.remove(b4);
-              dep.remove(b5);
-              dep.remove(b6);
-              dep.remove(b7);
-              dep.remove(b8);
-              dep.remove(b9);
-              dep.remove(labelimage);
-              Story story = new Story(dep, 2, p);
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                if (playerLevel < 2) {
+                  showRestrictionMessage();
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  dep.remove(labelmoneybag);
+                  dep.remove(labelmoneybag1);
+                  dep.remove(labelTruckLevel);
+                  dep.remove(labelLevel);
+                  dep.remove(buttonSave);
+                  dep.remove(labelTruck);
+                  Story story = new Story(dep, 2, p);
+                }
+              }
             }
-          }
-        }
     );
     b3.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            if (playerLevel < 3) {
-              showRestrictionMessage();
-            } else {
-              dep.remove(b1);
-              dep.remove(b2);
-              dep.remove(b3);
-              dep.remove(b4);
-              dep.remove(b5);
-              dep.remove(b6);
-              dep.remove(b7);
-              dep.remove(b8);
-              dep.remove(b9);
-              dep.remove(labelimage);
-              Story story = new Story(dep, 3, p);
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                if (playerLevel < 3) {
+                  showRestrictionMessage();
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  dep.remove(labelmoneybag);
+                  dep.remove(labelmoneybag1);
+                  dep.remove(labelTruckLevel);
+                  dep.remove(labelLevel);
+                  dep.remove(buttonSave);
+                  dep.remove(labelTruck);
+                  Story story = new Story(dep, 3, p);
+                }
+              }
             }
-          }
-        }
     );
     b4.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            if (playerLevel < 4) {
-              showRestrictionMessage();
-            } else {
-              dep.remove(b1);
-              dep.remove(b2);
-              dep.remove(b3);
-              dep.remove(b4);
-              dep.remove(b5);
-              dep.remove(b6);
-              dep.remove(b7);
-              dep.remove(b8);
-              dep.remove(b9);
-              dep.remove(labelimage);
-              Story story = new Story(dep, 4, p);
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                if (playerLevel < 4) {
+                  showRestrictionMessage();
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  dep.remove(labelmoneybag);
+                  dep.remove(labelmoneybag1);
+                  dep.remove(labelTruckLevel);
+                  dep.remove(labelLevel);
+                  dep.remove(buttonSave);
+                  dep.remove(labelTruck);
+                  Story story = new Story(dep, 4, p);
+                }
+              }
             }
-          }
-        }
     );
     b5.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            if (playerLevel < 5) {
-              showRestrictionMessage();
-            } else {
-              dep.remove(b1);
-              dep.remove(b2);
-              dep.remove(b3);
-              dep.remove(b4);
-              dep.remove(b5);
-              dep.remove(b6);
-              dep.remove(b7);
-              dep.remove(b8);
-              dep.remove(b9);
-              dep.remove(labelimage);
-              Story story = new Story(dep, 5, p);
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                if (playerLevel < 5) {
+                  showRestrictionMessage();
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  dep.remove(labelmoneybag);
+                  dep.remove(labelmoneybag1);
+                  dep.remove(labelTruckLevel);
+                  dep.remove(labelLevel);
+                  dep.remove(buttonSave);
+                  dep.remove(labelTruck);
+                  Story story = new Story(dep, 5, p);
+                }
+              }
             }
-          }
-        }
     );
     b6.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            if (playerLevel < 6) {
-              showRestrictionMessage();
-            } else {
-              dep.remove(b1);
-              dep.remove(b2);
-              dep.remove(b3);
-              dep.remove(b4);
-              dep.remove(b5);
-              dep.remove(b6);
-              dep.remove(b7);
-              dep.remove(b8);
-              dep.remove(b9);
-              dep.remove(labelimage);
-              Story story = new Story(dep, 6, p);
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                if (playerLevel < 6) {
+                  showRestrictionMessage();
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  dep.remove(labelmoneybag);
+                  dep.remove(labelmoneybag1);
+                  dep.remove(labelTruckLevel);
+                  dep.remove(labelLevel);
+                  dep.remove(buttonSave);
+                  dep.remove(labelTruck);
+                  Story story = new Story(dep, 6, p);
+                }
+              }
             }
-          }
-        }
     );
     b7.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            if (playerLevel < 7) {
-              showRestrictionMessage();
-            } else {
-              dep.remove(b1);
-              dep.remove(b2);
-              dep.remove(b3);
-              dep.remove(b4);
-              dep.remove(b5);
-              dep.remove(b6);
-              dep.remove(b7);
-              dep.remove(b8);
-              dep.remove(b9);
-              dep.remove(labelimage);
-              Story story = new Story(dep, 7, p);
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                if (playerLevel < 7) {
+                  showRestrictionMessage();
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  dep.remove(labelmoneybag);
+                  dep.remove(labelmoneybag1);
+                  dep.remove(labelTruckLevel);
+                  dep.remove(labelLevel);
+                  dep.remove(buttonSave);
+                  dep.remove(labelTruck);
+                  Story story = new Story(dep, 7, p);
+                }
+              }
             }
-          }
-        }
     );
     b8.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            if (playerLevel < 8) {
-              showRestrictionMessage();
-            } else {
-              dep.remove(b1);
-              dep.remove(b2);
-              dep.remove(b3);
-              dep.remove(b4);
-              dep.remove(b5);
-              dep.remove(b6);
-              dep.remove(b7);
-              dep.remove(b8);
-              dep.remove(b9);
-              dep.remove(labelimage);
-              Story story = new Story(dep, 8, p);
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                if (playerLevel < 8) {
+                  showRestrictionMessage();
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  dep.remove(labelmoneybag);
+                  dep.remove(labelmoneybag1);
+                  dep.remove(labelTruckLevel);
+                  dep.remove(labelLevel);
+                  dep.remove(buttonSave);
+                  dep.remove(labelTruck);
+                  Story story = new Story(dep, 8, p);
+                }
+              }
             }
-          }
-        }
     );
     b9.addActionListener(
-        new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-            if (playerLevel < 9) {
-              showRestrictionMessage();
-            } else {
-              dep.remove(b1);
-              dep.remove(b2);
-              dep.remove(b3);
-              dep.remove(b4);
-              dep.remove(b5);
-              dep.remove(b6);
-              dep.remove(b7);
-              dep.remove(b8);
-              dep.remove(b9);
-              dep.remove(labelimage);
-              Story story = new Story(dep, 9, p);
+            new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                if (playerLevel < 9) {
+                  showRestrictionMessage();
+                } else {
+                  dep.remove(b1);
+                  dep.remove(b2);
+                  dep.remove(b3);
+                  dep.remove(b4);
+                  dep.remove(b5);
+                  dep.remove(b6);
+                  dep.remove(b7);
+                  dep.remove(b8);
+                  dep.remove(b9);
+                  dep.remove(labelimage);
+                  dep.remove(labelmoneybag);
+                  dep.remove(labelmoneybag1);
+                  dep.remove(labelTruckLevel);
+                  dep.remove(labelLevel);
+                  dep.remove(buttonSave);
+                  dep.remove(labelTruck);
+                  Story story = new Story(dep, 9, p);
+                }
+              }
             }
-          }
-        }
     );
   }
 
@@ -319,6 +519,10 @@ public class Level {
     ImageIcon quit = new ImageIcon("asset/quit.png");
     JFrame frame = new JFrame();
     JOptionPane.showMessageDialog(null, "You can not play this stage",
-        "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+            "Message", JOptionPane.INFORMATION_MESSAGE, quit);
+  }
+
+  private void changeLabelPrice() {
+
   }
 }
