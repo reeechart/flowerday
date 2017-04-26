@@ -27,6 +27,7 @@ public class StageView {
   JButton buttonchamomile;
   JButton buttonsunflower;
   JButton buttonrose;
+  JButton sell;
   JLabel labelmoney;
   JLabel labellevel;
   JLabel labelimage;
@@ -293,7 +294,7 @@ public class StageView {
     labelland.setBounds(50, 650, 150, 150);
     dep.add(labelland, new Integer(1000));
 
-    JButton sell = new JButton("Sell");
+    sell = new JButton("Sell");
     sell.setBounds(100, 600, 80,30);
     sell.addActionListener(actList.remove(0));
     dep.add(sell, new Integer(1000));
@@ -333,6 +334,7 @@ public class StageView {
     dep.remove(labelmoney1);
     dep.remove(labelincome);
     dep.remove(buttontruck);
+    dep.remove(sell);
     dep.remove(buttonscissors);
     dep.remove(buttoncan);
     dep.remove(labelgarden);

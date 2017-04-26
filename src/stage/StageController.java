@@ -232,7 +232,7 @@ public class StageController {
    */
   public void waterFlowerInStage(int row, int col, ActionListener a) {
     stage.waterFlower(row, col);
-    int delay = 3400;
+    int delay = 1400;
     ActionListener waterTask = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
