@@ -186,12 +186,24 @@ public class Level {
 
                 try {
                   PrintWriter writer = new PrintWriter("asset/player.txt","UTF-8");
+                  int indeksPlayer = p.getIndeksPlayer();
                   for(int i=0;i<3;i++) {
-                    String name = p.getNameFromIndex(i);
-                    int maxLv = p.getLastStageOpenedFromIndex(i);
-                    int money = p.getMoneyFromIndex(i);
-                    int truckLv = p.getTruckLevelFromIndex(i);
-
+                    String name;
+                    int maxLv;
+                    int money;
+                    int truckLv;
+                    if(i == indeksPlayer) {
+                      name = p.getName();
+                      maxLv = p.getLastStageOpened();
+                      money = p.getMoney();
+                      truckLv = p.getTruckLevel();
+                    }
+                    else {
+                      name = p.getNameFromIndex(i);
+                      maxLv = p.getLastStageOpenedFromIndex(i);
+                      money = p.getMoneyFromIndex(i);
+                      truckLv = p.getTruckLevelFromIndex(i);
+                    }
                     if(i!=0) writer.println();
                     writer.print("name : " + name + ", maxLv : " + maxLv + ", money : " + money + ", truckLv : " + truckLv);
                     writer.close();

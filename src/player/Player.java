@@ -41,6 +41,10 @@ public class Player {
    * Array yang berisi level truck terakhir yang dimiliki player.
    */
   private int[] truckLevelArray;
+  /**
+   * Integer indeks player
+   */
+  private int indeksPlayer;
 
   /**
    * Constructor default.
@@ -67,6 +71,7 @@ public class Player {
     lastStageOpened = lastStage[indeks];
     truckLevel = truckLv[indeks];
     money = _money[indeks];
+    indeksPlayer = indeks;
 
     playerArray = playerName;
     maxLevelArray = lastStage;
@@ -179,6 +184,13 @@ public class Player {
    */
   public void addMoney(int amount) {
     money += amount;
+  }
+  /**
+   * Getter untuk mendapatkan indeks player
+   * @return indeksPlayer
+   */
+  public int getIndeksPlayer() {
+    return indeksPlayer;
   }
 
 }
