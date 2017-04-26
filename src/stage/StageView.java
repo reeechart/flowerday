@@ -6,7 +6,6 @@ import player.Player;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -36,27 +35,58 @@ public class StageView {
   JLabel labelmoneybag1;
   JLabel labelland;
   JLabel labelcity;
+  Thread animation;
 
   public void moveTruckToCity(JDesktopPane dep) {
     buttontruck.setVisible(false);
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
     buttontruck = new JButton(truck);
-    buttontruck.setBounds(920, 650, 150,150);
-    buttontruck.setOpaque(false);
-    buttontruck.setBorderPainted(false);
-    buttontruck.setContentAreaFilled(false);
-    dep.add(buttontruck, new Integer(1000));
+    animation = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        int x = 200;
+        while (x < 920) {
+          buttontruck.setBounds(x, 650, 150,150);
+          buttontruck.setOpaque(false);
+          buttontruck.setBorderPainted(false);
+          buttontruck.setContentAreaFilled(false);
+          dep.add(buttontruck, new Integer(1000));
+          x += 10;
+          try {
+            animation.sleep(16);
+          } catch(InterruptedException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    });
+    animation.start();
   }
 
   public void moveTruckToWonderLand(JDesktopPane dep) {
     buttontruck.setVisible(false);
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
     buttontruck = new JButton(truck);
-    buttontruck.setBounds(200, 650, 150,150);
-    buttontruck.setOpaque(false);
-    buttontruck.setBorderPainted(false);
-    buttontruck.setContentAreaFilled(false);
-    dep.add(buttontruck, new Integer(1000));
+    animation = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        int x = 920;
+        while (x > 200) {
+          buttontruck.setBounds(x, 650, 150,150);
+          buttontruck.setOpaque(false);
+          buttontruck.setBorderPainted(false);
+          buttontruck.setContentAreaFilled(false);
+          dep.add(buttontruck, new Integer(1000));
+          x -= 10;
+          try {
+            animation.sleep(16);
+          } catch(InterruptedException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    });
+    animation.start();
   }
 
   public void newPot(JDesktopPane dep, Stage stage, ActionListener a) {
@@ -263,19 +293,24 @@ public class StageView {
     labelland.setBounds(50, 650, 150, 150);
     dep.add(labelland, new Integer(1000));
 
+    JButton sell = new JButton("Sell");
+    sell.setBounds(100, 600, 80,30);
+    sell.addActionListener(actList.remove(0));
+    dep.add(sell, new Integer(1000));
+
     ImageIcon truck = new ImageIcon("asset/truckmini.png");
     buttontruck = new JButton(truck);
     buttontruck.setBounds(200, 650, 150,150);
     buttontruck.setOpaque(false);
     buttontruck.setBorderPainted(false);
     buttontruck.setContentAreaFilled(false);
-    buttontruck.addActionListener(actList.remove(0));
     dep.add(buttontruck, new Integer(1000));
 
     ImageIcon city = new ImageIcon("asset/city.png");
     labelcity = new JLabel(city);
     labelcity.setBounds(1100, 590, 200, 200);
     dep.add(labelcity, new Integer(1000));
+
   }
 
   public void endStageView(Stage stage, JDesktopPane dep, int stat, Player p) {

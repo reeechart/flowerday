@@ -154,8 +154,8 @@ public class StageController {
   }
 
   public void sendFlowersToTown(ActionListener a) {
-    sview.moveTruckToCity(dptemp);
     if (stage.getIncome() > 0) {
+      sview.moveTruckToCity(dptemp);
       stage.sellFlowers();
       int delay = 11000;
       sview.updateIncome(dptemp, stage, a);
@@ -164,8 +164,8 @@ public class StageController {
         @Override
         public void actionPerformed(ActionEvent e) {
           sview.updateMoney(dptemp, stage);
-          swing_timer.stop();
           sview.moveTruckToWonderLand(dptemp);
+          swing_timer.stop();
         }
       };
       swing_timer = new Timer(delay, task);
