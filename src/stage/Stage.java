@@ -61,7 +61,7 @@ class Stage {
   /**
    * String untuk menandakan button yang sedang diklik oleh user.
    */
-  private StringBuffer activeButton;
+  StringBuffer activeButton;
 
   /**
    * Konstruktor.
