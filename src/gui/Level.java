@@ -117,13 +117,13 @@ public class Level {
     // Icon Player Money
     ImageIcon moneybag = new ImageIcon("asset/bagmoney.png");
     JLabel labelmoneybag = new JLabel(moneybag);
-    labelmoneybag.setBounds(1300, 10, 100, 100);
+    labelmoneybag.setBounds(1250, 10, 100, 100);
     dep.add(labelmoneybag, new Integer(1000));
     // Label Player Money
     String playerMoney = new String(Integer.toString(p.getMoney()));
     labelmoneybag1 = new JLabel(playerMoney);
     labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    labelmoneybag1.setBounds(1400, 10, 50, 50);
+    labelmoneybag1.setBounds(1350, 10, 50, 50);
     dep.add(labelmoneybag1, new Integer(1000));
     // Icon Player Level
     int level = p.getLastStageOpened();
@@ -132,47 +132,47 @@ public class Level {
     if (level == 1) {
       playerLevelIcon = new ImageIcon("asset/1small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level ==2) {
       playerLevelIcon = new ImageIcon("asset/2small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 3) {
       playerLevelIcon = new ImageIcon("asset/3small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 4) {
       playerLevelIcon = new ImageIcon("asset/4small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 5) {
       playerLevelIcon = new ImageIcon("asset/5small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 6) {
       playerLevelIcon = new ImageIcon("asset/6small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 7) {
       playerLevelIcon = new ImageIcon("asset/7small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else if (level == 8) {
       playerLevelIcon = new ImageIcon("asset/8small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     } else {
       playerLevelIcon = new ImageIcon("asset/1small.png");
       labelLevel = new JLabel(playerLevelIcon);
-      labelLevel.setBounds(1325, 130, 50, 50);
+      labelLevel.setBounds(1275, 130, 50, 50);
       dep.add(labelLevel, new Integer(1000));
     }
     // Button save
@@ -222,7 +222,7 @@ public class Level {
     // Icon Truck Level
     ImageIcon truck = new ImageIcon("asset/truckminimini.png");
     JLabel labelTruck = new JLabel(truck);
-    labelTruck.setBounds(1300, 180, 100, 100);
+    labelTruck.setBounds(1250, 180, 100, 100);
     dep.add(labelTruck, new Integer(1000));
     // Label Truck Level
     String truckLevel = new String(Integer.toString(p.getTruckLevel()));
@@ -234,13 +234,13 @@ public class Level {
     // Button Upgrade Truck
     JButton upgradeTruck = new JButton("Upgrade Truck");
     upgradeTruck.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    upgradeTruck.setBounds(1150, 180, 150, 50);
+    upgradeTruck.setBounds(1100, 180, 150, 50);
     dep.add(upgradeTruck, new Integer(1000));
     // Label Upgrade Truck
     String price = new String(Integer.toString(3000*p.getTruckLevel()));
     upgradePrice = new JLabel(price);
     upgradePrice.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    upgradePrice.setBounds(1200, 230, 100, 30);
+    upgradePrice.setBounds(1150, 230, 100, 30);
     dep.add(upgradePrice, new Integer(1000));
     // Mengurus aksi yang dilakukan saat button diklik
     upgradeTruck.addActionListener(
@@ -259,12 +259,12 @@ public class Level {
                 String price = new String(Integer.toString(3000*p.getTruckLevel()));
                 upgradePrice = new JLabel(price);
                 upgradePrice.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-                upgradePrice.setBounds(1200, 230, 100, 30);
+                upgradePrice.setBounds(1150, 230, 100, 30);
                 dep.add(upgradePrice, new Integer(1000));
                 String playerMoney = new String(Integer.toString(p.getMoney()));
                 labelmoneybag1 = new JLabel(playerMoney);
                 labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-                labelmoneybag1.setBounds(1400, 10, 50, 50);
+                labelmoneybag1.setBounds(1350, 10, 50, 50);
                 dep.add(labelmoneybag1, new Integer(1000));
               }
             }
@@ -290,6 +290,8 @@ public class Level {
                 dep.remove(labelLevel);
                 dep.remove(buttonSave);
                 dep.remove(labelTruck);
+                dep.remove(upgradePrice);
+                dep.remove(upgradeTruck);
                 Story story = new Story(dep, 1, p);
                 System.out.println(p.getName());
                 System.out.println(p.getLastStageOpened());
@@ -321,6 +323,8 @@ public class Level {
                   dep.remove(labelLevel);
                   dep.remove(buttonSave);
                   dep.remove(labelTruck);
+                  dep.remove(upgradePrice);
+                  dep.remove(upgradeTruck);
                   Story story = new Story(dep, 2, p);
                 }
               }
@@ -349,6 +353,8 @@ public class Level {
                   dep.remove(labelLevel);
                   dep.remove(buttonSave);
                   dep.remove(labelTruck);
+                  dep.remove(upgradePrice);
+                  dep.remove(upgradeTruck);
                   Story story = new Story(dep, 3, p);
                 }
               }
@@ -377,6 +383,8 @@ public class Level {
                   dep.remove(labelLevel);
                   dep.remove(buttonSave);
                   dep.remove(labelTruck);
+                  dep.remove(upgradePrice);
+                  dep.remove(upgradeTruck);
                   Story story = new Story(dep, 4, p);
                 }
               }
@@ -405,6 +413,8 @@ public class Level {
                   dep.remove(labelLevel);
                   dep.remove(buttonSave);
                   dep.remove(labelTruck);
+                  dep.remove(upgradePrice);
+                  dep.remove(upgradeTruck);
                   Story story = new Story(dep, 5, p);
                 }
               }
@@ -433,6 +443,8 @@ public class Level {
                   dep.remove(labelLevel);
                   dep.remove(buttonSave);
                   dep.remove(labelTruck);
+                  dep.remove(upgradePrice);
+                  dep.remove(upgradeTruck);
                   Story story = new Story(dep, 6, p);
                 }
               }
@@ -461,6 +473,8 @@ public class Level {
                   dep.remove(labelLevel);
                   dep.remove(buttonSave);
                   dep.remove(labelTruck);
+                  dep.remove(upgradePrice);
+                  dep.remove(upgradeTruck);
                   Story story = new Story(dep, 7, p);
                 }
               }
@@ -489,6 +503,8 @@ public class Level {
                   dep.remove(labelLevel);
                   dep.remove(buttonSave);
                   dep.remove(labelTruck);
+                  dep.remove(upgradePrice);
+                  dep.remove(upgradeTruck);
                   Story story = new Story(dep, 8, p);
                 }
               }
@@ -517,6 +533,8 @@ public class Level {
                   dep.remove(labelLevel);
                   dep.remove(buttonSave);
                   dep.remove(labelTruck);
+                  dep.remove(upgradePrice);
+                  dep.remove(upgradeTruck);
                   Story story = new Story(dep, 9, p);
                 }
               }

@@ -120,7 +120,7 @@ public class StageView {
     labelmoneybag1.setVisible(false);
     labelmoneybag1 = new JLabel(playerMoney);
     labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    labelmoneybag1.setBounds(1400, 10, 50, 50);
+    labelmoneybag1.setBounds(1350, 10, 50, 50);
     dep.add(labelmoneybag1, new Integer(1000));
 
   }
@@ -140,19 +140,14 @@ public class StageView {
 
     ImageIcon moneybag = new ImageIcon("asset/bagmoney.png");
     labelmoneybag = new JLabel(moneybag);
-    labelmoneybag.setBounds(1300, 10, 100, 100);
+    labelmoneybag.setBounds(1250, 10, 100, 100);
     dep.add(labelmoneybag, new Integer(1000));
 
     String playerMoney = new String(Integer.toString(p.getMoney()));
     labelmoneybag1 = new JLabel(playerMoney);
     labelmoneybag1.setFont(new Font("Grinched 2.0", Font.BOLD,24));
-    labelmoneybag1.setBounds(1400, 10, 50, 50);
+    labelmoneybag1.setBounds(1350, 10, 50, 50);
     dep.add(labelmoneybag1, new Integer(1000));
-
-    ImageIcon level = new ImageIcon("asset/1small.png");
-    labellevel = new JLabel(level);
-    labellevel.setBounds(1300,110,100,100);
-    dep.add(labellevel, new Integer(1000));
 
     ImageIcon money = new ImageIcon("asset/money.png");
     labelmoney = new JLabel(money);
