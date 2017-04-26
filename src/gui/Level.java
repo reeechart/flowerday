@@ -24,10 +24,6 @@ import player.Player;
 public class Level {
 
   /**
-   * Layar cerita yang akan dipanggil oleh <code>Level</code>.
-   */
-
-  /**
    * Konstruktor.
    *
    * @param dep Wadah untuk meletakkan item-item GUI pada layar
