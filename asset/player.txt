@@ -1,1 +1,1 @@
-name : irene, maxLv : 1, money : 5000, truckLv : 7
+name : irene, maxLv : 8, money : 50000, truckLv : 3
