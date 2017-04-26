@@ -104,7 +104,7 @@ class Stage {
       bufferedReader.close();
     } catch (FileNotFoundException e) {
       System.exit(0);
-    } catch (IOException e) {
+    } catch (IOException i) {
       System.exit(0);
     }
   }

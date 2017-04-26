@@ -1,122 +1,169 @@
 package stage;
 
-import player.Player;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.TimerTask;
+import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+import javax.swing.Timer;
+import player.Player;
 
 /**
- * Class StageController.
- * Class controller untuk mengatur model <code>Stage</code>
+ * Kelas controller untuk mengatur model <code>Stage</code>.
+ * Di sini akan diatur komunikasi antara input user, <code>Stage</code>,
+ * dan <code>StageView</code>.
  *
  * @author Ferdinandus Richard
- * Created on 22-Apr-2017.
+ * @author Irene Edria
+ * @author Reinhard Benjamin
+ * @version 22-Apr-2017
  */
 public class StageController {
-  private Stage stage;
-  private StageView sview;
-  private Player player;
-  private JDesktopPane dptemp;
-  private Timer swing_timer;
-  private ArrayList<ActionListener> actionListenerList = new ArrayList<ActionListener>(9);
 
-  ActionListener roseListener = new ActionListener() {
+  /**
+   * Model <code>Stage</code> yang diatur controller ini.
+   */
+  private Stage stage;
+  /**
+   * <code>StageView</code> yang diatur controller ini.
+   */
+  private StageView sview;
+  /**
+   * Dataa player yang sedang memainkan game ini.
+   */
+  private Player player;
+  /**
+   * Wadah untuk menampilkan pada layar.
+   */
+  private JDesktopPane dptemp;
+  /**
+   * Pengatur waktu untuk jalannya truk.
+   */
+  private Timer swingTimer;
+  /**
+   * Kumpulan <code>ActionListener</code> agar tombol dapat berkomunikasi.
+   */
+  private ArrayList<ActionListener> actionListenerList =
+      new ArrayList<ActionListener>(9);
+  /**
+   * <code>ActionListener</code> untuk tombol pembelian mawar.
+   */
+  private ActionListener roseListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       stage.activeButton = new StringBuffer("rose");
     }
   };
-
-  ActionListener sunflowerListener = new ActionListener() {
+  /**
+   * <code>ActionListener</code> untuk tombol pembelian bunga matahari.
+   */
+  private ActionListener sunflowerListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       stage.activeButton = new StringBuffer("sunflower");
     }
   };
-
-  ActionListener chamomileListener = new ActionListener() {
+  /**
+   * <code>ActionListener</code> untuk tombol pembelian kamomil.
+   */
+  private ActionListener chamomileListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       stage.activeButton = new StringBuffer("chamomile");
     }
   };
-
-  ActionListener orchidListener = new ActionListener() {
+  /**
+   * <code>ActionListener</code> untuk tombol pembelian anggrek.
+   */
+  private ActionListener orchidListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       stage.activeButton = new StringBuffer("orchid");
     }
   };
-
-
-
-  ActionListener waterListener = new ActionListener() {
+  /**
+   * <code>ActionListener</code> untuk tombol penyiram bunga.
+   */
+  private ActionListener waterListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       stage.activeButton = new StringBuffer("water");
 
     }
   };
-
-  ActionListener harvestListener = new ActionListener() {
+  /**
+   * <code>ActionListener</code> untuk tombol gunting bunga.
+   */
+  private ActionListener harvestListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       stage.activeButton = new StringBuffer("harvest");
     }
   };
 
-  ActionListener sellListener = new ActionListener() {
+  private ActionListener sellListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       sendFlowersToTown(sellListener);
     }
   };
-
-  ActionListener potListener = new ActionListener() {
+  /**
+   * <code>ActionListener</code> untuk tombol pembelian pot.
+   */
+  private ActionListener potListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       buyPotInStage(plantListener);
     }
   };
-
-  ActionListener plantListener = new ActionListener() {
+  /**
+   * <code>ActionListener</code> untuk tombol pot yang ada di taman.
+   */
+  private ActionListener plantListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-      JButton source = (JButton)e.getSource();
+      JButton source = (JButton) e.getSource();
 
       int potNumber = stage.getPots();
-      int row,col;
+      int row;
+      int col;
       int buttonRow = -1;
       int buttonCol = -1;
 
-      for(int i=0;i<potNumber;i++) {
-        row = i/3;
-        col = i%3;
+      for (int i = 0; i < potNumber; i++) {
+        row = i / 3;
+        col = i % 3;
 
-        if(sview.field[row][col] == source) {
+        if (sview.field[row][col] == source) {
           buttonRow = row;
           buttonCol = col;
           break;
         }
       }
-
-
-      if(stage.activeButton.toString().equals("rose")) { buyFlowerInStage("rose", buttonRow, buttonCol, plantListener); }
-      else if(stage.activeButton.toString().equals("chamomile")) { buyFlowerInStage("chamomile", buttonRow, buttonCol, plantListener); }
-      else if(stage.activeButton.toString().equals("orchid"))  { buyFlowerInStage("orchid", buttonRow, buttonCol, plantListener); }
-      else if(stage.activeButton.toString().equals("sunflower"))  { buyFlowerInStage("sunflower", buttonRow, buttonCol, plantListener); }
-      else if(stage.activeButton.toString().equals("water"))  { waterFlowerInStage(buttonRow, buttonCol, plantListener);}
-      else if(stage.activeButton.toString().equals("harvest"))  { harvestFlowerInStage(buttonRow, buttonCol, plantListener); }
+      if (stage.activeButton.toString().equals("rose")) {
+        buyFlowerInStage("rose", buttonRow, buttonCol, plantListener);
+      } else if (stage.activeButton.toString().equals("chamomile")) {
+        buyFlowerInStage("chamomile", buttonRow, buttonCol, plantListener);
+      } else if (stage.activeButton.toString().equals("orchid")) {
+        buyFlowerInStage("orchid", buttonRow, buttonCol, plantListener);
+      } else if (stage.activeButton.toString().equals("sunflower")) {
+        buyFlowerInStage("sunflower", buttonRow, buttonCol, plantListener);
+      } else if (stage.activeButton.toString().equals("water")) {
+        waterFlowerInStage(buttonRow, buttonCol, plantListener);
+      } else if (stage.activeButton.toString().equals("harvest")) {
+        harvestFlowerInStage(buttonRow, buttonCol, plantListener);
+      }
     }
   };
 
   /**
-   * Constructor.
+   * Konstruktor.
+   *
+   * @param dp Pane yang digunakan
    * @param stageLv level stage yang akan dibuat
    * @param truckLv level truck yang akan dipakai dalam stage
+   * @param p <code>Player</code> yang sedang bermain
    */
   public StageController(JDesktopPane dp, int stageLv, int truckLv, Player p) {
     actionListenerList.add(roseListener);
@@ -132,9 +179,8 @@ public class StageController {
     player = p;
     dptemp = dp;
 
-
     stage = new Stage(stageLv, truckLv);
-    sview = new StageView(stage, this, dptemp, player, stageLv, actionListenerList);
+    sview = new StageView(stage, dptemp, player, stageLv, actionListenerList);
     sview.updatePlayerMoney(dptemp, stage, player);
     java.util.Timer timer = new java.util.Timer();
     TimerTask endGame = new TimerTask() {
@@ -142,7 +188,7 @@ public class StageController {
       public void run() {
         boolean f = true;
         long startTime = System.currentTimeMillis();
-        while (System.currentTimeMillis() - startTime <= stage.getTimeLimit()*1000) {
+        while (System.currentTimeMillis() - startTime <= stage.getTimeLimit() * 1000) {
           // wait until delivery is finished
         }
         endGame();
@@ -153,6 +199,15 @@ public class StageController {
     timer.schedule(endGame, 30);
   }
 
+  /**
+   * Method untuk mengirim bunga ke kota. Akan dipanggil method penjualan
+   * dari kelas <code>Stage</code>.
+   * I.S.: Stage beserta atributnya terisi.
+   * F.S.: Truk berangkat dan setelah waktu menjual truk habis, uang ditambah
+   * serta truk akan berjalan kembali ke tempat semula.
+   *
+   * @param a <code>ActionListener</code> yang sedang aktif
+   */
   public void sendFlowersToTown(ActionListener a) {
     if (stage.getIncome() > 0) {
       sview.moveTruckToCity(dptemp);
@@ -164,13 +219,13 @@ public class StageController {
         @Override
         public void actionPerformed(ActionEvent e) {
           sview.updateMoney(dptemp, stage);
-          sview.moveTruckToWonderLand(dptemp);
-          swing_timer.stop();
+          sview.moveTruckToWonderVillage(dptemp);
+          swingTimer.stop();
         }
       };
-      swing_timer = new Timer(delay, task);
-      swing_timer.setRepeats(false);
-      swing_timer.start();
+      swingTimer = new Timer(delay, task);
+      swingTimer.setRepeats(false);
+      swingTimer.start();
     }
   }
 
@@ -181,6 +236,7 @@ public class StageController {
    *
    * @param row urutan baris bunga dalam stage yang diatur
    * @param col urutan kolom bunga dalam stage yang diatur
+   * @param a <code>ActionListener</code> yang sedang aktif
    */
   public void harvestFlowerInStage(int row, int col, ActionListener a) {
     stage.harvestFlower(row, col);
@@ -193,16 +249,17 @@ public class StageController {
    * I.S. : Stage beserta atributnya terdefinisi.
    * F.S. : Flower dengan nama <code>_flowerPot</code> berhasil ditambahkan.
    *
-   * @param _flowerName nama flower yang ingin ditambahkan ke stage
+   * @param flowerName nama flower yang ingin ditambahkan ke stage
    * @param row baris tempat flower akan ditambahkan
    * @param col kolom tempat flower akan ditambahkan
+   * @param a <code>ActionListener</code> yang sedang aktif
    */
-  public void buyFlowerInStage(String _flowerName, int row, int col, ActionListener a) {
+  public void buyFlowerInStage(String flowerName, int row, int col, ActionListener a) {
     int stageMoney = stage.getInGameMoney();
-    int flowerPrice = stage.getPlants()[row][col].getFlowerPrice(_flowerName);
+    int flowerPrice = stage.getPlants()[row][col].getFlowerPrice(flowerName);
     if (stageMoney >= flowerPrice) {
       stage.setInGameMoney(stageMoney - flowerPrice);
-      stage.buyFlower(_flowerName, row, col);
+      stage.buyFlower(flowerName, row, col);
       sview.updatePot(dptemp, stage, row, col, a);
     }
   }
@@ -211,6 +268,8 @@ public class StageController {
    * Method untuk membeli pot dalam stage yang diatur.
    * I.S. : Stage beserta atributnya terdefinisi.
    * F.S. : Pot ditambahkan berdasar kapasitas dari pot dalam stage.
+   *
+   * @param a <code>ActionListener</code> yang sedang aktif
    */
   public void buyPotInStage(ActionListener a) {
     int stageMoney = stage.getInGameMoney();
@@ -229,6 +288,7 @@ public class StageController {
    *
    * @param row urutan baris bunga yang disiram
    * @param col urutan kolom bunga yang disiram
+   * @param a <code>ActionListener</code> yang sedang aktif
    */
   public void waterFlowerInStage(int row, int col, ActionListener a) {
     stage.waterFlower(row, col);
@@ -237,14 +297,19 @@ public class StageController {
       @Override
       public void actionPerformed(ActionEvent e) {
         sview.updatePot(dptemp, stage, row, col, a);
-        swing_timer.stop();
+        swingTimer.stop();
       }
     };
-    swing_timer = new Timer(delay, waterTask);
-    swing_timer.setRepeats(false);
-    swing_timer.start();
+    swingTimer = new Timer(delay, waterTask);
+    swingTimer.setRepeats(false);
+    swingTimer.start();
   }
 
+  /**
+   * Aksi yang akan dilakukan setelah timer habis.
+   * I.S.: Timer habis.
+   * F.S.: Ditampilkan windows baru yang menyatakan player menang atau kalah.
+   */
   public void endGame() {
     int status;
     if (stage.getInGameMoney() >= stage.getTargetMoney()) {
@@ -252,9 +317,8 @@ public class StageController {
       int x = player.getLastStageOpened();
       x++;
       player.setLastStageOpened(x);
-      player.addMoney(stage.getInGameMoney()*50/100);
-    }
-    else {
+      player.addMoney(stage.getInGameMoney() * 50 / 100);
+    } else {
       status = 0;
     }
     sview.endStageView(stage, dptemp, status, player);
